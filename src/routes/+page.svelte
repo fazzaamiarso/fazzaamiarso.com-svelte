@@ -15,4 +15,4 @@
 	<!-- Twitter card END -->
 </svelte:head>
 
-<h1>Fazza Razaq Amiarso</h1>
+<h1 class="text-heading-1">Fazza Razaq Amiarso</h1>
