@@ -38,6 +38,10 @@ export default {
 			'body-base': ['var(--text-body-base)', '24px'],
 			'body-sm': ['var(--text-body-sm)', '18px']
 		},
+		fontFamily: {
+			'fira-sans': ['Fira Sans', 'sans-serif'],
+			'dm-sans': ['DM Sans', 'sans-serif']
+		},
 		extend: {}
 	},
 	plugins: []
