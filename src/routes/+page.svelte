@@ -14,5 +14,4 @@
 	<meta name="twitter:creator" content={config.twitterHandle} />
 	<!-- Twitter card END -->
 </svelte:head>
-
-<h1 class="text-heading-1 font-fira-sans">Fazza Razaq Amiarso</h1>
+<h1 class="text-heading-1 font-fira-sans text-brand-800">Frontend Developer Who Bring your Idea to the Web</h1>

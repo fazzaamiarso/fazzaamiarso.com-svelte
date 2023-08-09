@@ -1,4 +1,4 @@
-@import "@fontsource/fira-sans/700.css";
+@import '@fontsource/fira-sans/700.css';
 @import '@fontsource/dm-sans/400.css';
 @import '@fontsource/dm-sans/700.css';
 
@@ -8,36 +8,45 @@
 
 @layer base {
 	:root {
-        --text-heading-1: 90px;
-        --text-heading-2: 64px;
-        --text-heading-3: 44px;
-        --text-heading-4: 32px;
-        --text-heading-5: 24px;
-        --text-heading-6: 16px;
+		--text-heading-1: 5.625rem;
+		--text-heading-2: 4rem;
+		--text-heading-3: 2.75rem;
+		--text-heading-4: 2rem;
+		--text-heading-5: 1.5rem;
+		--text-heading-6: 1rem;
 
-        --text-body-xl : 24px;
-        --text-body-lg : 20px;
-        --text-body-base : 16px;
-        --text-body-sm : 13px;
+		--text-body-xl: 1.5rem;
+		--text-body-lg: 1.25rem;
+		--text-body-base: 1rem;
+		--text-body-sm: 0.813rem;
 
-        --color-brand-100: #F3E8FF;
-        --color-brand-200: #b6b3fb;
-        --color-brand-300: #8983ec;
-        --color-brand-400: #6960e3;
-        --color-brand-500: #352BCA;
-        --color-brand-600: #1F16A3;
-        --color-brand-700: #18127A;
-        --color-brand-800: #0D0858;
-        --color-brand-900: #030032;
+		--color-brand-100: #f3e8ff;
+		--color-brand-200: #b6b3fb;
+		--color-brand-300: #8983ec;
+		--color-brand-400: #6960e3;
+		--color-brand-500: #352bca;
+		--color-brand-600: #1f16a3;
+		--color-brand-700: #18127a;
+		--color-brand-800: #0d0858;
+		--color-brand-900: #030032;
 
-        --color-gray-100: #EAEAEE;
-        --color-gray-200: #CBCADD;
-        --color-gray-300: #B0AFC9;
-        --color-gray-400: #8B8AA5;
-        --color-gray-500: #5A587D;
-        --color-gray-600: #393763;
-        --color-gray-700: #242141;
-        --color-gray-800: #100E2E;
-        --color-gray-900: #050415;
+		--color-gray-100: #eaeaee;
+		--color-gray-200: #cbcadd;
+		--color-gray-300: #b0afc9;
+		--color-gray-400: #8b8aa5;
+		--color-gray-500: #5a587d;
+		--color-gray-600: #393763;
+		--color-gray-700: #242141;
+		--color-gray-800: #100e2e;
+		--color-gray-900: #050415;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply font-fira-sans;
 	}
 }
