@@ -15,7 +15,7 @@
 	<!-- Twitter card END -->
 </svelte:head>
 <div class="h-screen relative flex flex-col justify-center items-center">
-	<h1 class=" font-fira-sans text-brand-800 text-heading-3">
+	<h1 class=" font-fira-sans text-brand-800 text-heading-3 sm:text-heading-2 lg:text-heading-1">
 		Frontend Developer Who Bring your Idea to the Web
 	</h1>
 	<div class="absolute bottom-0 left-0 w-full flex justify-between">
@@ -31,6 +31,9 @@
 		</div>
 	</div>
 </div>
-<div>
-	<h2 class="text-heading-2">SOME RANDOM TEXT so it scrolls</h2>
+<div class="pt-32">
+	<h2 class="text-heading-2 font-bold text-brand-800">Selected Projects.</h2>
+</div>
+<div class="pt-14">
+	<h2 class="text-heading-2 font-bold text-brand-800">Technologies.</h2>
 </div>

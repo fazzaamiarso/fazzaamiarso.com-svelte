@@ -3,6 +3,7 @@ export default {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
 		colors: {
+			white: '#FFF',
 			brand: {
 				100: 'var(--color-brand-100)',
 				200: 'var(--color-brand-200)',
