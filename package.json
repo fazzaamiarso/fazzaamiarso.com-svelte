@@ -34,6 +34,7 @@
 	"type": "module",
 	"dependencies": {
 		"@fontsource/dm-sans": "^5.0.8",
-		"@fontsource/fira-sans": "^5.0.8"
+		"@fontsource/fira-sans": "^5.0.8",
+		"clsx": "^2.0.0"
 	}
 }
