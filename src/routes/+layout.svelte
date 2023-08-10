@@ -6,7 +6,7 @@
 
 <div id="portal"></div>
 <Header />
-<main class="relative py-16 z-[1] bg-white min-h-screen">
+<main class="relative z-[1] bg-white min-h-screen">
 	<div class="w-11/12 mx-auto max-w-6xl">
 		<slot />
 	</div>

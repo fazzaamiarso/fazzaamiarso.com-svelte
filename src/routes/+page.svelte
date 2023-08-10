@@ -1,5 +1,15 @@
 <script>
 	import * as config from '$lib/site/config';
+
+	const skills = [
+		{ name: 'Figma' },
+		{ name: 'Typescript' },
+		{ name: 'Javascript' },
+		{ name: 'Svelte' },
+		{ name: 'Next.js' },
+		{ name: 'Remix' },
+		{ name: 'Node.js' }
+	];
 </script>
 
 <svelte:head>
