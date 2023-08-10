@@ -42,8 +42,8 @@
 	</div>
 </div>
 <div class="pt-32">
-	<h2 class="text-heading-2 font-bold text-brand-800">Selected Projects.</h2>
+	<h2 class="text-heading-3 sm:text-heading-2  font-bold text-brand-800">Selected Projects.</h2>
 </div>
 <div class="pt-14">
-	<h2 class="text-heading-2 font-bold text-brand-800">Technologies.</h2>
+	<h2 class="text-heading-3 sm:text-heading-2  font-bold text-brand-800">Technologies.</h2>
 </div>

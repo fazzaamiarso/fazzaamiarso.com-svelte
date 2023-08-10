@@ -22,7 +22,7 @@
 			class="inline-flex text-body-base group justify-center items-center gap-8 px-4 py-2 rounded-full bg-brand-700 text-brand-100 sm:text-body-lg font-bold mb-20"
 			>fazzaamiarso@gmail.com
 			<span
-				class="inline-flex items-center justify-center w-[45px] h-[45px] bg-brand-100 rounded-full"
+				class="inline-flex items-center justify-center w-[35px] h-[35px] sm:w-[45px] sm:h-[45px] bg-brand-100 rounded-full"
 				><svg
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 24 24"

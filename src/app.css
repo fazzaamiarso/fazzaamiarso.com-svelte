@@ -41,6 +41,10 @@
 		--color-gray-900: #050415;
 	}
 
+	p {
+		max-width: 60ch;
+	}
+
 	h1,
 	h2,
 	h3,
