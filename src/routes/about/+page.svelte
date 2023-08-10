@@ -34,7 +34,7 @@
 					<div class="text-body-base text-gray-600">Web development</div>
 				</div>
 				<a
-					href="#"
+					href="#link-1"
 					class="inline-flex items-center gap-1 text-body-base font-bold text-gray-700 col-span-2"
 					>blog.fazzaamiarso.com <svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -57,7 +57,7 @@
 					<div class="text-body-base text-gray-600">Journal</div>
 				</div>
 				<a
-					href="#"
+					href="#link-2"
 					class="inline-flex items-center gap-1 text-body-base font-bold text-gray-700 col-span-2"
 					>journal.fazzaamiarso.com <svg
 						xmlns="http://www.w3.org/2000/svg"
