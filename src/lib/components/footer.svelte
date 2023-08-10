@@ -4,7 +4,7 @@
 	const socialLinks = [
 		{ label: 'Linkedin', href: config.linkedinUrl },
 		{ label: 'Github', href: config.githubUrl },
-		{ label: 'Twitter', href: config.twitterHandle }
+		{ label: 'Twitter', href: config.twitterUrl }
 	];
 </script>
 
