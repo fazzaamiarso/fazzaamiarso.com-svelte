@@ -12,7 +12,7 @@
     $: drawerOpen = false
 </script>
 <header class="absolute top-0 left-0 z-50 w-full">
-	<div class="flex justify-between items-center w-11/12 mx-auto py-4">
+	<div class="flex justify-between items-center w-11/12 mx-auto py-4 max-w-7xl">
 		<a href="/"><img src={logo} alt="" width="50" height="50" /></a>
 		<button
 			type="button"

@@ -10,7 +10,7 @@
 </script>
 
 <footer id="contact" class="bg-gray-800 pt-16 pb-4 sticky bottom-0">
-	<div class="w-11/12 mx-auto max-w-6xl">
+	<div class="w-11/12 mx-auto max-w-7xl">
 		<h2 class="text-heading-4 sm:text-heading-3 font-bold text-brand-100 mb-2">
 			Let’s talk or build awesome things together!
 		</h2>
