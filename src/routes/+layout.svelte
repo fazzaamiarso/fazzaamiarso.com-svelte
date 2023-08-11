@@ -3,7 +3,7 @@
 	import Footer from '$lib/components/footer.svelte';
 	import Header from '$lib/components/header.svelte';
 	import { lenis, loadLenis } from '$lib/lenis';
-	import { onMount, setContext } from 'svelte';
+	import { onMount } from 'svelte';
 	import { slide } from 'svelte/transition';
 	import { writable } from 'svelte/store';
 	import { afterNavigate, beforeNavigate } from '$app/navigation';

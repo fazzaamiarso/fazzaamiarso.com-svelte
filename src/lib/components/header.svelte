@@ -3,7 +3,7 @@
 	import createPortal from '$lib/actions/createPortal';
 	import clsx from 'clsx';
 	import { lenis } from '$lib/lenis';
-	import { afterUpdate, getContext, onMount, tick } from 'svelte';
+	import { onMount } from 'svelte';
 	import gsap from '$lib/gsap';
 
 	const navigationLinks = [

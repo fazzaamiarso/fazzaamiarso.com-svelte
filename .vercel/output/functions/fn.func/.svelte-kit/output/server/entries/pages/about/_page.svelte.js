@@ -1,4 +1,4 @@
-import { c as create_ssr_component, v as validate_component, b as add_attribute, e as each, d as escape } from "../../../chunks/ssr.js";
+import { c as create_ssr_component, v as validate_component, a as add_attribute, e as each, b as escape } from "../../../chunks/ssr.js";
 import { I as Icon } from "../../../chunks/Icon.js";
 const External_link = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   const iconNode = [

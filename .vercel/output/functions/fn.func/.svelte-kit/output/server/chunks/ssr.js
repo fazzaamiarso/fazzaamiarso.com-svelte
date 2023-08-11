@@ -12,6 +12,16 @@ function run_all(fns) {
 function safe_not_equal(a, b) {
   return a != a ? b == b : a !== b || a && typeof a === "object" || typeof a === "function";
 }
+function subscribe(store, ...callbacks) {
+  if (store == null) {
+    for (const callback of callbacks) {
+      callback(void 0);
+    }
+    return noop;
+  }
+  const unsub = store.subscribe(...callbacks);
+  return unsub.unsubscribe ? () => unsub.unsubscribe() : unsub;
+}
 function compute_rest_props(props, keys) {
   const rest = {};
   keys = new Set(keys);
@@ -221,17 +231,18 @@ function style_object_to_string(style_object) {
   return Object.keys(style_object).filter((key) => style_object[key]).map((key) => `${key}: ${escape_attribute_value(style_object[key])};`).join(" ");
 }
 export {
-  setContext as a,
-  add_attribute as b,
+  add_attribute as a,
+  escape as b,
   create_ssr_component as c,
-  escape as d,
+  subscribe as d,
   each as e,
-  compute_rest_props as f,
-  spread as g,
-  escape_object as h,
-  escape_attribute_value as i,
+  safe_not_equal as f,
+  compute_rest_props as g,
+  spread as h,
+  escape_object as i,
+  escape_attribute_value as j,
   missing_component as m,
   noop as n,
-  safe_not_equal as s,
+  setContext as s,
   validate_component as v
 };

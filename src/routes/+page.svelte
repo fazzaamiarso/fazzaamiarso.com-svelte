@@ -4,9 +4,8 @@
 
 	import { lenis } from '$lib/lenis';
 	import { onMount } from 'svelte';
-	import gsap, { ScrollTrigger } from '$lib/gsap';
+	import gsap from '$lib/gsap';
 	import SkillsList from '$lib/components/skills-list.svelte';
-	import { browser } from '$app/environment';
 
 	let bottomBar: HTMLElement;
 

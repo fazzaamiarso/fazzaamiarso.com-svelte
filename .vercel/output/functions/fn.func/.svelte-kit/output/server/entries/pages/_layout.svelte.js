@@ -1,7 +1,8 @@
-import { c as create_ssr_component, v as validate_component, e as each, b as add_attribute, d as escape } from "../../chunks/ssr.js";
-import { l as linkedinUrl, g as githubUrl, t as twitterUrl } from "../../chunks/config.js";
+import { c as create_ssr_component, v as validate_component, e as each, a as add_attribute, b as escape, d as subscribe } from "../../chunks/ssr.js";
+import { l as linkedinUrl, g as githubUrl, t as twitterUrl } from "../../chunks/gsap.js";
 import { I as Icon } from "../../chunks/Icon.js";
 import clsx from "clsx";
+import { w as writable } from "../../chunks/index.js";
 const app = "";
 const Move_up_right = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   const iconNode = [["path", { "d": "M13 5H19V11" }], ["path", { "d": "M19 5L5 19" }]];
@@ -50,17 +51,52 @@ const Footer = create_ssr_component(($$result, $$props, $$bindings, slots) => {
 });
 const logo = "/_app/immutable/assets/fz-logo.c7d3b641.svg";
 const Header = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-  let drawerOpen;
   const navigationLinks = [{ label: "About", href: "/about" }, { label: "Projects", href: "/#projects" }];
-  drawerOpen = false;
-  return `<header class="absolute top-0 left-0 z-50 w-full"><div class="flex justify-between items-center w-11/12 mx-auto py-4 max-w-7xl"><a href="/" data-svelte-h="svelte-1k3h8go"><img${add_attribute("src", logo, 0)} alt="" width="50" height="50"></a> <button type="button" class="sm:hidden" data-svelte-h="svelte-180n53n"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8"><path fill-rule="evenodd" d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm8.25 5.25a.75.75 0 01.75-.75h8.25a.75.75 0 010 1.5H12a.75.75 0 01-.75-.75z" clip-rule="evenodd"></path></svg></button> <nav class="max-sm:hidden"><ul class="flex justify-between gap-14">${each(navigationLinks, (link) => {
-    return `<li><a${add_attribute("href", link.href, 0)} class="text-body-lg">${escape(link.label)}</a></li>`;
-  })} <li><a href="#contact" class="text-body-lg" data-svelte-h="svelte-hnojd9">Contact</a></li></ul></nav></div> <div class="sm:hidden absolute">  <div${add_attribute("class", clsx("fixed w-screen h-screen bg-gray-100 transition-opacity", drawerOpen ? "opacity-20 z-[101]" : "opacity-0 -z-10"), 0)}></div> <div${add_attribute("class", clsx("fixed z-[101] bg-brand-100 h-screen right-0 top-0 p-4 w-80 transition-transform", drawerOpen ? "translate-x-0" : "translate-x-full"), 0)}><button type="button" data-svelte-h="svelte-5ykg3k"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z" clip-rule="evenodd"></path></svg></button> <nav class=""><ul class="flex flex-col justify-between gap-14">${each(navigationLinks, (link) => {
+  let navbar;
+  return `<header class="absolute top-0 left-0 z-50 w-full"><div class="flex justify-between items-center w-11/12 mx-auto py-4 max-w-7xl" data-animate="navbar"${add_attribute("this", navbar, 0)}><a href="/" data-svelte-h="svelte-1k3h8go"><img${add_attribute("src", logo, 0)} alt="" width="50" height="50"></a> <button type="button" class="sm:hidden" data-svelte-h="svelte-180n53n"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8"><path fill-rule="evenodd" d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm8.25 5.25a.75.75 0 01.75-.75h8.25a.75.75 0 010 1.5H12a.75.75 0 01-.75-.75z" clip-rule="evenodd"></path></svg></button> <nav class="max-sm:hidden"><ul class="flex justify-between gap-14">${each(navigationLinks, (link) => {
+    return `<li><a${add_attribute("href", link.href, 0)}${add_attribute("class", clsx("text-body-lg"), 0)}>${escape(link.label)}</a></li>`;
+  })} <li><a href="#contact" class="text-body-lg" data-svelte-h="svelte-hnojd9">Contact</a></li></ul></nav></div> <div class="sm:hidden absolute">  <div${add_attribute("class", clsx("fixed w-screen h-screen bg-gray-100 transition-opacity", "opacity-0 -z-10"), 0)}></div> <div${add_attribute("class", clsx("fixed z-[101] bg-brand-100 h-screen right-0 top-0 p-4 w-80 transition-transform", "translate-x-full"), 0)}><button type="button" data-svelte-h="svelte-5ykg3k"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z" clip-rule="evenodd"></path></svg></button> <nav class=""><ul class="flex flex-col justify-between gap-14">${each(navigationLinks, (link) => {
     return `<li><a${add_attribute("href", link.href, 0)} class="text-body-lg">${escape(link.label)}</a></li>`;
   })} <li><a href="#contact" class="text-body-lg" data-svelte-h="svelte-19qkvpe">Contact</a></li></ul></nav></div></div></header>`;
 });
+function client_method(key) {
+  {
+    if (key === "before_navigate" || key === "after_navigate") {
+      return () => {
+      };
+    } else {
+      const name_lookup = {
+        disable_scroll_handling: "disableScrollHandling",
+        preload_data: "preloadData",
+        preload_code: "preloadCode",
+        invalidate_all: "invalidateAll"
+      };
+      return () => {
+        throw new Error(`Cannot call ${name_lookup[key] ?? key}(...) on the server`);
+      };
+    }
+  }
+}
+const beforeNavigate = /* @__PURE__ */ client_method("before_navigate");
+const afterNavigate = /* @__PURE__ */ client_method("after_navigate");
 const Layout = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-  return `${`<div class="fixed inset-0 bg-[#000] z-[1000] flex justify-center items-center h-screen w-full text-heading-3" data-svelte-h="svelte-qy5tfl"><p id="loading" class="text-brand-400 animate-pulse">Loading...</p></div>`} <div id="portal"></div> ${validate_component(Header, "Header").$$render($$result, {}, {}, {})} <main class="relative z-[1] bg-white min-h-screen"><div class="w-11/12 mx-auto max-w-7xl">${slots.default ? slots.default({}) : ``}</div></main> ${validate_component(Footer, "Footer").$$render($$result, {}, {}, {})}`;
+  let $pageReady, $$unsubscribe_pageReady;
+  const pageReady = writable(false);
+  $$unsubscribe_pageReady = subscribe(pageReady, (value) => $pageReady = value);
+  let navigating = false;
+  beforeNavigate(() => {
+    navigating = true;
+  });
+  afterNavigate(() => {
+    setTimeout(
+      () => {
+        navigating = false;
+      },
+      1500
+    );
+  });
+  $$unsubscribe_pageReady();
+  return `${!$pageReady || navigating ? `<div class="fixed inset-0 bg-[#000] z-[1000] flex justify-center items-center h-screen w-full text-heading-3" data-svelte-h="svelte-qy5tfl"><p id="loading" class="text-brand-400 animate-pulse">Loading...</p></div>` : ``} <div id="portal"></div> ${validate_component(Header, "Header").$$render($$result, {}, {}, {})} <main class="relative z-[1] bg-white min-h-screen"><div class="w-11/12 mx-auto max-w-7xl">${slots.default ? slots.default({}) : ``}</div></main> ${validate_component(Footer, "Footer").$$render($$result, {}, {}, {})}`;
 });
 export {
   Layout as default

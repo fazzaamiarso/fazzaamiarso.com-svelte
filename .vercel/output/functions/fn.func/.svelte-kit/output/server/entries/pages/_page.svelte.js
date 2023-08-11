@@ -1,5 +1,5 @@
-import { c as create_ssr_component, v as validate_component, e as each, b as add_attribute, d as escape } from "../../chunks/ssr.js";
-import { s as siteDescription, a as siteTitle, b as siteUrl, c as twitterHandle } from "../../chunks/config.js";
+import { c as create_ssr_component, v as validate_component, e as each, a as add_attribute, b as escape } from "../../chunks/ssr.js";
+import { s as siteDescription, a as siteTitle, b as siteUrl, c as twitterHandle } from "../../chunks/gsap.js";
 import { I as Icon } from "../../chunks/Icon.js";
 const Arrow_down_circle = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   const iconNode = [
@@ -52,7 +52,8 @@ const Skills_list = create_ssr_component(($$result, $$props, $$bindings, slots) 
   })}</ul>`;
 });
 const Page = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-  return `${$$result.head += `<!-- HEAD_svelte-1ts1ile_START -->${$$result.title = `<title>${escape(siteTitle)}</title>`, ""}<meta name="description"${add_attribute("content", siteDescription, 0)}><meta property="og:title"${add_attribute("content", siteTitle, 0)}><meta property="og:url"${add_attribute("content", siteUrl, 0)}><meta name="twitter:card" content="summary"><meta name="twitter:creator"${add_attribute("content", twitterHandle, 0)}><!-- HEAD_svelte-1ts1ile_END -->`, ""} <div class="mb-32 h-screen relative flex flex-col justify-center items-center"><h1 class="font-fira-sans w-10/12 mx-auto text-brand-800 text-heading-3 sm:text-heading-2 lg:text-heading-1" data-svelte-h="svelte-13at7tc">Frontend Developer Who Bring your Idea to the Web</h1> <div class="pb-8 absolute bottom-0 left-0 w-full flex items-end justify-between"><div class="flex flex-col items-start text-body-lg" data-svelte-h="svelte-18cm2ci"><span class="font-bold text-gray-800">Fullstack</span><span class="text-gray-600">capable</span></div> <div class=""><a href="#projects">${validate_component(ArrowDownCircle, "ArrowDownCircle").$$render(
+  let bottomBar;
+  return `${$$result.head += `<!-- HEAD_svelte-1ts1ile_START -->${$$result.title = `<title>${escape(siteTitle)}</title>`, ""}<meta name="description"${add_attribute("content", siteDescription, 0)}><meta property="og:title"${add_attribute("content", siteTitle, 0)}><meta property="og:url"${add_attribute("content", siteUrl, 0)}><meta name="twitter:card" content="summary"><meta name="twitter:creator"${add_attribute("content", twitterHandle, 0)}><!-- HEAD_svelte-1ts1ile_END -->`, ""} <div class="mb-32 h-screen relative flex flex-col justify-center items-center"><h1 class="font-fira-sans w-10/12 mx-auto text-brand-800 text-heading-3 sm:text-heading-2 lg:text-heading-1" data-svelte-h="svelte-13at7tc">Frontend Developer Who Bring your Idea to the Web</h1> <div class="pb-8 absolute bottom-0 left-0 w-full flex items-end justify-between"${add_attribute("this", bottomBar, 0)}><div class="flex flex-col items-start text-body-lg" data-svelte-h="svelte-18cm2ci"><span class="font-bold text-gray-800">Fullstack</span><span class="text-gray-600">capable</span></div> <div class=""><a href="#projects">${validate_component(ArrowDownCircle, "ArrowDownCircle").$$render(
     $$result,
     {
       size: "40",
@@ -61,7 +62,7 @@ const Page = create_ssr_component(($$result, $$props, $$bindings, slots) => {
     },
     {},
     {}
-  )}</a></div> <div class="flex flex-col items-start text-body-lg" data-svelte-h="svelte-6y1zct"><span class="font-bold text-gray-800">Sharing</span><span class="text-gray-600">knowledge</span></div></div></div> <div class="pb-32" data-svelte-h="svelte-7uhc1p"><h2 id="projects" class="text-heading-4 lg:text-heading-2 font-bold text-brand-800">Selected Projects.</h2></div> <div class="pb-32"><h2 class="text-heading-4 lg:text-heading-2 font-bold text-brand-800 mb-6" data-svelte-h="svelte-cp6kxj">Technologies.</h2> ${validate_component(Skills_list, "SkillsList").$$render($$result, {}, {}, {})}</div>`;
+  )}</a></div> <div class="flex flex-col items-start text-body-lg" data-svelte-h="svelte-6y1zct"><span class="font-bold text-gray-800">Sharing</span><span class="text-gray-600">knowledge</span></div></div></div> <div class="pb-32" data-svelte-h="svelte-7uhc1p"><h2 id="projects" class="text-heading-4 lg:text-heading-2 font-bold text-brand-800">Selected Projects.</h2></div> <div class="pb-32"><h2 data-animate="tech" class="text-heading-4 lg:text-heading-2 font-bold text-brand-800 mb-6" data-svelte-h="svelte-dvt0hg">Technologies.</h2> ${validate_component(Skills_list, "SkillsList").$$render($$result, {}, {}, {})}</div>`;
 });
 export {
   Page as default
