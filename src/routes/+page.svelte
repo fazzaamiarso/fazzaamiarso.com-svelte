@@ -34,7 +34,7 @@
 	<h1 class="font-fira-sans w-10/12 mx-auto text-brand-800 text-heading-3 sm:text-heading-2 lg:text-heading-1">
 		Frontend Developer Who Bring your Idea to the Web
 	</h1>
-	<div class="py-4 absolute bottom-0 left-0 w-full flex items-end justify-between">
+	<div class="pb-8 absolute bottom-0 left-0 w-full flex items-end justify-between">
 		<div class="flex flex-col items-start text-body-lg">
 			<span class="font-bold text-gray-800">Fullstack</span><span class="text-gray-600">capable</span>
 		</div>
