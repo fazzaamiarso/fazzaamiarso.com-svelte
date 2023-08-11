@@ -1,6 +1,4 @@
-export const prerender = true
 <script lang="ts">
-
 	import '../app.css';
 	import Footer from '$lib/components/footer.svelte';
 	import Header from '$lib/components/header.svelte';
