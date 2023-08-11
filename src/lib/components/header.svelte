@@ -1,20 +1,32 @@
-<script>
+<script lang="ts">
 	import logo from '$lib/assets/fz-logo.svg';
 	import createPortal from '$lib/actions/createPortal';
 	import clsx from 'clsx';
 	import { lenis } from '$lib/lenis';
-	import { onMount } from 'svelte';
+	import { afterUpdate, getContext, onMount, tick } from 'svelte';
+	import gsap from '$lib/gsap';
 
 	const navigationLinks = [
 		{ label: 'About', href: '/about' },
 		{ label: 'Projects', href: '/#projects' }
 	];
 
-	$: drawerOpen = false;
+	let drawerOpen = false;
+
+	let navbar: HTMLElement
+
+	onMount(() => {
+		gsap.from(navbar, {
+			delay: 2,
+			duration: 0.35,
+			opacity: 0,
+			yPercent: -50
+		});
+	});
 </script>
 
 <header class="absolute top-0 left-0 z-50 w-full">
-	<div class="flex justify-between items-center w-11/12 mx-auto py-4 max-w-7xl">
+	<div class="flex justify-between items-center w-11/12 mx-auto py-4 max-w-7xl" data-animate="navbar" bind:this={navbar}>
 		<a href="/"><img src={logo} alt="" width="50" height="50" /></a>
 		<button
 			type="button"
@@ -34,7 +46,7 @@
 		<nav class="max-sm:hidden">
 			<ul class="flex justify-between gap-14">
 				{#each navigationLinks as link}
-					<li><a href={link.href} class="text-body-lg">{link.label}</a></li>
+					<li><a href={link.href} class={clsx('text-body-lg')}>{link.label}</a></li>
 				{/each}
 				<li>
 					<a
