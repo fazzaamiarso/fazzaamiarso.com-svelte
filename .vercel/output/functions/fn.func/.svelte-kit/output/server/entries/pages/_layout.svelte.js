@@ -1,5 +1,5 @@
 import { c as create_ssr_component, v as validate_component, e as each, a as add_attribute, b as escape, d as subscribe } from "../../chunks/ssr.js";
-import { l as linkedinUrl, g as githubUrl, t as twitterUrl } from "../../chunks/gsap.js";
+import { l as linkedinUrl, g as githubUrl, t as twitterUrl } from "../../chunks/config.js";
 import { I as Icon } from "../../chunks/Icon.js";
 import clsx from "clsx";
 import { w as writable } from "../../chunks/index.js";
@@ -96,7 +96,8 @@ const Layout = create_ssr_component(($$result, $$props, $$bindings, slots) => {
     );
   });
   $$unsubscribe_pageReady();
-  return `${!$pageReady || navigating ? `<div class="fixed inset-0 bg-[#000] z-[1000] flex justify-center items-center h-screen w-full text-heading-3" data-svelte-h="svelte-qy5tfl"><p id="loading" class="text-brand-400 animate-pulse">Loading...</p></div>` : ``} <div id="portal"></div> ${validate_component(Header, "Header").$$render($$result, {}, {}, {})} <main class="relative z-[1] bg-white min-h-screen"><div class="w-11/12 mx-auto max-w-7xl">${slots.default ? slots.default({}) : ``}</div></main> ${validate_component(Footer, "Footer").$$render($$result, {}, {}, {})}`;
+  return `export const prerender = true
+ ${!$pageReady || navigating ? `<div class="fixed inset-0 bg-[#000] z-[1000] flex justify-center items-center h-screen w-full text-heading-3" data-svelte-h="svelte-qy5tfl"><p id="loading" class="text-brand-400 animate-pulse">Loading...</p></div>` : ``} <div id="portal"></div> ${validate_component(Header, "Header").$$render($$result, {}, {}, {})} <main class="relative z-[1] bg-white min-h-screen"><div class="w-11/12 mx-auto max-w-7xl">${slots.default ? slots.default({}) : ``}</div></main> ${validate_component(Footer, "Footer").$$render($$result, {}, {}, {})}`;
 });
 export {
   Layout as default

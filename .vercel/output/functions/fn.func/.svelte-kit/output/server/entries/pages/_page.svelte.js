@@ -1,5 +1,5 @@
 import { c as create_ssr_component, v as validate_component, e as each, a as add_attribute, b as escape } from "../../chunks/ssr.js";
-import { s as siteDescription, a as siteTitle, b as siteUrl, c as twitterHandle } from "../../chunks/gsap.js";
+import { s as siteDescription, a as siteTitle, b as siteUrl, c as twitterHandle } from "../../chunks/config.js";
 import { I as Icon } from "../../chunks/Icon.js";
 const Arrow_down_circle = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   const iconNode = [
