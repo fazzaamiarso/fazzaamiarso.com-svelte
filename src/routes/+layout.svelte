@@ -2,20 +2,11 @@
 	import '../app.css';
 	import Footer from '$lib/components/footer.svelte';
 	import Header from '$lib/components/header.svelte';
-
-	import Lenis from '@studio-freight/lenis';
+	import { lenis, loadLenis } from '$lib/lenis';
 	import { onMount } from 'svelte';
 
 	onMount(() => {
-		const lenis = new Lenis();
-
-		function raf(time: any) {
-			lenis.raf(time);
-			requestAnimationFrame(raf);
-		}
-		
-		requestAnimationFrame(raf);
-
+		loadLenis();
 		return () => lenis.destroy();
 	});
 </script>

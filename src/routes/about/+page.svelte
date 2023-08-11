@@ -12,7 +12,7 @@
 	<title>About | Fazza Razaq Amiarso</title>
 </svelte:head>
 <div class="py-32">
-	<div class="pb-12 flex flex-col items-center lg:flex-row-reverse lg:items-start gap-16">
+	<div class="pb-12 flex flex-col lg:flex-row-reverse lg:items-start lg:justify-start gap-12">
 		<div>
 			<h1 class="text-heading-3 lg:text-heading-1 font-bold text-brand-900">Hi, I'm Fazza</h1>
 			<p class="text-heading-5 lg:text-heading-4 font-bold text-gray-600 mb-4">
@@ -23,8 +23,8 @@
 				tristique enim. Nullam at mi a ligula faucibus dignissim eu eu sapien.
 			</p>
 		</div>
-		<div class="lg:basis-[60%]">
-			<img src={myPic} alt="" />
+		<div class="self-center lg:basis-[40%]">
+			<img src={myPic} alt="" class="w-full max-w-xs" />
 		</div>
 	</div>
 	<div>

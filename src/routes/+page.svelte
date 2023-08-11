@@ -1,15 +1,47 @@
 <script>
 	import * as config from '$lib/site/config';
 	import { ArrowDownCircle } from 'lucide-svelte';
+	import {
+		typescript,
+		svelte,
+		javascript,
+		next,
+		css,
+		html,
+		react,
+		tailwind,
+		astro,
+		figma,
+		gsap,
+		redux,
+
+		jest,
+
+		playwright,
+
+		cypress
+
+
+
+	} from '$lib/assets/icons';
+	import { lenis } from '$lib/lenis';
 
 	const skills = [
-		{ name: 'Figma' },
-		{ name: 'Typescript' },
-		{ name: 'Javascript' },
-		{ name: 'Svelte' },
-		{ name: 'Next.js' },
-		{ name: 'Remix' },
-		{ name: 'Node.js' }
+		{ name: 'Svelte/Sveltekit', icon: svelte },
+		{ name: 'Typescript', icon: typescript },
+		{ name: 'Javascript', icon: javascript },
+		{ name: 'Next.js', icon: next },
+		{ name: 'CSS', icon: css },
+		{ name: 'HTML', icon: html },
+		{ name: 'React', icon: react },
+		{ name: 'Tailwind', icon: tailwind },
+		{ name: 'Astro', icon: astro },
+		{ name: 'Figma', icon: figma },
+		{ name: 'GSAP', icon: gsap },
+		{ name: 'Redux', icon: redux },
+		{ name: 'Jest', icon: jest },
+		{ name: 'Playwright', icon: playwright },
+		{ name: 'Cypress', icon: cypress },
 	];
 </script>
 
@@ -34,7 +66,13 @@
 			<span class="font-bold text-gray-800">Fullstack</span><span class="text-gray-600">capable</span>
 		</div>
 		<div class="py-4">
-			<a href="#projects">
+			<a
+				href="#projects"
+				on:click={(e) => {
+					if (!e.currentTarget) return;
+					lenis.scrollTo('#projects');
+				}}
+			>
 				<ArrowDownCircle size="40" aria-hidden="true" class="animate-bounce text-gray-800" />
 			</a>
 		</div>
@@ -44,8 +82,15 @@
 	</div>
 </div>
 <div class="pt-32">
-	<h2 id="projects" class="text-heading-3 sm:text-heading-2 font-bold text-brand-800">Selected Projects.</h2>
+	<h2 id="projects" class="text-heading-4 lg:text-heading-2 font-bold text-brand-800">Selected Projects.</h2>
 </div>
-<div class="pt-14">
-	<h2 class="text-heading-3 sm:text-heading-2 font-bold text-brand-800">Technologies.</h2>
+<div class="pt-14 pb-20">
+	<h2 class="text-heading-4 lg:text-heading-2 font-bold text-brand-800 mb-6">Technologies.</h2>
+
+	<ul class="grid grid-cols-2 sm:grid-cols-3 items-center gap-8 flex-wrap">
+		{#each skills as skill}
+			<li class="flex items-center text-body-base text-gray-700 font-bold gap-2 break-all">
+				<img src={skill.icon} alt="" class="w-8 md:w-10 lg:w-12" />{skill.name}
+			</li>{/each}
+	</ul>
 </div>

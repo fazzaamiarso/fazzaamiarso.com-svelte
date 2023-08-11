@@ -36,6 +36,7 @@
 	"dependencies": {
 		"@fontsource/dm-sans": "^5.0.8",
 		"@fontsource/fira-sans": "^5.0.8",
+		"@icons-pack/svelte-simple-icons": "^3.0.0",
 		"@studio-freight/lenis": "^1.0.19",
 		"clsx": "^2.0.0",
 		"lucide-svelte": "^0.265.0"
