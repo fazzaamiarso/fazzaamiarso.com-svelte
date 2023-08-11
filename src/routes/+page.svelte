@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import * as config from '$lib/site/config';
 	import { ArrowDownCircle } from 'lucide-svelte';
 	import {
@@ -12,19 +12,15 @@
 		tailwind,
 		astro,
 		figma,
-		gsap,
+		gsap as gsapIcon,
 		redux,
-
 		jest,
-
 		playwright,
-
 		cypress
-
-
-
 	} from '$lib/assets/icons';
 	import { lenis } from '$lib/lenis';
+	import { onMount } from 'svelte';
+	import gsap from '$lib/gsap';
 
 	const skills = [
 		{ name: 'Svelte/Sveltekit', icon: svelte },
@@ -37,12 +33,22 @@
 		{ name: 'Tailwind', icon: tailwind },
 		{ name: 'Astro', icon: astro },
 		{ name: 'Figma', icon: figma },
-		{ name: 'GSAP', icon: gsap },
+		{ name: 'GSAP', icon: gsapIcon },
 		{ name: 'Redux', icon: redux },
 		{ name: 'Jest', icon: jest },
 		{ name: 'Playwright', icon: playwright },
-		{ name: 'Cypress', icon: cypress },
+		{ name: 'Cypress', icon: cypress }
 	];
+
+	onMount(() => {
+		gsap
+			.timeline({
+				scrollTrigger: {
+					trigger: "[data-animate='skill']",
+				}
+			})
+			.from("[data-animate='skill']", { stagger: 0.15, y: 50, opacity: 0});
+	});
 </script>
 
 <svelte:head>
@@ -89,7 +95,7 @@
 
 	<ul class="grid grid-cols-2 sm:grid-cols-3 items-center gap-8 flex-wrap">
 		{#each skills as skill}
-			<li class="flex items-center text-body-base text-gray-700 font-bold gap-2 break-all">
+			<li data-animate="skill" class="flex items-center text-body-base text-gray-700 font-bold gap-2 break-all">
 				<img src={skill.icon} alt="" class="w-8 md:w-10 lg:w-12" />{skill.name}
 			</li>{/each}
 	</ul>
