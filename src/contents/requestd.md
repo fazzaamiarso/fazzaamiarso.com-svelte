@@ -1,14 +1,14 @@
 ---
-title: "RequestD"
-description: "Collect song requests from people easily, just like ngl.link but integrated with spotify API. Made for Hashnode X Planetscale hackathon"
-cover: "https://request-d.vercel.app/logo-on-black.png"
-date: "2022-08-01"
+title: 'RequestD'
+description: 'Collect song requests from people easily, just like ngl.link but integrated with spotify API. Made for Hashnode X Planetscale hackathon'
+cover: 'https://request-d.vercel.app/logo-on-black.png'
+date: '2022-08-01'
 categories:
   - sveltekit
   - svelte
-github: "https://github.com/fazzaamiarso/requestD"
-website: "https://request-d.vercel.app/"
-demo: "https://www.youtube.com/watch?v=7EbzpdQPMAE"
+github: 'https://github.com/fazzaamiarso/requestD'
+website: 'https://request-d.vercel.app/'
+demo: 'https://www.youtube.com/watch?v=7EbzpdQPMAE'
 ---
 
 ## Problem

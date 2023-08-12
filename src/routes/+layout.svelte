@@ -13,9 +13,11 @@
 
 	onMount(() => {
 		loadLenis();
+		lenis.stop();
 
 		setTimeout(() => {
 			pageReady.set(true);
+			lenis.start()
 		}, 1500);
 
 		return () => lenis.destroy();
