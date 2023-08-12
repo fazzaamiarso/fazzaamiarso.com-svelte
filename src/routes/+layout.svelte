@@ -34,7 +34,7 @@
 {#if !$pageReady || navigating}
 	<div
 		out:slide
-		class="fixed inset-0 bg-[#000] z-[1000] flex justify-center items-center h-screen w-full text-heading-3"
+		class="fixed inset-0 bg-[#000] z-[1000] flex justify-center items-center min-h-screen w-full text-heading-3"
 	>
 		<p id="loading" class="text-brand-400 animate-pulse">Loading...</p>
 	</div>
