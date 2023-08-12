@@ -10,20 +10,33 @@
 	let bottomBar: HTMLElement;
 
 	onMount(() => {
-		gsap
-			.timeline({
-				scrollTrigger: {
-					trigger: "[data-animate='tech']"
-				}
-			})
-			.from("[data-animate='skill']", { stagger: 0.15, y: 50, opacity: 0 });
+		gsap.from("[data-animate='skill']", {
+			stagger: 0.15,
+			y: 50,
+			opacity: 0,
+			ease : "power3.out",
+			scrollTrigger: {
+				trigger: "[data-animate='tech']"
+			}
+		});
 
 		gsap.from(bottomBar, {
-			delay: 2,
+			delay: 1.75,
 			duration: 0.35,
 			opacity: 0,
-			yPercent: 50
+			yPercent: 50,
+			ease: "sine.out",
+			scrollTrigger: {
+				trigger: bottomBar,
+				start: 'top bottom',
+				end: 'bottom 25%',
+				toggleActions: 'play reverse play reverse'
+			}
 		});
+
+		gsap.from("[data-animate='h1-first']", { delay: 2, duration: .35, opacity: 0, x: -50 , ease: "sine.out",});
+		gsap.from("[data-animate='h1-second']", { delay: 2, duration: .35, opacity: 0, x: 50 , ease: "sine.out",});
+		gsap.from("[data-animate='h1-third']", { delay: 2, duration: .35, opacity: 0, x: -50 , ease: "sine.out",});
 	});
 </script>
 
@@ -41,7 +54,9 @@
 </svelte:head>
 <div class="mb-32 h-screen relative flex flex-col justify-center items-center">
 	<h1 class="font-fira-sans w-10/12 mx-auto text-brand-800 text-heading-3 sm:text-heading-2 lg:text-heading-1">
-		Frontend Developer Who Bring your Idea to the Web
+		<p data-animate="h1-first">Frontend Developer</p>
+		<p data-animate="h1-second">Who Bring your Idea</p>
+		<p data-animate="h1-third">to the Web</p>
 	</h1>
 	<div class="pb-8 absolute bottom-0 left-0 w-full flex items-end justify-between" bind:this={bottomBar}>
 		<div class="flex flex-col items-start text-body-lg">
