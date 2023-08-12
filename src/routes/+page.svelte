@@ -1,6 +1,6 @@
 <script lang="ts">
 	import * as config from '$lib/site/config';
-	import { ArrowDownCircle } from 'lucide-svelte';
+	import { ArrowDownCircle, ArrowRight } from 'lucide-svelte';
 
 	import { lenis } from '$lib/lenis';
 	import { onMount } from 'svelte';
@@ -14,7 +14,7 @@
 			stagger: 0.15,
 			y: 50,
 			opacity: 0,
-			ease : "power3.out",
+			ease: 'power3.out',
 			scrollTrigger: {
 				trigger: "[data-animate='tech']"
 			}
@@ -25,7 +25,7 @@
 			duration: 0.35,
 			opacity: 0,
 			yPercent: 50,
-			ease: "sine.out",
+			ease: 'sine.out',
 			scrollTrigger: {
 				trigger: bottomBar,
 				start: 'top bottom',
@@ -34,10 +34,24 @@
 			}
 		});
 
-		gsap.from("[data-animate='h1-first']", { delay: 2, duration: .35, opacity: 0, x: -50 , ease: "sine.out",});
-		gsap.from("[data-animate='h1-second']", { delay: 2, duration: .35, opacity: 0, x: 50 , ease: "sine.out",});
-		gsap.from("[data-animate='h1-third']", { delay: 2, duration: .35, opacity: 0, x: -50 , ease: "sine.out",});
+		gsap.from("[data-animate='h1-first']", { delay: 2, duration: 0.35, opacity: 0, x: -50, ease: 'sine.out' });
+		gsap.from("[data-animate='h1-second']", { delay: 2, duration: 0.35, opacity: 0, x: 50, ease: 'sine.out' });
+		gsap.from("[data-animate='h1-third']", { delay: 2, duration: 0.35, opacity: 0, x: -50, ease: 'sine.out' });
+
+		gsap.utils.toArray("[data-animate='project-img-reveal']").forEach((item: HTMLElement) => {
+			gsap.to(item, {
+				yPercent: -100,
+				duration: .5,
+				scrollTrigger: {
+					ease : "sine.out",
+					start: 'top 70%',
+					trigger: item,
+				}
+			});
+		});
 	});
+
+	export let data;
 </script>
 
 <svelte:head>
@@ -79,9 +93,38 @@
 	</div>
 </div>
 <div class="pb-32">
-	<h2 id="projects" class="text-heading-4 lg:text-heading-2 font-bold text-brand-800">Selected Projects.</h2>
+	<h2 id="projects" class="text-heading-4 lg:text-heading-2 font-bold text-brand-800 mb-8 md:mb-16">
+		Selected Projects.
+	</h2>
+	<ul class="w-full flex flex-col items-start divide-y-2">
+		{#each data.contents as post}
+			<li class="py-8 flex flex-col gap-6 md:flex-row md:gap-24 xl:gap-40 w-full">
+				<div class="flex flex-col items-start">
+					<h3 class="font-bold text-brand-700 mb-4">
+						<a href={`/project/${post.slug}`} class="">{post.title}</a>
+					</h3>
+					<p class="text-body-base md:text-body-lg max-w-prose mb-4">{post.description}</p>
+					<a
+						href={`/project/${post.slug}`}
+						class="p-2 text-gray-600 mt-auto text-body-sm font-bold inline-flex items-center gap-3 ring-1 rounded-md ring-gray-400"
+						>See project <ArrowRight aria-hidden="true" /></a
+					>
+				</div>
+				<div class="w-full overflow-hidden relative">
+					<div data-animate="project-img-reveal" class="bg-white inset-0 absolute"></div>
+					<img src={post.cover} alt="" class="rounded-md aspect-video md:max-w-xl w-full block origin-bottom" />
+				</div>
+			</li>
+		{/each}
+	</ul>
 </div>
 <div class="pb-32">
 	<h2 data-animate="tech" class="text-heading-4 lg:text-heading-2 font-bold text-brand-800 mb-6">Technologies.</h2>
 	<SkillsList />
 </div>
+
+<style>
+	h3 {
+		font-size: clamp(2rem, 1.689rem + 1.326vw, 2.75rem);
+	}
+</style>

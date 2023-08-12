@@ -21,14 +21,14 @@
 		return () => lenis.destroy();
 	});
 
-	beforeNavigate(() => {
-		navigating = true;
-	});
-	afterNavigate(() => {
-		setTimeout(() => {
-			navigating = false;
-		}, 1500);
-	});
+	// beforeNavigate(() => {
+	// 	navigating = true;
+	// });
+	// afterNavigate(() => {
+	// 	setTimeout(() => {
+	// 		navigating = false;
+	// 	}, 1500);
+	// });
 </script>
 
 {#if !$pageReady || navigating}
