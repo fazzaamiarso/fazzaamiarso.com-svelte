@@ -3,11 +3,15 @@
 	import { ArrowDownCircle, ArrowRight } from 'lucide-svelte';
 
 	import { lenis } from '$lib/lenis';
-	import { onMount } from 'svelte';
+	import { getContext, onMount } from 'svelte';
 	import gsap from '$lib/gsap';
 	import SkillsList from '$lib/components/skills-list.svelte';
+	import type { Writable } from 'svelte/store';
+
+	export let data;
 
 	let bottomBar: HTMLElement;
+	const pageReady = getContext<Writable<boolean>>('pageReady');
 
 	onMount(() => {
 		gsap.from("[data-animate='skill']", {
@@ -34,24 +38,40 @@
 			}
 		});
 
-		gsap.from("[data-animate='h1-first']", { delay: 2, duration: 0.35, opacity: 0, x: -50, ease: 'sine.out' });
-		gsap.from("[data-animate='h1-second']", { delay: 2, duration: 0.35, opacity: 0, x: 50, ease: 'sine.out' });
-		gsap.from("[data-animate='h1-third']", { delay: 2, duration: 0.35, opacity: 0, x: -50, ease: 'sine.out' });
+		gsap.from("[data-animate='h1-first']", {
+			delay: 2,
+			duration: 0.35,
+			opacity: 0,
+			x: -50,
+			ease: 'sine.out'
+		});
+		gsap.from("[data-animate='h1-second']", {
+			delay: 2,
+			duration: 0.35,
+			opacity: 0,
+			x: 50,
+			ease: 'sine.out'
+		});
+		gsap.from("[data-animate='h1-third']", {
+			delay: 2,
+			duration: 0.35,
+			opacity: 0,
+			x: -50,
+			ease: 'sine.out'
+		});
 
 		gsap.utils.toArray("[data-animate='project-img-reveal']").forEach((item: HTMLElement) => {
 			gsap.to(item, {
 				yPercent: -100,
-				duration: .5,
+				duration: 0.5,
 				scrollTrigger: {
-					ease : "sine.out",
+					ease: 'sine.out',
 					start: 'top 70%',
-					trigger: item,
+					trigger: item
 				}
 			});
 		});
 	});
-
-	export let data;
 </script>
 
 <svelte:head>
