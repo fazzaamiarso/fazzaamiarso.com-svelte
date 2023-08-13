@@ -4,14 +4,14 @@
 	import Header from '$lib/components/header.svelte';
 	import { lenis, loadLenis } from '$lib/lenis';
 	import { ScrollTrigger } from '$lib/gsap';
-	import { afterUpdate, onMount, setContext } from 'svelte';
-	import { fade, fly, slide } from 'svelte/transition';
+	import { onMount, setContext } from 'svelte';
+	import { fade, slide } from 'svelte/transition';
 	import { writable } from 'svelte/store';
 	import { afterNavigate, beforeNavigate } from '$app/navigation';
 
 	export let data;
 
-	const pageReady = writable(false);
+	const preloading = writable(false);
 	let navigating = false;
 
 	onMount(() => {
@@ -19,18 +19,20 @@
 		lenis.stop();
 
 		setTimeout(() => {
-			pageReady.set(true);
+			preloading.set(true);
 			lenis.start();
 		}, 1500);
 
 		return () => lenis.destroy();
 	});
 
-	setContext('pageReady', pageReady);
+	setContext('preloading', preloading);
 
-	beforeNavigate(() => {
-		lenis.scrollTo(0);
-		navigating = true;
+	beforeNavigate(({ to }) => {
+		if (to?.route.id) {
+			lenis.scrollTo(0);
+			navigating = true;
+		}
 	});
 	afterNavigate(() => {
 		setTimeout(() => {
@@ -40,7 +42,7 @@
 	});
 </script>
 
-{#if !$pageReady}
+{#if !$preloading}
 	<div
 		out:slide
 		class="fixed inset-0 bg-[#000] z-[1000] flex justify-center items-center min-h-screen w-full text-heading-3"

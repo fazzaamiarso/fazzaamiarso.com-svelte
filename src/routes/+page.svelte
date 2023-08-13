@@ -11,17 +11,20 @@
 	export let data;
 
 	let bottomBar: HTMLElement;
-	const pageReady = getContext<Writable<boolean>>('pageReady');
+	const preloading = getContext<Writable<boolean>>('preloading');
 
 	onMount(() => {
-		gsap.from("[data-animate='skill']", {
-			stagger: 0.15,
-			y: 50,
-			opacity: 0,
-			ease: 'power3.out',
-			scrollTrigger: {
-				trigger: "[data-animate='tech']"
-			}
+		gsap.utils.toArray("[data-animate='skill']").forEach((skill: HTMLElement) => {
+			gsap.from(skill, {
+				y: 50,
+				opacity: 0,
+				duration: .4,
+				ease: 'power3.out',
+				scrollTrigger: {
+					start: "top 80%",
+					trigger: skill,
+				}
+			});
 		});
 
 		gsap.from(bottomBar, {
@@ -89,7 +92,7 @@
 <div class="mb-32 h-screen relative flex flex-col justify-center items-center">
 	<h1 class="font-fira-sans w-10/12 mx-auto text-brand-800 text-heading-3 sm:text-heading-2 lg:text-heading-1">
 		<p data-animate="h1-first">Frontend Developer</p>
-		<p data-animate="h1-second">Who Bring your Idea</p>
+		<p data-animate="h1-second">Who Brings your Idea</p>
 		<p data-animate="h1-third">to the Web</p>
 	</h1>
 	<div class="pb-8 absolute bottom-0 left-0 w-full flex items-end justify-between" bind:this={bottomBar}>

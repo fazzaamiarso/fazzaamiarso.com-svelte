@@ -1,3 +1,4 @@
+import type { Content } from '$lib/types.js';
 import { error } from '@sveltejs/kit';
 
 export async function load({ params }) {
@@ -5,7 +6,7 @@ export async function load({ params }) {
 		const content = await import(`../../../contents/${params.slug}.md`);
 		return {
 			content: content.default,
-			meta: content.metadata
+			meta: content.metadata as Content
 		};
 	} catch (e) {
 		throw error(404, `Could not find ${params.slug}`);

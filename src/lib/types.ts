@@ -8,4 +8,7 @@ export interface Content {
 	categories: Categories[];
 	published: boolean;
 	cover: string;
+	techs: string[];
+	website: string;
+	github: string;
 }
