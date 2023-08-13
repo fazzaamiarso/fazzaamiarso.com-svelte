@@ -57,7 +57,6 @@ _Invoys_ is bootsrapped with create-t3-app which based on Next.js.
 
 ## Demo
 
-
 ## Challenges
 
 ### Defining schema in Prisma and Making the Entity Relationship Diagram
