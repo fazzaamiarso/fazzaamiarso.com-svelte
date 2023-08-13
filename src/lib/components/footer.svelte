@@ -41,7 +41,7 @@
 			<div class="text-body-sm sm:text-body-base font-bold text-gray-200">
 				© 2023 Fazza Razaq Amiarso --- Bogor, Indonesia
 			</div>
-			<a href="/#?credit_open=true" class="text-body-sm sm:text-body-base font-bold text-gray-200">Credits</a>
+			<a href="/credits" class="text-body-sm sm:text-body-base font-bold text-gray-200">Credits</a>
 		</div>
 	</div>
 </footer>
