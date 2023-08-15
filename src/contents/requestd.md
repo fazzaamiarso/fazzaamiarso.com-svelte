@@ -3,6 +3,12 @@ title: 'RequestD'
 description: 'Collect song requests from people easily, just like ngl.link but integrated with spotify API. Made for Hashnode X Planetscale hackathon'
 cover: 'https://request-d.vercel.app/logo-on-black.png'
 date: '2022-08-01'
+techs:
+  - next.js
+  - trpc
+  - tailwind
+  - prisma
+  - planetscale
 categories:
   - sveltekit
   - svelte

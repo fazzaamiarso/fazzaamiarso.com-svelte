@@ -14,15 +14,15 @@
 	const preloading = getContext<Writable<boolean>>('preloading');
 
 	onMount(() => {
-		gsap.utils.toArray("[data-animate='skill']").forEach((skill: HTMLElement) => {
+		gsap.utils.toArray<HTMLElement>("[data-animate='skill']").forEach((skill) => {
 			gsap.from(skill, {
 				y: 50,
 				opacity: 0,
-				duration: .4,
+				duration: 0.4,
 				ease: 'power3.out',
 				scrollTrigger: {
-					start: "top 80%",
-					trigger: skill,
+					start: 'top 80%',
+					trigger: skill
 				}
 			});
 		});
@@ -63,12 +63,12 @@
 			ease: 'sine.out'
 		});
 
-		gsap.utils.toArray("[data-animate='project-img-reveal']").forEach((item: HTMLElement) => {
+		gsap.utils.toArray<HTMLElement>("[data-animate='project-img-reveal']").forEach((item) => {
 			gsap.to(item, {
 				yPercent: -100,
 				duration: 0.5,
+				ease: 'sine.out',
 				scrollTrigger: {
-					ease: 'sine.out',
 					start: 'top 70%',
 					trigger: item
 				}
@@ -124,11 +124,11 @@
 			<li class="py-8 flex flex-col gap-6 md:flex-row md:gap-24 xl:gap-40 w-full">
 				<div class="flex flex-col items-start">
 					<h3 class="font-bold text-brand-700 mb-4">
-						<a href={`/project/${post.slug}`} class="">{post.title}</a>
+						<a href="/project/{post.slug}" class="">{post.title}</a>
 					</h3>
 					<p class="text-body-base md:text-body-lg max-w-prose mb-4">{post.description}</p>
 					<a
-						href={`/project/${post.slug}`}
+						href="/project/{post.slug}"
 						class="p-2 text-gray-600 mt-auto text-body-sm font-bold inline-flex items-center gap-3 ring-1 rounded-md ring-gray-400"
 						>See project <ArrowRight aria-hidden="true" /></a
 					>

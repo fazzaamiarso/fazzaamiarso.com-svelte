@@ -28,13 +28,13 @@
 
 	setContext('preloading', preloading);
 
-	beforeNavigate(({ to }) => {
+	beforeNavigate(async ({ to }) => {
 		if (to?.route.id) {
 			lenis.scrollTo(0);
 			navigating = true;
 		}
 	});
-	afterNavigate(() => {
+	afterNavigate(async () => {
 		setTimeout(() => {
 			navigating = false;
 			ScrollTrigger.refresh();

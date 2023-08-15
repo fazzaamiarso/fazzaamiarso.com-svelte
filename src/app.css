@@ -8,6 +8,7 @@
 
 @layer base {
 	body {
+		overflow: hidden;
 		min-height: 100vh;
 		/* mobile viewport bug fix */
 		min-height: -webkit-fill-available;
