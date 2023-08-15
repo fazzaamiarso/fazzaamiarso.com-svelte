@@ -7,7 +7,8 @@
 		'https://monopo.london/',
 		'https://significa.co/',
 		'https://www.manafalnakib.com/',
-		'https://github.com/mattcroat/joy-of-code'
+		'https://github.com/mattcroat/joy-of-code',
+		"https://www.austrine.io/"
 	];
 </script>
 
