@@ -26,7 +26,6 @@
 	});
 
 	onMount(() => {
-		
 		gsap.utils.toArray<HTMLElement>("[data-animate='skill']").forEach((skill) => {
 			gsap.from(skill, {
 				y: 50,
@@ -68,10 +67,10 @@
 	<!-- Twitter card END -->
 </svelte:head>
 <div class="mb-32 relative h-screen flex flex-col justify-center items-center" bind:this={hero}>
-	<h1 class="font-fira-sans w-10/12 mx-auto text-brand-800 text-heading-3 sm:text-heading-2 lg:text-heading-1">
-		<p data-animate="h1-first">Frontend Developer</p>
-		<p data-animate="h1-second">Who Brings your Idea</p>
-		<p data-animate="h1-third">to the Web</p>
+	<h1 id="hero-text" class="font-fira-sans w-10/12 mx-auto text-brand-800 text-heading-3 sm:text-heading-2 lg:text-heading-1">
+		<p>Frontend Developer</p>
+		<p>Who Brings your Idea</p>
+		<p>to the Web</p>
 	</h1>
 	<div id="hero-bottom-section" class="pb-8 absolute bottom-0 left-0 w-full flex items-end justify-between">
 		<div class="flex flex-col items-start text-body-lg max-sm:hidden">

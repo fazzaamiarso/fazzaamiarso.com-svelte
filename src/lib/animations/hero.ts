@@ -13,35 +13,29 @@ export function animateBottomSection() {
 }
 
 export function animateHeroText() {
-	return gsap
-		.timeline({
-			defaults: {
-				duration: IN_DURATION
-			}
-		})
-		.from("[data-animate='h1-first']", {
+	const tweenValues: gsap.TweenVars[] = [
+		{
 			opacity: 0,
-			x: -50,
-			ease: 'power3.out'
-		})
-		.from(
-			"[data-animate='h1-second']",
-			{
-				opacity: 0,
-				x: 50,
-				ease: 'power3.out'
-			},
-			'<'
-		)
-		.from(
-			"[data-animate='h1-third']",
-			{
-				opacity: 0,
-				x: -50,
-				ease: 'power3.out'
-			},
-			'<'
-		);
+			x: -50
+		},
+		{
+			opacity: 0,
+			x: 50
+		},
+		{
+			opacity: 0,
+			x: -50
+		}
+	];
+	const heroText = gsap.utils.toArray<HTMLElement>('#hero-text > *');
+	const tl = gsap.timeline({ defaults: { duration: IN_DURATION, ease: 'power3.out' } });
+
+	heroText.forEach((text, idx) => {
+		const tween = gsap.from(text, { ...tweenValues[idx] });
+		tl.add(tween, idx === 0 ? undefined : '<');
+	});
+
+	return tl;
 }
 
 export function animateNavbar() {
