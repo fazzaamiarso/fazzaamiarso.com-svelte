@@ -5,14 +5,37 @@
 	import { lenis, loadLenis } from '$lib/lenis';
 	import gsap, { ScrollTrigger } from '$lib/gsap';
 	import { onMount, setContext } from 'svelte';
-	import { fade, slide } from 'svelte/transition';
+	import { fade } from 'svelte/transition';
 	import { writable } from 'svelte/store';
 	import { afterNavigate, beforeNavigate } from '$app/navigation';
+	import { PRELOADER_DURATION, animateNavbar } from '$lib/animations/hero';
 
 	export let data;
 
-	const preloading = writable(false);
+	const preloading = writable(true);
 	let navigating = false;
+
+	function animatePreloader() {
+		return gsap
+			.timeline()
+			.set('#preloader-container > *', { yPercent: 100 })
+			.to('#preloader-container > *', {
+				autoAlpha: 1, // element initially set to visiblity:hidden to prevent flash of unwanted content bug
+				stagger: 0.3,
+				duration: 1.5,
+				yPercent: 0,
+				ease: 'power3.inOut'
+			})
+			.to('#preloader-container > *', {
+				delay: 0.7,
+				opacity: 0,
+				stagger: 0.7
+			})
+			.to('#preloader', {
+				opacity: 0
+			})
+			.totalDuration(PRELOADER_DURATION);
+	}
 
 	onMount(() => {
 		loadLenis();
@@ -25,10 +48,12 @@
 		});
 
 		gsap.ticker.lagSmoothing(0);
-		setTimeout(() => {
-			preloading.set(true);
+
+		animateNavbar();
+		animatePreloader().eventCallback('onComplete', () => {
+			preloading.set(false);
 			lenis.start();
-		}, 1500);
+		});
 
 		return () => lenis.destroy();
 	});
@@ -49,11 +74,14 @@
 	});
 </script>
 
-{#if !$preloading}
-	<div
-		out:slide
-		class="fixed inset-0 bg-[#000] z-[1000] flex justify-center items-center min-h-screen w-full text-heading-3">
-		<p id="loading" class="text-white animate-pulse">Placeholder App preloader...</p>
+{#if $preloading}
+	<div id="preloader" class="fixed inset-0 bg-white z-[1000] flex justify-center items-center min-h-screen w-full">
+		<div
+			id="preloader-container"
+			class="overflow-hidden flex items-center justify-center flex-col gap-4 text-brand-600 mx-auto sm:flex-row">
+			<p class="text-body-xl invisible whitespace-nowrap font-bold">Fazza Razaq Amiarso</p>
+			<p class="text-body-xl invisible whitespace-nowrap text-gray-800">Portfolio</p>
+		</div>
 	</div>
 {/if}
 

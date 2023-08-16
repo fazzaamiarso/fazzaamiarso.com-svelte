@@ -20,8 +20,6 @@
 
 	let drawerOpen = false;
 
-	let navbar: HTMLElement;
-
 	let menuTl: gsap.core.Timeline;
 	let panelTl: gsap.core.Timeline;
 
@@ -74,17 +72,10 @@
 
 		menuTl = animateMenuButton();
 		panelTl = animatePanelOpen();
-
-		gsap.from(navbar, {
-			delay: 2,
-			duration: 0.35,
-			opacity: 0,
-			yPercent: -50
-		});
 	});
 </script>
 
-<header class="absolute top-0 left-0 z-50 w-full">
+<header id="navbar" class="absolute top-0 left-0 z-50 w-full">
 	<div id="nav-drawer" class="sm:hidden bg-white h-screen fixed w-full pt-32 flex flex-col">
 		<nav class="">
 			<ul class="flex flex-col justify-between">
@@ -99,10 +90,7 @@
 			</ul>
 		</nav>
 	</div>
-	<div
-		class="flex justify-between items-center w-11/12 mx-auto py-4 max-w-7xl z-[100] relative"
-		data-animate="navbar"
-		bind:this={navbar}>
+	<div class="flex justify-between items-center w-11/12 mx-auto py-4 max-w-7xl z-[100] relative">
 		<a href="/"><img src={logo} alt="" width="50" height="50" /></a>
 		<!-- Drawer Trigger -->
 		<button

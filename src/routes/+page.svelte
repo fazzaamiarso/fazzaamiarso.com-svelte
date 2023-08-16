@@ -3,26 +3,30 @@
 	import { ArrowRight, MoveDown } from 'lucide-svelte';
 
 	import { lenis } from '$lib/lenis';
-	import { getContext, onMount } from 'svelte';
+	import { onMount } from 'svelte';
 	import gsap from '$lib/gsap';
 	import SkillsList from '$lib/components/skills-list.svelte';
-	import type { Writable } from 'svelte/store';
+	import { PRELOADER_DURATION, animateBottomSection, animateHeroText, animateNavbar } from '$lib/animations/hero';
+	import { afterNavigate } from '$app/navigation';
 
 	export let data;
 
-	let bottomBar: HTMLElement;
 	let hero: HTMLElement;
-	const preloading = getContext<Writable<boolean>>('preloading');
 
-	function setFullHeight () {
-		const deviceWidth = window.matchMedia("(max-width: 1024px)");
-		if(deviceWidth.matches) {
-			hero.style.minHeight =`${window.innerHeight}px`;
+	function setFullHeight() {
+		const deviceWidth = window.matchMedia('(max-width: 1024px)');
+		if (deviceWidth.matches) {
+			hero.style.minHeight = `${window.innerHeight}px`;
 		}
 	}
 
-	onMount(() => {
+	afterNavigate(({ from }) => {
+		animateBottomSection().delay(from?.route.id ? 2 : PRELOADER_DURATION);
+		animateHeroText().delay(from?.route.id ? 2 : PRELOADER_DURATION);
+	});
 
+	onMount(() => {
+		
 		gsap.utils.toArray<HTMLElement>("[data-animate='skill']").forEach((skill) => {
 			gsap.from(skill, {
 				y: 50,
@@ -34,42 +38,6 @@
 					trigger: skill
 				}
 			});
-		});
-
-		gsap.from(bottomBar, {
-			delay: 1.75,
-			duration: 0.35,
-			opacity: 0,
-			yPercent: 50,
-			ease: 'sine.out',
-			scrollTrigger: {
-				trigger: bottomBar,
-				start: 'top bottom',
-				end: 'bottom 25%',
-				toggleActions: 'play reverse play reverse'
-			}
-		});
-
-		gsap.from("[data-animate='h1-first']", {
-			delay: 2,
-			duration: 0.35,
-			opacity: 0,
-			x: -50,
-			ease: 'sine.out'
-		});
-		gsap.from("[data-animate='h1-second']", {
-			delay: 2,
-			duration: 0.35,
-			opacity: 0,
-			x: 50,
-			ease: 'sine.out'
-		});
-		gsap.from("[data-animate='h1-third']", {
-			delay: 2,
-			duration: 0.35,
-			opacity: 0,
-			x: -50,
-			ease: 'sine.out'
 		});
 
 		gsap.utils.toArray<HTMLElement>("[data-animate='project-img-reveal']").forEach((item) => {
@@ -85,7 +53,8 @@
 		});
 	});
 </script>
-<svelte:window  on:resize={setFullHeight}/>
+
+<svelte:window on:resize={setFullHeight} />
 <svelte:head>
 	<title>{config.siteTitle}</title>
 	<meta name="description" content={config.siteDescription} />
@@ -104,7 +73,7 @@
 		<p data-animate="h1-second">Who Brings your Idea</p>
 		<p data-animate="h1-third">to the Web</p>
 	</h1>
-	<div class="pb-8 absolute bottom-0 left-0 w-full flex items-end justify-between" bind:this={bottomBar}>
+	<div id="hero-bottom-section" class="pb-8 absolute bottom-0 left-0 w-full flex items-end justify-between">
 		<div class="flex flex-col items-start text-body-lg max-sm:hidden">
 			<span class="font-bold text-gray-800">Fullstack</span><span class="text-gray-600">capable</span>
 		</div>
