@@ -83,8 +83,8 @@
 					if (!e.currentTarget) return;
 					lenis.scrollTo('#projects');
 				}}
-				class="inline-flex flex-col items-center text-body-lg">
-				<MoveDown size="40" aria-hidden="true" class="animate-bounce text-gray-800" />
+				class="inline-flex flex-col items-center text-body-lg text-gray-800">
+				<MoveDown size="40" aria-hidden="true" class="animate-bounce" />
 				Scroll down
 			</a>
 		</div>
@@ -94,7 +94,7 @@
 	</div>
 </div>
 <div class="pb-32">
-	<h2 id="projects" class="text-heading-4 lg:text-heading-2 font-bold text-brand-800 mb-8 md:mb-16">
+	<h2 id="projects" class="text-heading-3 lg:text-heading-2 font-bold text-brand-800 mb-8 md:mb-16">
 		Selected Projects.
 	</h2>
 	<ul class="w-full flex flex-col items-start divide-y-2">
@@ -119,7 +119,7 @@
 	</ul>
 </div>
 <div class="pb-32">
-	<h2 data-animate="tech" class="text-heading-4 lg:text-heading-2 font-bold text-brand-800 mb-6">Technologies.</h2>
+	<h2 data-animate="tech" class="text-heading-3 lg:text-heading-2 font-bold text-brand-800 mb-6">Technologies.</h2>
 	<SkillsList />
 </div>
 

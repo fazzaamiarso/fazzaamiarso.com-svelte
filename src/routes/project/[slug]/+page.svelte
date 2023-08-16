@@ -22,7 +22,7 @@
 
 <article class="py-32">
 	<div class="flex flex-col items-center">
-		<p>Published at {data.meta.date}</p>
+		<p class="text-body-lg text-brand-500">{new Date(data.meta.date).getUTCFullYear()}</p>
 		<h1 class="text-heading-1 text-brand-700 text-center mb-6">{data.meta.title}</h1>
 		<ul class="flex items-center gap-12">
 			<li class="">

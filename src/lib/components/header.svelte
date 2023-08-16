@@ -8,12 +8,12 @@
 
 	const navigationLinks = [
 		{ label: 'About', href: '/about' },
-		{ label: 'Projects', href: '/#projects' }
+		{ label: 'Projects', href: '#projects' }
 	];
 
 	const navigationMobileLinks = [
 		{ label: 'About', href: '/about' },
-		{ label: 'Projects', href: '/#projects' },
+		{ label: 'Projects', href: '#projects' },
 		{ label: 'Contacts', href: '/#contac' },
 		{ label: 'Credits', href: '/credits' }
 	];
@@ -115,7 +115,12 @@
 		<nav class="max-sm:hidden">
 			<ul class="flex justify-between gap-14">
 				{#each navigationLinks as link}
-					<li><a href={link.href} class={clsx('text-body-lg')}>{link.label}</a></li>
+					<li>
+						<a
+							href={link.href}
+							class="text-body-lg"
+							on:click={() => link.href.includes('#') && lenis.scrollTo(link.href)}>{link.label}</a>
+					</li>
 				{/each}
 				<li>
 					<a
