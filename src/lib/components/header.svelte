@@ -22,8 +22,8 @@
 
 	let navbar: HTMLElement;
 
-	let drawerTl = gsap.timeline({ paused: true, defaults: { duration: 0.1, ease: 'power3.out' } }).reverse();
-	let menuTl: gsap.core.Timeline
+	let drawerTl: gsap.core.Timeline;
+	let menuTl: gsap.core.Timeline;
 
 	function animatePanelOpen() {
 		return gsap
@@ -50,7 +50,7 @@
 			.to('#line-2', { xPercent: 0 })
 			.to('#line-1', { rotate: 45, transformOrigin: 'center', y: 4, ease: 'power1.out', duration: 0.3 })
 			.to('#line-2', { rotate: -45, transformOrigin: 'center', y: -5, ease: 'power1.out', duration: 0.3 }, '<');
-		return tl
+		return tl;
 	}
 
 	beforeNavigate(async ({ to }) => {
@@ -65,7 +65,8 @@
 		gsap.set('#line-2', { xPercent: 30 });
 		gsap.set('#nav-drawer', { yPercent: -100 });
 
-		menuTl = animateMenuButton()
+		drawerTl = gsap.timeline({ paused: true, defaults: { duration: 0.1, ease: 'power3.out' } }).reverse();
+		menuTl = animateMenuButton();
 		drawerTl.add(menuTl).add(animatePanelOpen(), '<');
 
 		gsap.from(navbar, {
