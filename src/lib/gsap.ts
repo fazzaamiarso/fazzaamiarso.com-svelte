@@ -5,13 +5,10 @@ import { browser } from '$app/environment';
 import gsap from 'gsap';
 // @ts-ignore
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
-import Flip from 'gsap/dist/Flip';
-
-gsap.registerPlugin(Flip);
 
 if (browser) {
 	gsap.registerPlugin(ScrollTrigger);
 }
 
-export { ScrollTrigger, Flip };
+export { ScrollTrigger };
 export default gsap;
