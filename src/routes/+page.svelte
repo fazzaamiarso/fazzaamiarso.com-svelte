@@ -15,7 +15,7 @@
 	const preloading = getContext<Writable<boolean>>('preloading');
 
 	onMount(() => {
-		hero.style.height = String(window.innerHeight);
+		// hero.style.height = String(window.innerHeight);
 
 		gsap.utils.toArray<HTMLElement>("[data-animate='skill']").forEach((skill) => {
 			gsap.from(skill, {

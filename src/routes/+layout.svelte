@@ -3,7 +3,7 @@
 	import Footer from '$lib/components/footer.svelte';
 	import Header from '$lib/components/header.svelte';
 	import { lenis, loadLenis } from '$lib/lenis';
-	import { ScrollTrigger } from '$lib/gsap';
+	import gsap, { ScrollTrigger } from '$lib/gsap';
 	import { onMount, setContext } from 'svelte';
 	import { fade, slide } from 'svelte/transition';
 	import { writable } from 'svelte/store';
@@ -18,6 +18,13 @@
 		loadLenis();
 		lenis.stop();
 
+		lenis.on('scroll', ScrollTrigger.update);
+
+		gsap.ticker.add((time) => {
+			lenis.raf(time * 1000);
+		});
+
+		gsap.ticker.lagSmoothing(0);
 		setTimeout(() => {
 			preloading.set(true);
 			lenis.start();
@@ -45,8 +52,7 @@
 {#if !$preloading}
 	<div
 		out:slide
-		class="fixed inset-0 bg-[#000] z-[1000] flex justify-center items-center min-h-screen w-full text-heading-3"
-	>
+		class="fixed inset-0 bg-[#000] z-[1000] flex justify-center items-center min-h-screen w-full text-heading-3">
 		<p id="loading" class="text-white animate-pulse">Placeholder App preloader...</p>
 	</div>
 {/if}
@@ -60,8 +66,7 @@
 		<div
 			in:fade
 			out:fade
-			class="absolute bg-white z-[1000] flex justify-center h-screen items-center w-full text-heading-3"
-		>
+			class="absolute bg-white z-[1000] flex justify-center h-screen items-center w-full text-heading-3">
 			<p id="loading" class="text-gray-700">Supposedly a page transition...</p>
 		</div>
 	{/if}
