@@ -14,8 +14,14 @@
 	let hero: HTMLElement;
 	const preloading = getContext<Writable<boolean>>('preloading');
 
+	function setFullHeight () {
+		const deviceWidth = window.matchMedia("(max-width: 1024px)");
+		if(deviceWidth.matches) {
+			hero.style.minHeight =`${window.innerHeight}px`;
+		}
+	}
+
 	onMount(() => {
-		// hero.style.height = String(window.innerHeight);
 
 		gsap.utils.toArray<HTMLElement>("[data-animate='skill']").forEach((skill) => {
 			gsap.from(skill, {
@@ -79,7 +85,7 @@
 		});
 	});
 </script>
-
+<svelte:window  on:resize={setFullHeight}/>
 <svelte:head>
 	<title>{config.siteTitle}</title>
 	<meta name="description" content={config.siteDescription} />
@@ -92,7 +98,7 @@
 	<meta name="twitter:creator" content={config.twitterHandle} />
 	<!-- Twitter card END -->
 </svelte:head>
-<div class="mb-32 h-screen relative flex flex-col justify-center items-center" bind:this={hero}>
+<div class="mb-32 relative h-screen flex flex-col justify-center items-center" bind:this={hero}>
 	<h1 class="font-fira-sans w-10/12 mx-auto text-brand-800 text-heading-3 sm:text-heading-2 lg:text-heading-1">
 		<p data-animate="h1-first">Frontend Developer</p>
 		<p data-animate="h1-second">Who Brings your Idea</p>
