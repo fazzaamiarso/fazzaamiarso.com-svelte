@@ -1,6 +1,6 @@
 <script lang="ts">
 	import * as config from '$lib/site/config';
-	import { ArrowDownCircle, ArrowRight } from 'lucide-svelte';
+	import { ArrowRight, MoveDown } from 'lucide-svelte';
 
 	import { lenis } from '$lib/lenis';
 	import { getContext, onMount } from 'svelte';
@@ -99,7 +99,7 @@
 		<p data-animate="h1-third">to the Web</p>
 	</h1>
 	<div class="pb-8 absolute bottom-0 left-0 w-full flex items-end justify-between" bind:this={bottomBar}>
-		<div class="flex flex-col items-start text-body-lg">
+		<div class="flex flex-col items-start text-body-lg max-sm:hidden">
 			<span class="font-bold text-gray-800">Fullstack</span><span class="text-gray-600">capable</span>
 		</div>
 		<div class="">
@@ -109,8 +109,9 @@
 					if (!e.currentTarget) return;
 					lenis.scrollTo('#projects');
 				}}
-			>
-				<ArrowDownCircle size="40" aria-hidden="true" class="animate-bounce text-gray-800" />
+				class="inline-flex flex-col items-center text-body-lg">
+				<MoveDown size="40" aria-hidden="true" class="animate-bounce text-gray-800" />
+				Scroll down
 			</a>
 		</div>
 		<div class=" flex flex-col items-start text-body-lg">
@@ -133,8 +134,7 @@
 					<a
 						href="/project/{post.slug}"
 						class="p-2 text-gray-600 mt-auto text-body-sm font-bold inline-flex items-center gap-3 ring-1 rounded-md ring-gray-400"
-						>See project <ArrowRight aria-hidden="true" /></a
-					>
+						>See project <ArrowRight aria-hidden="true" /></a>
 				</div>
 				<div class="w-full overflow-hidden relative">
 					<div data-animate="project-img-reveal" class="bg-white inset-0 absolute"></div>
