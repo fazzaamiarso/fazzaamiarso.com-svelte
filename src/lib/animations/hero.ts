@@ -1,4 +1,4 @@
-import gsap from '$lib/gsap';
+import gsap, { ScrollTrigger } from '$lib/gsap';
 
 export const PRELOADER_DURATION = 3;
 const IN_DURATION = 0.4;
@@ -39,10 +39,59 @@ export function animateHeroText() {
 }
 
 export function animateNavbar() {
-	return gsap.from('#navbar', {
+	const tween = gsap.from('#navbar', {
 		delay: PRELOADER_DURATION,
 		duration: IN_DURATION,
 		opacity: 0,
 		yPercent: -50
 	});
+
+	let lastDirection = 0;
+	let playedOnce = false;
+	ScrollTrigger.create({
+		markers: true,
+		trigger: '#navbar',
+		start: 'top top',
+		end: 99999,
+		onUpdate: (self) => {
+			if (!playedOnce) {
+				playedOnce = true;
+				return;
+			}
+			if (lastDirection === self.direction) return;
+			tween.delay(0).reversed(self.direction > 0);
+
+			lastDirection = self.direction;
+		}
+	});
+	return tween;
+}
+
+export function animatePanelOpen() {
+	return gsap
+		.timeline({ paused: true, ease: 'power3.out' })
+		.to('#nav-drawer', { yPercent: 0 })
+		.from("[data-animate='nav-link']", {
+			opacity: 0,
+			stagger: 0.1
+		})
+		.from(
+			"[data-animate='separator']",
+			{
+				xPercent: -100,
+				stagger: 0.1
+			},
+			'<'
+		)
+		.reverse();
+}
+
+export function animateMenuButton() {
+	const tl = gsap
+		.timeline({ paused: true })
+		.to('#line-2', { xPercent: 0 })
+		.to('#line-1', { rotate: 45, transformOrigin: 'center', y: 4, ease: 'power1.out', duration: 0.3 })
+		.to('#line-2', { rotate: -45, transformOrigin: 'center', y: -5, ease: 'power1.out', duration: 0.3 }, '<')
+		.reverse();
+	return tl;
 }

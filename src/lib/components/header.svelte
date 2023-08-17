@@ -1,10 +1,10 @@
 <script lang="ts">
 	import logo from '$lib/assets/fz-logo.svg';
-	import clsx from 'clsx';
 	import { lenis } from '$lib/lenis';
 	import { onMount } from 'svelte';
 	import gsap from '$lib/gsap';
 	import { afterNavigate, beforeNavigate } from '$app/navigation';
+	import { animateMenuButton, animatePanelOpen } from '$lib/animations/hero';
 
 	const navigationLinks = [
 		{ label: 'About', href: '/about' },
@@ -23,35 +23,6 @@
 	let menuTl: gsap.core.Timeline;
 	let panelTl: gsap.core.Timeline;
 
-	function animatePanelOpen() {
-		return gsap
-			.timeline({ paused: true, ease: 'power3.out' })
-			.to('#nav-drawer', { yPercent: 0 })
-			.from("[data-animate='nav-link']", {
-				opacity: 0,
-				stagger: 0.1
-			})
-			.from(
-				"[data-animate='separator']",
-				{
-					xPercent: -100,
-					stagger: 0.1
-				},
-				'<'
-			)
-			.reverse();
-	}
-
-	function animateMenuButton() {
-		const tl = gsap
-			.timeline({ paused: true })
-			.to('#line-2', { xPercent: 0 })
-			.to('#line-1', { rotate: 45, transformOrigin: 'center', y: 4, ease: 'power1.out', duration: 0.3 })
-			.to('#line-2', { rotate: -45, transformOrigin: 'center', y: -5, ease: 'power1.out', duration: 0.3 }, '<')
-			.reverse();
-		return tl;
-	}
-
 	beforeNavigate(async ({ to }) => {
 		if (drawerOpen && to?.route.id) {
 			drawerOpen = false;
@@ -66,7 +37,7 @@
 		}
 	});
 
-	onMount(() => {
+	onMount(() => {	
 		gsap.set('#line-2', { xPercent: 30 });
 		gsap.set('#nav-drawer', { yPercent: -100 });
 
@@ -75,7 +46,7 @@
 	});
 </script>
 
-<header id="navbar" class="absolute top-0 left-0 z-50 w-full">
+<header id="navbar" class="sticky top-0 left-0 z-50 w-full bg-white">
 	<div id="nav-drawer" class="sm:hidden bg-white h-screen fixed w-full pt-32 flex flex-col">
 		<nav class="">
 			<ul class="flex flex-col justify-between">
