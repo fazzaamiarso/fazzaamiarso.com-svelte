@@ -6,8 +6,9 @@
 	import { onMount } from 'svelte';
 	import gsap from '$lib/gsap';
 	import SkillsList from '$lib/components/skills-list.svelte';
-	import { PRELOADER_DURATION, animateBottomSection, animateHeroText, animateNavbar } from '$lib/animations/hero';
+	import { animateBottomSection, animateHeroText } from '$lib/animations/hero';
 	import { afterNavigate } from '$app/navigation';
+	import { PRELOADER_DURATION } from '$lib/animations/global.js';
 
 	export let data;
 
@@ -16,13 +17,14 @@
 	function setFullHeight() {
 		const deviceWidth = window.matchMedia('(max-width: 1024px)');
 		if (deviceWidth.matches) {
-			hero.style.minHeight = `${window.innerHeight}px`;
+			hero.style.height = `${window.innerHeight}px`;
 		}
 	}
 
-	afterNavigate(({ from }) => {
-		animateBottomSection().delay(from?.route.id ? 2 : PRELOADER_DURATION);
-		animateHeroText().delay(from?.route.id ? 2 : PRELOADER_DURATION);
+	afterNavigate(({ from, type }) => {
+		if (from?.route.id === '/') return;
+		animateBottomSection().delay(type === 'enter' ? PRELOADER_DURATION : 1.6);
+		animateHeroText().delay(type === 'enter' ? PRELOADER_DURATION : 1.6);
 	});
 
 	onMount(() => {
@@ -67,7 +69,9 @@
 	<!-- Twitter card END -->
 </svelte:head>
 <div class="mb-32 relative h-screen flex flex-col justify-center items-center" bind:this={hero}>
-	<h1 id="hero-text" class="font-fira-sans w-10/12 mx-auto text-brand-800 text-heading-3 sm:text-heading-2 lg:text-heading-1">
+	<h1
+		id="hero-text"
+		class="font-fira-sans w-10/12 mx-auto text-brand-800 text-heading-3 sm:text-heading-2 lg:text-heading-1">
 		<p>Frontend Developer</p>
 		<p>Who Brings your Idea</p>
 		<p>to the Web</p>

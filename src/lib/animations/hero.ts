@@ -1,6 +1,6 @@
 import gsap, { ScrollTrigger } from '$lib/gsap';
+import { PRELOADER_DURATION } from './global';
 
-export const PRELOADER_DURATION = 3;
 const IN_DURATION = 0.4;
 
 export function animateBottomSection() {
@@ -48,8 +48,8 @@ export function animateNavbar() {
 
 	let lastDirection = 0;
 	let playedOnce = false;
+
 	ScrollTrigger.create({
-		markers: true,
 		trigger: '#navbar',
 		start: 'top top',
 		end: 99999,
@@ -58,6 +58,7 @@ export function animateNavbar() {
 				playedOnce = true;
 				return;
 			}
+
 			if (lastDirection === self.direction) return;
 			tween.delay(0).reversed(self.direction > 0);
 

@@ -37,7 +37,7 @@
 		}
 	});
 
-	onMount(() => {	
+	onMount(() => {
 		gsap.set('#line-2', { xPercent: 30 });
 		gsap.set('#nav-drawer', { yPercent: -100 });
 
@@ -46,7 +46,7 @@
 	});
 </script>
 
-<header id="navbar" class="sticky top-0 left-0 z-50 w-full bg-white">
+<header id="navbar" class="fixed top-0 left-0 z-50 w-full backdrop-blur-md bg-white bg-opacity-50">
 	<div id="nav-drawer" class="sm:hidden bg-white h-screen fixed w-full pt-32 flex flex-col">
 		<nav class="">
 			<ul class="flex flex-col justify-between">

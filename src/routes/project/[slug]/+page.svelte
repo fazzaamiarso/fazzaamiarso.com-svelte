@@ -5,7 +5,6 @@
 
 	onMount(() => {
 		gsap.from('#cover-img', {
-			delay: 1.7,
 			opacity: 0.8,
 			duration: 0.4,
 			yPercent: 2

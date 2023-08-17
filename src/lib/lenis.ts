@@ -3,12 +3,9 @@ import Lenis from '@studio-freight/lenis';
 export let lenis: Lenis;
 
 export const loadLenis = () => {
-	lenis = new Lenis();
-
-	function raf(time: any) {
-		lenis.raf(time);
-		requestAnimationFrame(raf);
+	if (lenis !== undefined) {
+		console.log('Lenis has been initiated!');
+		return;
 	}
-
-	requestAnimationFrame(raf);
+	lenis = new Lenis();
 };

@@ -4,38 +4,16 @@
 	import Header from '$lib/components/header.svelte';
 	import { lenis, loadLenis } from '$lib/lenis';
 	import gsap, { ScrollTrigger } from '$lib/gsap';
-	import { onMount, setContext } from 'svelte';
+	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { writable } from 'svelte/store';
-	import { afterNavigate, beforeNavigate } from '$app/navigation';
-	import { PRELOADER_DURATION, animateNavbar } from '$lib/animations/hero';
+	import { afterNavigate } from '$app/navigation';
+	import { animateNavbar } from '$lib/animations/hero';
+	import { animatePreloader } from '$lib/animations/global';
 
 	export let data;
 
 	const preloading = writable(true);
-	let navigating = false;
-
-	function animatePreloader() {
-		return gsap
-			.timeline()
-			.set('#preloader-container > *', { yPercent: 100 })
-			.to('#preloader-container > *', {
-				autoAlpha: 1, // element initially set to visiblity:hidden to prevent flash of unwanted content bug
-				stagger: 0.3,
-				duration: 1.5,
-				yPercent: 0,
-				ease: 'power3.inOut'
-			})
-			.to('#preloader-container > *', {
-				delay: 0.7,
-				opacity: 0,
-				stagger: 0.7
-			})
-			.to('#preloader', {
-				opacity: 0
-			})
-			.totalDuration(PRELOADER_DURATION);
-	}
 
 	onMount(() => {
 		loadLenis();
@@ -58,19 +36,10 @@
 		return () => lenis.destroy();
 	});
 
-	setContext('preloading', preloading);
-
-	beforeNavigate(async ({ to }) => {
+	afterNavigate(async ({ to }) => {
 		if (to?.route.id) {
 			lenis.scrollTo(0);
-			navigating = true;
 		}
-	});
-	afterNavigate(async () => {
-		setTimeout(() => {
-			navigating = false;
-			ScrollTrigger.refresh();
-		}, 1500);
 	});
 </script>
 
@@ -90,16 +59,12 @@
 <Header />
 
 <main class="relative z-[1] bg-white min-h-screen">
-	{#if navigating}
-		<div
-			in:fade
-			out:fade
-			class="absolute bg-white z-[1000] flex justify-center h-screen items-center w-full text-heading-3">
-			<p id="loading" class="text-gray-700">Supposedly a page transition...</p>
-		</div>
-	{/if}
 	{#key data.url}
-		<div class="w-11/12 mx-auto max-w-7xl" in:fade={{ duration: 300, delay: 300 }} out:fade={{ duration: 300 }}>
+		<div
+			class="w-11/12 mx-auto max-w-7xl"
+			in:fade={{ duration: 300, delay: 1000 }}
+			out:fade={{ duration: 300 }}
+			on:introend={() => ScrollTrigger.refresh()}>
 			<slot />
 		</div>
 	{/key}
