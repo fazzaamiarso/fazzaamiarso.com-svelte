@@ -1,4 +1,5 @@
-export const siteTitle = 'Fazza Razaq Amiarso | Frontend Developer';
+export const siteTitleBase = 'Fazza Razaq Amiarso';
+export const siteTitle = `${siteTitleBase} | Frontend Developer`;
 export const siteDescription =
 	'A frontend developer with focus on making accessible software with beautiful interfaces for everyone';
 export const siteUrl = 'fazzaamiarso.com';

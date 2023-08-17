@@ -1,6 +1,5 @@
+import { PRELOADER_DURATION } from '$lib/constants/animation';
 import gsap from 'gsap';
-
-export const PRELOADER_DURATION = 3;
 
 export function animatePreloader() {
 	return gsap

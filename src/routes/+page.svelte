@@ -8,7 +8,7 @@
 	import SkillsList from '$lib/components/skills-list.svelte';
 	import { animateBottomSection, animateHeroText } from '$lib/animations/hero';
 	import { afterNavigate } from '$app/navigation';
-	import { PRELOADER_DURATION } from '$lib/animations/global.js';
+	import { INPAGE_TRANSITION_DURATION, PRELOADER_DURATION } from '$lib/constants/animation';
 
 	export let data;
 
@@ -23,8 +23,8 @@
 
 	afterNavigate(({ from, type }) => {
 		if (from?.route.id === '/') return;
-		animateBottomSection().delay(type === 'enter' ? PRELOADER_DURATION : 1.6);
-		animateHeroText().delay(type === 'enter' ? PRELOADER_DURATION : 1.6);
+		animateBottomSection().delay(type === 'enter' ? PRELOADER_DURATION : INPAGE_TRANSITION_DURATION);
+		animateHeroText().delay(type === 'enter' ? PRELOADER_DURATION : INPAGE_TRANSITION_DURATION);
 	});
 
 	onMount(() => {

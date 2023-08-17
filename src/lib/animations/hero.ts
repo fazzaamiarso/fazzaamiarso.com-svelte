@@ -1,5 +1,5 @@
+import { PRELOADER_DURATION } from '$lib/constants/animation';
 import gsap, { ScrollTrigger } from '$lib/gsap';
-import { PRELOADER_DURATION } from './global';
 
 const IN_DURATION = 0.4;
 

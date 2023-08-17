@@ -8,9 +8,6 @@
 	];
 </script>
 
-<svelte:head>
-	<title>About | Fazza Razaq Amiarso</title>
-</svelte:head>
 <div class="py-32">
 	<div class="pb-12 flex flex-col lg:flex-row-reverse lg:items-start lg:justify-start gap-12">
 		<div>

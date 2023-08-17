@@ -12,9 +12,6 @@
 	];
 </script>
 
-<svelte:head>
-	<title>Site Credits</title>
-</svelte:head>
 <div class="py-32 flex flex-col text-center items-center">
 	<h1 class="text-heading-2 sm:text-heading-1 text-brand-800">Credits</h1>
 	<p class="text-body-base sm:text-body-lg pb-20 text-gray-700">

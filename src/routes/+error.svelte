@@ -3,7 +3,7 @@
 </script>
 
 <svelte:head>
-	<title>404 | Fazza Razaq Amiarso</title>
+	<title>404 - Page Not Found</title>
 </svelte:head>
 <div class="flex flex-col py-16 justify-center items-center gap-8">
 	<div class="">

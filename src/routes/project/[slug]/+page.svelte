@@ -12,13 +12,6 @@
 	});
 </script>
 
-<!-- SEO -->
-<svelte:head>
-	<title>{data.meta.title}</title>
-	<meta property="og:type" content="article" />
-	<meta property="og:title" content={data.meta.title} />
-</svelte:head>
-
 <article class="py-32">
 	<div class="flex flex-col items-center">
 		<p class="text-body-lg text-brand-500">{new Date(data.meta.date).getUTCFullYear()}</p>
