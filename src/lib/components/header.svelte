@@ -4,19 +4,24 @@
 	import { onMount } from 'svelte';
 	import gsap from '$lib/gsap';
 	import { afterNavigate, beforeNavigate } from '$app/navigation';
-	import { animateMenuButton, animatePanelOpen } from '$lib/animations/hero';
+	import { animateMenuButton, animateNavbar, animatePanelOpen } from '$lib/animations/hero';
+	import { page } from '$app/stores';
+	import clsx from 'clsx';
 
 	const navigationLinks = [
 		{ label: 'About', href: '/about' },
-		{ label: 'Projects', href: '#projects' }
+		{ label: 'Project', href: '#projects' },
+		{ label: 'Contact', href: '#contact' }
 	];
 
 	const navigationMobileLinks = [
 		{ label: 'About', href: '/about' },
-		{ label: 'Projects', href: '#projects' },
-		{ label: 'Contacts', href: '/#contac' },
+		{ label: 'Project', href: '#projects' },
+		{ label: 'Contact', href: '/#contac' },
 		{ label: 'Credits', href: '/credits' }
 	];
+
+	$: currentPath = $page.url.pathname;
 
 	let drawerOpen = false;
 
@@ -41,9 +46,23 @@
 		gsap.set('#line-2', { xPercent: 30 });
 		gsap.set('#nav-drawer', { yPercent: -100 });
 
+		animateNavbar();
 		menuTl = animateMenuButton();
 		panelTl = animatePanelOpen();
 	});
+
+	function toggleMenu() {
+		drawerOpen = !drawerOpen;
+
+		menuTl.reversed(!menuTl.reversed());
+		panelTl.reversed(!panelTl.reversed());
+
+		if (drawerOpen) {
+			lenis.stop();
+		} else {
+			lenis.start();
+		}
+	}
 </script>
 
 <header id="navbar" class="fixed top-0 left-0 z-50 w-full backdrop-blur-md bg-white bg-opacity-50">
@@ -65,19 +84,8 @@
 		<a href="/"><img src={logo} alt="" width="50" height="50" /></a>
 		<!-- Drawer Trigger -->
 		<button
-			class="sm:hidden inline-flex flex-col gap-2 justify-center items-center w-12 h-12 overflow-hidden"
-			on:click={() => {
-				drawerOpen = !drawerOpen;
-
-				menuTl.reversed(!menuTl.reversed());
-				panelTl.reversed(!panelTl.reversed());
-
-				if (drawerOpen) {
-					lenis.stop();
-				} else {
-					lenis.start();
-				}
-			}}>
+			class="inline-flex flex-col gap-2 justify-center items-center w-12 h-12 sm:hidden overflow-hidden"
+			on:click={toggleMenu}>
 			<div id="line-1" class="w-full h-[2px] bg-gray-900"></div>
 			<div id="line-2" class="w-full h-[2px] bg-gray-900"></div>
 		</button>
@@ -86,22 +94,14 @@
 		<nav class="max-sm:hidden">
 			<ul class="flex justify-between gap-14">
 				{#each navigationLinks as link}
+					{@const isActive = currentPath.includes(link.href)}
 					<li>
 						<a
 							href={link.href}
-							class="text-body-lg"
+							class={clsx('text-body-lg text-gray-600', { 'font-bold text-gray-800 transition-colors': isActive })}
 							on:click={() => link.href.includes('#') && lenis.scrollTo(link.href)}>{link.label}</a>
 					</li>
 				{/each}
-				<li>
-					<a
-						href="#contact"
-						class="text-body-lg"
-						on:click={() => {
-							const scrollValue = document.querySelector('main')?.getBoundingClientRect().height;
-							lenis.scrollTo(scrollValue);
-						}}>Contact</a>
-				</li>
 			</ul>
 		</nav>
 		<!--  -->

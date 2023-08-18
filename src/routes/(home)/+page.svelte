@@ -3,7 +3,7 @@
 
 	import { lenis } from '$lib/lenis';
 	import { onMount } from 'svelte';
-	import SkillsList from '$lib/components/skills-list.svelte';
+	import SkillsList from './skills-list.svelte';
 	import {
 		animateBottomSection,
 		animateHeroText,
@@ -31,6 +31,7 @@
 	});
 
 	onMount(() => {
+		setFullHeight();
 		animateProjectCard();
 		animateSkillSections();
 	});

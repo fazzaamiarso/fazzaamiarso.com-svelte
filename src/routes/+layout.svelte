@@ -8,7 +8,6 @@
 	import { fade } from 'svelte/transition';
 	import { writable } from 'svelte/store';
 	import { afterNavigate } from '$app/navigation';
-	import { animateNavbar } from '$lib/animations/hero';
 	import { animatePreloader } from '$lib/animations/global';
 	import * as config from '$lib/site/config';
 	import { page } from '$app/stores';
@@ -37,7 +36,6 @@
 	onMount(() => {
 		initScrollSmooth();
 
-		animateNavbar();
 		animatePreloader().eventCallback('onComplete', () => {
 			preloading.set(false);
 			lenis.start();
