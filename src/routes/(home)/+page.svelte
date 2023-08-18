@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { ArrowRight, MoveDown } from 'lucide-svelte';
-
 	import { lenis } from '$lib/lenis';
 	import { onMount } from 'svelte';
 	import SkillsList from './skills-list.svelte';
@@ -42,7 +41,7 @@
 <div id="hero" class="mb-32 relative flex flex-col justify-center items-center">
 	<h1
 		id="hero-text"
-		class="font-fira-sans w-10/12 mx-auto text-brand-800 text-heading-3 sm:text-heading-2 lg:text-heading-1">
+		class="font-fira-sans w-10/12 mx-auto text-brand-600 text-heading-3 sm:text-heading-2 lg:text-heading-1">
 		<p>Frontend Developer</p>
 		<p>Who Brings your Idea</p>
 		<p>to the Web</p>

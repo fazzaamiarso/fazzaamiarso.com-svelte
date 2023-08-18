@@ -42,7 +42,7 @@
 		</ul>
 	</div>
 	<!-- Post -->
-	<div class="prose prose-base md:prose-lg max-w-5xl mx-auto">
+	<div class="prose prose-lg md:prose-xl max-w-5xl mx-auto">
 		<div><img id="cover-img" src={data.meta.cover} alt={data.meta.title} class="w-full rounded-md" /></div>
 		<div class="border-y-[1px] w-full">
 			<div class="not-prose gap-8 py-4 mx-auto max-w-4xl sm:flex-row sm:gap-28 flex">
