@@ -15,12 +15,11 @@
 
 	export let data;
 
-	let hero: HTMLElement;
-
 	function setFullHeight() {
 		const deviceWidth = window.matchMedia('(max-width: 1024px)');
+		const vh = window.innerHeight * 0.01;
 		if (deviceWidth.matches) {
-			hero.style.height = `${window.innerHeight}px`;
+			document.documentElement.style.setProperty('--vh', `${vh}px`);
 		}
 	}
 
@@ -39,7 +38,7 @@
 
 <svelte:window on:resize={setFullHeight} />
 
-<div class="mb-32 relative h-screen flex flex-col justify-center items-center" bind:this={hero}>
+<div id="hero" class="mb-32 relative flex flex-col justify-center items-center">
 	<h1
 		id="hero-text"
 		class="font-fira-sans w-10/12 mx-auto text-brand-800 text-heading-3 sm:text-heading-2 lg:text-heading-1">
@@ -101,6 +100,10 @@
 </div>
 
 <style>
+	#hero {
+		height: calc(var(--vh, 1vh) * 100);
+	}
+
 	h3 {
 		font-size: clamp(2rem, 1.689rem + 1.326vw, 2.75rem);
 	}

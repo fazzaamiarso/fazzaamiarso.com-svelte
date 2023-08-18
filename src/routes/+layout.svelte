@@ -57,11 +57,8 @@
 	<title>{title}</title>
 	<meta name="description" content={description} />
 	<!-- Open Graph START -->
-
 	<meta property="og:title" content={title} />
-
 	<meta property="og:url" content={config.siteUrl} />
-
 	<!-- Open Graph END  -->
 	<!-- Twitter card START -->
 	<meta name="twitter:card" content="summary" />
