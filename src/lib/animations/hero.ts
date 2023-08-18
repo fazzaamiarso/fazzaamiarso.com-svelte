@@ -96,3 +96,32 @@ export function animateMenuButton() {
 		.reverse();
 	return tl;
 }
+
+export function animateSkillSections() {
+	gsap.utils.toArray<HTMLElement>('.skill-item').forEach((skill) => {
+		gsap.from(skill, {
+			y: 50,
+			opacity: 0,
+			duration: 0.4,
+			ease: 'power3.out',
+			scrollTrigger: {
+				start: 'top 80%',
+				trigger: skill
+			}
+		});
+	});
+}
+
+export function animateProjectCard() {
+	gsap.utils.toArray<HTMLElement>('.card-img-reveal').forEach((item) => {
+		gsap.to(item, {
+			yPercent: -100,
+			duration: 0.5,
+			ease: 'power3.out',
+			scrollTrigger: {
+				start: 'top 70%',
+				trigger: item
+			}
+		});
+	});
+}

@@ -1,12 +1,15 @@
 <script lang="ts">
-	import * as config from '$lib/site/config';
 	import { ArrowRight, MoveDown } from 'lucide-svelte';
 
 	import { lenis } from '$lib/lenis';
 	import { onMount } from 'svelte';
-	import gsap from '$lib/gsap';
 	import SkillsList from '$lib/components/skills-list.svelte';
-	import { animateBottomSection, animateHeroText } from '$lib/animations/hero';
+	import {
+		animateBottomSection,
+		animateHeroText,
+		animateProjectCard,
+		animateSkillSections
+	} from '$lib/animations/hero';
 	import { afterNavigate } from '$app/navigation';
 	import { INPAGE_TRANSITION_DURATION, PRELOADER_DURATION } from '$lib/constants/animation';
 
@@ -23,51 +26,19 @@
 
 	afterNavigate(({ from, type }) => {
 		if (from?.route.id === '/') return;
-		animateBottomSection().delay(type === 'enter' ? PRELOADER_DURATION : INPAGE_TRANSITION_DURATION);
-		animateHeroText().delay(type === 'enter' ? PRELOADER_DURATION : INPAGE_TRANSITION_DURATION);
+		const delay = type === 'enter' ? PRELOADER_DURATION : INPAGE_TRANSITION_DURATION;
+		animateBottomSection().delay(delay);
+		animateHeroText().delay(delay);
 	});
 
 	onMount(() => {
-		gsap.utils.toArray<HTMLElement>("[data-animate='skill']").forEach((skill) => {
-			gsap.from(skill, {
-				y: 50,
-				opacity: 0,
-				duration: 0.4,
-				ease: 'power3.out',
-				scrollTrigger: {
-					start: 'top 80%',
-					trigger: skill
-				}
-			});
-		});
-
-		gsap.utils.toArray<HTMLElement>("[data-animate='project-img-reveal']").forEach((item) => {
-			gsap.to(item, {
-				yPercent: -100,
-				duration: 0.5,
-				ease: 'sine.out',
-				scrollTrigger: {
-					start: 'top 70%',
-					trigger: item
-				}
-			});
-		});
+		animateProjectCard();
+		animateSkillSections();
 	});
 </script>
 
 <svelte:window on:resize={setFullHeight} />
-<svelte:head>
-	<title>{config.siteTitle}</title>
-	<meta name="description" content={config.siteDescription} />
-	<!-- Open Graph START -->
-	<meta property="og:title" content={config.siteTitle} />
-	<meta property="og:url" content={config.siteUrl} />
-	<!-- Open Graph END  -->
-	<!-- Twitter card START -->
-	<meta name="twitter:card" content="summary" />
-	<meta name="twitter:creator" content={config.twitterHandle} />
-	<!-- Twitter card END -->
-</svelte:head>
+
 <div class="mb-32 relative h-screen flex flex-col justify-center items-center" bind:this={hero}>
 	<h1
 		id="hero-text"
@@ -97,25 +68,27 @@
 		</div>
 	</div>
 </div>
+
 <div class="pb-32">
 	<h2 id="projects" class="text-heading-3 lg:text-heading-2 font-bold text-brand-800 mb-8 md:mb-16">
 		Selected Projects.
 	</h2>
 	<ul class="w-full flex flex-col items-start divide-y-2">
 		{#each data.contents as post}
+			{@const postHref = `/project/${post.slug}`}
 			<li class="py-8 flex flex-col gap-6 md:flex-row md:gap-24 xl:gap-40 w-full">
 				<div class="flex flex-col items-start">
 					<h3 class="font-bold text-brand-700 mb-4">
-						<a href="/project/{post.slug}" class="">{post.title}</a>
+						<a href={postHref}>{post.title}</a>
 					</h3>
 					<p class="text-body-base md:text-body-lg max-w-prose mb-4">{post.description}</p>
 					<a
-						href="/project/{post.slug}"
+						href={postHref}
 						class="p-2 text-gray-600 mt-auto text-body-sm font-bold inline-flex items-center gap-3 ring-1 rounded-md ring-gray-400"
 						>See project <ArrowRight aria-hidden="true" /></a>
 				</div>
 				<div class="w-full overflow-hidden relative">
-					<div data-animate="project-img-reveal" class="bg-white inset-0 absolute"></div>
+					<div class="card-img-reveal bg-white inset-0 absolute"></div>
 					<img src={post.cover} alt="" class="rounded-md aspect-video md:max-w-xl w-full block origin-bottom" />
 				</div>
 			</li>
@@ -123,7 +96,7 @@
 	</ul>
 </div>
 <div class="pb-32">
-	<h2 data-animate="tech" class="text-heading-3 lg:text-heading-2 font-bold text-brand-800 mb-6">Technologies.</h2>
+	<h2 class="text-heading-3 lg:text-heading-2 font-bold text-brand-800 mb-6">Technologies.</h2>
 	<SkillsList />
 </div>
 

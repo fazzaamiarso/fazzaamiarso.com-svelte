@@ -16,11 +16,12 @@
 	$: ({
 		seo: { title, description }
 	} = $page.data);
+
 	export let data;
 
 	const preloading = writable(true);
 
-	onMount(() => {
+	function initScrollSmooth() {
 		loadLenis();
 		lenis.stop();
 
@@ -31,6 +32,10 @@
 		});
 
 		gsap.ticker.lagSmoothing(0);
+	}
+
+	onMount(() => {
+		initScrollSmooth();
 
 		animateNavbar();
 		animatePreloader().eventCallback('onComplete', () => {
@@ -52,8 +57,11 @@
 	<title>{title}</title>
 	<meta name="description" content={description} />
 	<!-- Open Graph START -->
+
 	<meta property="og:title" content={title} />
+
 	<meta property="og:url" content={config.siteUrl} />
+
 	<!-- Open Graph END  -->
 	<!-- Twitter card START -->
 	<meta name="twitter:card" content="summary" />

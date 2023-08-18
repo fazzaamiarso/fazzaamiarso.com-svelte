@@ -37,7 +37,7 @@
 						<div class="text-body-base text-gray-600">{item.category}</div>
 					</div>
 					<a href="#link-1" class="inline-flex items-center gap-1 text-body-base font-bold text-gray-700 col-span-2"
-						>{item.link} <ExternalLink aria-hidden="true" size="20"/>
+						>{item.link} <ExternalLink aria-hidden="true" size="20" />
 					</a>
 				</li>
 			{/each}

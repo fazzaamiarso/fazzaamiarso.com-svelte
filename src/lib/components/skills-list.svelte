@@ -37,7 +37,7 @@
 
 <ul class="grid grid-cols-2 sm:grid-cols-3 items-center gap-8 flex-wrap">
 	{#each skills as skill}
-		<li data-animate="skill" class="flex items-center text-body-base text-gray-700 font-bold gap-2 break-all">
+		<li class="skill-item flex items-center text-body-base text-gray-700 font-bold gap-2 break-all">
 			<img src={skill.icon} alt="" class="w-8 md:w-10 lg:w-12" />{skill.name}
 		</li>{/each}
 </ul>
