@@ -57,7 +57,7 @@
 				tristique enim. Nullam at mi a ligula faucibus dignissim eu eu sapien.
 			</p>
 		</div>
-		<div class="self-center lg:basis-[40%]">
+		<div class="self-center lg:basis-[30%]">
 			<img src={myPic} alt="" class="w-full max-w-xs" />
 		</div>
 	</div>

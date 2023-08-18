@@ -70,10 +70,13 @@
 		<nav class="">
 			<ul class="flex flex-col justify-between">
 				{#each navigationMobileLinks as link}
+					{@const isActive = currentPath.includes(link.href)}
 					<li class="text-heading-3 group">
 						<div data-animate="separator" class="w-screen absolute left-0 bg-gray-800 h-px"></div>
-						<a data-animate="nav-link" class="w-11/12 mx-auto block py-6 text-gray-800" href={link.href}
-							>{link.label}</a>
+						<a
+							data-animate="nav-link"
+							class={clsx('w-11/12 mx-auto block py-6', isActive ? 'text-brand-600' : 'text-gray-800')}
+							href={link.href}>{link.label}</a>
 						<div data-animate="separator" class="w-screen absolute left-0 bg-gray-800 group-last:h-px"></div>
 					</li>
 				{/each}
@@ -98,7 +101,10 @@
 					<li>
 						<a
 							href={link.href}
-							class={clsx('text-body-lg text-gray-600', { 'font-bold text-gray-800 transition-colors': isActive })}
+							class={clsx(
+								'text-body-lg',
+								isActive ? 'text-brand-600 transition-colors' : 'text-gray-700 hover:text-gray-500'
+							)}
 							on:click={() => link.href.includes('#') && lenis.scrollTo(link.href)}>{link.label}</a>
 					</li>
 				{/each}

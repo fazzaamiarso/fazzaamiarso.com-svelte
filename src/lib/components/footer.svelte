@@ -9,7 +9,7 @@
 	];
 </script>
 
-<footer id="contact" class="bg-gray-800 pt-16 pb-4 sticky bottom-0">
+<footer id="contact" class="bg-gray-800 pt-16 pb-8 sticky bottom-0">
 	<div class="w-11/12 mx-auto max-w-7xl">
 		<h2 class="text-heading-4 sm:text-heading-3 font-bold text-brand-100 mb-2">
 			Let’s talk or build awesome things together!
@@ -29,19 +29,22 @@
 		</a>
 		<ul class="flex flex-wrap gap-16 items-center pb-40">
 			{#each socialLinks as link}
-				<li class="text-body-lg sm:text-body-xl text-gray-100">
+				<li class="text-body-lg sm:text-body-xl text-gray-100 group">
 					<a href={link.href} referrerpolicy="no-referrer" target="_blank" class="flex items-center gap-1"
 						>{link.label}
-						<MoveUpRight color="currentColor" />
+						<MoveUpRight color="currentColor" class="group-hover:rotate-45 transition-transform" />
 					</a>
 				</li>
 			{/each}
 		</ul>
 		<div class="flex flex-wrap items-center justify-between">
+			<div class="flex gap-12">
+				<a href="#resume" class="underline text-body-lg sm:text-body-xl text-gray-200 hover:no-underline">Resume</a>
+				<a href="/credits" class="underline text-body-lg sm:text-body-xl text-gray-200 hover:no-underline">Credits</a>
+			</div>
 			<div class="text-body-sm sm:text-body-base font-bold text-gray-200">
 				© 2023 Fazza Razaq Amiarso --- Bogor, Indonesia
 			</div>
-			<a href="/credits" class="text-body-sm sm:text-body-base font-bold text-gray-200">Credits</a>
 		</div>
 	</div>
 </footer>

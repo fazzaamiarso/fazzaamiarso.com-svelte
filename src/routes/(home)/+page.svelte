@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { ArrowRight, MoveDown } from 'lucide-svelte';
-	import { lenis } from '$lib/lenis';
+	import { MoveDown } from 'lucide-svelte';
 	import { onMount } from 'svelte';
 	import SkillsList from './skills-list.svelte';
 	import {
@@ -11,6 +10,7 @@
 	} from '$lib/animations/hero';
 	import { afterNavigate } from '$app/navigation';
 	import { INPAGE_TRANSITION_DURATION, PRELOADER_DURATION } from '$lib/constants/animation';
+	import ProjectCard from './project-card.svelte';
 
 	export let data;
 
@@ -51,16 +51,10 @@
 			<span class="font-bold text-gray-800">Fullstack</span><span class="text-gray-600">capable</span>
 		</div>
 		<div class="">
-			<a
-				href="#projects"
-				on:click={(e) => {
-					if (!e.currentTarget) return;
-					lenis.scrollTo('#projects');
-				}}
-				class="inline-flex flex-col items-center text-body-lg text-gray-800">
+			<div class="inline-flex flex-col items-center text-body-lg text-gray-800">
 				<MoveDown size="40" aria-hidden="true" class="animate-bounce" />
 				Scroll down
-			</a>
+			</div>
 		</div>
 		<div class=" flex flex-col items-start text-body-lg">
 			<span class="font-bold text-gray-800">Sharing</span><span class="text-gray-600">knowledge</span>
@@ -73,24 +67,8 @@
 		Selected Projects.
 	</h2>
 	<ul class="w-full flex flex-col items-start divide-y-2">
-		{#each data.contents as post}
-			{@const postHref = `/project/${post.slug}`}
-			<li class="py-8 flex flex-col gap-6 md:flex-row md:gap-24 xl:gap-40 w-full">
-				<div class="flex flex-col items-start">
-					<h3 class="font-bold text-brand-700 mb-4">
-						<a href={postHref}>{post.title}</a>
-					</h3>
-					<p class="text-body-base md:text-body-lg max-w-prose mb-4">{post.description}</p>
-					<a
-						href={postHref}
-						class="p-2 text-gray-600 mt-auto text-body-sm font-bold inline-flex items-center gap-3 ring-1 rounded-md ring-gray-400"
-						>See project <ArrowRight aria-hidden="true" /></a>
-				</div>
-				<div class="w-full overflow-hidden relative">
-					<div class="card-img-reveal bg-white inset-0 absolute"></div>
-					<img src={post.cover} alt="" class="rounded-md aspect-video md:max-w-xl w-full block origin-bottom" />
-				</div>
-			</li>
+		{#each data.contents as content}
+			<ProjectCard {content} />
 		{/each}
 	</ul>
 </div>
@@ -102,9 +80,5 @@
 <style>
 	#hero {
 		height: calc(var(--vh, 1vh) * 100);
-	}
-
-	h3 {
-		font-size: clamp(2rem, 1.689rem + 1.326vw, 2.75rem);
 	}
 </style>
