@@ -1,6 +1,7 @@
-<script>
+<script lang="ts">
 	import * as config from '$lib/site/config';
 	import { MoveUpRight, SendHorizonal } from 'lucide-svelte';
+	import clsx from 'clsx';
 
 	const socialLinks = [
 		{ label: 'Linkedin', href: config.linkedinUrl },
@@ -30,16 +31,30 @@
 		<ul class="flex flex-wrap gap-16 items-center pb-40">
 			{#each socialLinks as link}
 				<li class="text-body-lg sm:text-body-xl text-gray-100 group">
-					<a href={link.href} referrerpolicy="no-referrer" target="_blank" class="flex items-center gap-1"
+					<!-- svelte-ignore a11y-mouse-events-have-key-events -->
+					<a href={link.href} referrerpolicy="no-referrer" target="_blank" class="flex items-center gap-1 group"
 						>{link.label}
-						<MoveUpRight color="currentColor" class="group-hover:rotate-45 transition-transform" />
+						<span class="arrow-container relative overflow-hidden">
+							<MoveUpRight
+								color="currentColor"
+								class={clsx(
+									'transition-transform duration-500 relative',
+									'group-hover:translate-x-full group-hover:-translate-y-full'
+								)} />
+							<MoveUpRight
+								color="currentColor"
+								class={clsx(
+									'absolute duration-500 transition-transform top-0 left-0',
+									'-translate-x-full translate-y-full group-hover:translate-x-0 group-hover:translate-y-0'
+								)} />
+						</span>
 					</a>
 				</li>
 			{/each}
 		</ul>
 		<div class="flex flex-wrap items-center justify-between">
 			<div class="flex gap-12">
-				<a href="#resume" class="underline text-body-lg sm:text-body-xl text-gray-200 hover:no-underline">Resume</a>
+				<a href="#/" class="underline text-body-lg sm:text-body-xl text-gray-200 hover:no-underline">Resume</a>
 				<a href="/credits" class="underline text-body-lg sm:text-body-xl text-gray-200 hover:no-underline">Credits</a>
 			</div>
 			<div class="text-body-sm sm:text-body-base font-bold text-gray-200">

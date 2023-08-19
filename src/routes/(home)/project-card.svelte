@@ -5,47 +5,57 @@
 	import { onMount } from 'svelte';
 
 	export let content: Content;
-	let ripple: HTMLElement;
-	let button: HTMLElement;
 
-	const href = `/project/${content.slug}`;
+	let projectLink: HTMLElement;
 
 	let tl: gsap.core.Timeline;
 
+	const href = `/project/${content.slug}`;
+
 	onMount(() => {
+		const scopedQuery = gsap.utils.selector(projectLink);
+
 		tl = gsap
-			.timeline({ paused: true })
-			.to(ripple, {
-				scale: 2,
-				duration: 0.5
+			.timeline({ paused: true, defaults: { duration: 0.5, ease: 'power2.out' } })
+			.to(scopedQuery('.ripple'), {
+				scale: 2.5
 			})
 			.to(
-				button,
+				projectLink,
 				{
 					color: '#fff'
 				},
 				'<'
+			)
+			.to(
+				scopedQuery('.arrow'),
+				{
+					xPercent: 20
+				},
+				'<25%'
 			);
 	});
 
 	function setPosition(e: MouseEvent) {
+		const scopedQuery = gsap.utils.selector(projectLink);
+
 		const x = e.clientX - (e.target as HTMLAnchorElement).getBoundingClientRect().left;
 		const y = e.clientY - (e.target as HTMLAnchorElement).getBoundingClientRect().top;
 
-		gsap.set(ripple, {
+		gsap.set(scopedQuery('.ripple'), {
 			left: x,
 			top: y,
-			width: button.clientWidth,
-			height: button.clientWidth
+			width: projectLink.clientWidth,
+			height: projectLink.clientWidth
 		});
 	}
 
-	function triggerRipple(e: MouseEvent) {
-		setPosition(e);
+	function startRipple(e: MouseEvent) {
+		if (!tl.isActive()) setPosition(e);
 		tl.play();
 	}
 
-	function untrigger(e: MouseEvent) {
+	function reverseRipple(e: MouseEvent) {
 		setPosition(e);
 		tl.reverse();
 	}
@@ -60,16 +70,15 @@
 		<!-- svelte-ignore a11y-mouse-events-have-key-events -->
 		<a
 			{href}
-			class="overflow-hidden p-3 text-gray-600 mt-auto text-body-base inline-flex items-center gap-3 ring-1 rounded-md ring-gray-400 relative"
-			on:mouseenter={triggerRipple}
-			on:mouseout={untrigger}
-			bind:this={button}>
+			class="project-link overflow-hidden p-3 text-gray-600 mt-auto text-body-base inline-flex items-center gap-2 ring-1 rounded-md ring-gray-400 relative"
+			on:mouseenter={startRipple}
+			on:mouseout={reverseRipple}
+			bind:this={projectLink}>
 			<span
-				bind:this={ripple}
-				class="absolute -z-10 bg-brand-500 block rounded-full scale-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+				class="ripple absolute -z-10 bg-brand-500 block rounded-full scale-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
 			></span>
 			See project
-			<ArrowRight aria-hidden="true" class="pointer-events-none" />
+			<ArrowRight aria-hidden="true" class="arrow pointer-events-none" />
 		</a>
 	</div>
 	<div class="w-full overflow-hidden relative">
