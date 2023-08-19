@@ -64,7 +64,7 @@
 <li class="py-8 flex flex-col gap-6 md:flex-row md:gap-24 xl:gap-40 w-full">
 	<div class="flex flex-col items-start">
 		<h3 class="font-bold text-brand-700 mb-4">
-			<a {href}>{content.title}</a>
+			{content.title}
 		</h3>
 		<p class="text-body-base md:text-body-lg max-w-prose mb-4">{content.description}</p>
 		<!-- svelte-ignore a11y-mouse-events-have-key-events -->

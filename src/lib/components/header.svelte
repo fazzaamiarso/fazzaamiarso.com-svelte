@@ -7,6 +7,7 @@
 	import { animateMenuButton, animateNavbar, animatePanelOpen } from '$lib/animations/hero';
 	import { page } from '$app/stores';
 	import clsx from 'clsx';
+	import * as trap from 'focus-trap';
 
 	const navigationLinks = [
 		{ label: 'About', href: '/about' },
@@ -23,6 +24,7 @@
 
 	$: currentPath = $page.url.pathname;
 
+	let focusTrap: trap.FocusTrap;
 	let drawerOpen = false;
 
 	let menuTl: gsap.core.Timeline;
@@ -43,6 +45,8 @@
 	});
 
 	onMount(() => {
+		focusTrap = trap.createFocusTrap('#navbar');
+
 		gsap.set('#line-2', { xPercent: 30 });
 		gsap.set('#nav-drawer', { yPercent: -100 });
 
@@ -58,8 +62,10 @@
 		panelTl.reversed(!panelTl.reversed());
 
 		if (drawerOpen) {
+			focusTrap.activate();
 			lenis.stop();
 		} else {
+			focusTrap.deactivate();
 			lenis.start();
 		}
 	}
