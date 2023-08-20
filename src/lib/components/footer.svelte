@@ -36,12 +36,14 @@
 						>{link.label}
 						<span class="arrow-container relative overflow-hidden">
 							<MoveUpRight
+								size="28"
 								color="currentColor"
 								class={clsx(
 									'transition-transform duration-500 relative',
 									'group-hover:translate-x-full group-hover:-translate-y-full'
 								)} />
 							<MoveUpRight
+								size="28"
 								color="currentColor"
 								class={clsx(
 									'absolute duration-500 transition-transform top-0 left-0',

@@ -11,8 +11,12 @@
 	import { afterNavigate } from '$app/navigation';
 	import { INPAGE_TRANSITION_DURATION, PRELOADER_DURATION } from '$lib/constants/animation';
 	import ProjectCard from './project-card.svelte';
+	import gsap from '$lib/gsap';
+	import Cursor from './cursor.svelte';
 
 	export let data;
+
+	let cursor: HTMLElement;
 
 	function setFullHeight() {
 		const deviceWidth = window.matchMedia('(max-width: 1024px)');
@@ -34,24 +38,80 @@
 		animateProjectCard();
 		animateSkillSections();
 	});
+
+	function updateCursor(e: MouseEvent) {
+		const x = e.clientX;
+		const y = e.clientY;
+
+		gsap.to(cursor, {
+			x,
+			y
+		});
+	}
+
+	let cursorContent: Cursor;
+
+	function animateCursorEnter(e: MouseEvent) {
+		if (cursorContent) cursorContent.$destroy();
+		const contentType = (e.target as HTMLElement).dataset.type;
+
+		cursorContent = new Cursor({ target: cursor, props: { type: contentType } });
+
+		gsap.to(cursor, {
+			duration: 0.2,
+			scale: 1
+		});
+	}
+
+	function animateCursorOut() {
+		gsap.to(cursor, {
+			duration: 0.2,
+			scale: 0
+		});
+	}
 </script>
 
-<svelte:window on:resize={setFullHeight} />
+<svelte:window on:resize={setFullHeight} on:mousemove={updateCursor} />
 
+<div
+	bind:this={cursor}
+	id="cursor"
+	class="fixed z-[1000] top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-32 h-32 p-6 bg-brand-700 rounded-full scale-0 pointer-events-none">
+</div>
 <div id="hero" class="mb-32 relative flex flex-col justify-center items-center">
 	<h1
 		id="hero-text"
-		class="font-fira-sans w-10/12 mx-auto text-brand-600 text-heading-3 sm:text-heading-2 lg:text-heading-1">
-		<p>Frontend Developer</p>
-		<p>Who Brings your Idea</p>
-		<p>to the Web</p>
+		class="font-fira-sans mx-auto text-gray-700 text-heading-4 sm:text-heading-3 min-[968px]:text-heading-2 xl:text-heading-1">
+		<!-- svelte-ignore a11y-mouse-events-have-key-events -->
+		<p class="text-brand-500">
+			<a href="/about" data-type="about" on:mouseenter={animateCursorEnter} on:mouseleave={animateCursorOut}
+				>Frontend Developer,</a>
+		</p>
+		<p>
+			Who <a
+				href="/#"
+				data-type="crafts"
+				on:mouseenter={animateCursorEnter}
+				on:mouseleave={animateCursorOut}
+				class="text-brand-500">Crafts</a> Visual Experience
+		</p>
+		<p>
+			and <span class="text-body-xl">(sometimes)</span>
+			<a
+				href="/#"
+				data-type="writes"
+				on:mouseenter={animateCursorEnter}
+				on:mouseleave={animateCursorOut}
+				class="text-brand-500">Writes</a>
+		</p>
+		<p>on the Web</p>
 	</h1>
 	<div id="hero-bottom-section" class="pb-8 absolute bottom-0 left-0 w-full flex items-end justify-between">
 		<div class="flex flex-col items-start text-body-lg max-sm:hidden">
 			<span class="font-bold text-gray-800">Fullstack</span><span class="text-gray-600">capable</span>
 		</div>
 		<div class="">
-			<div class="inline-flex flex-col items-center text-body-lg text-gray-800">
+			<div class="inline-flex flex-col items-center text-body-base text-gray-800">
 				<MoveDown size="40" aria-hidden="true" class="animate-bounce" />
 				Scroll down
 			</div>
