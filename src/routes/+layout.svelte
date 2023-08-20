@@ -83,7 +83,7 @@
 	{#key data.url}
 		<div
 			class="w-11/12 mx-auto max-w-7xl"
-			in:fade={{ duration: 300, delay: 1000 }}
+			in:fade={{ duration: 300, delay: 500 }}
 			out:fade={{ duration: 200 }}
 			on:introend={() => ScrollTrigger.refresh()}>
 			<slot />

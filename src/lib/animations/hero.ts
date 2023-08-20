@@ -20,11 +20,14 @@ export function animateHeroText() {
 		opacity: 0.4,
 		stagger: 0.2
 	})
-		.from(texts, {
-			delay: 0.2,
-			opacity: 0.4,
-			stagger: 0.2
-		})
+		.from(
+			texts,
+			{
+				opacity: 0.4,
+				stagger: 0.2
+			},
+			'>-=.2'
+		)
 		.from('.sometime', {
 			opacity: 0
 		})

@@ -9,6 +9,8 @@
 		{ type: 'Blog', category: 'Journal', link: 'journal.fazzaamiarso.com' }
 	];
 
+	const languagesList = ['🇮🇩 Indonesian', '🇺🇸 English', '🇯🇵 Japanese', '🇰🇷 Korean'];
+
 	let greetingContainer: HTMLElement;
 
 	onMount(() => {
@@ -52,12 +54,20 @@
 			<p class="text-heading-5 lg:text-heading-4 font-bold text-gray-600 mb-4">
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 			</p>
-			<p class="text-body-base lg:text-body-lg text-gray-900">
+			<p class="text-body-base lg:text-body-lg text-gray-900 mb-4">
 				Donec vulputate lorem urna, porttitor tincidunt dolor tincidunt et. Ut vel urna volutpat, tincidunt felis ac,
 				tristique enim. Nullam at mi a ligula faucibus dignissim eu eu sapien.
 			</p>
+			<div class="text-body-base font-dm-sans lg:text-body-lg">
+				<p class="mb-2 font-bold">I speak these languages (in order of fluency):</p>
+				<ul class="space-y-2">
+					{#each languagesList as lang}
+						<li class="">{lang}</li>
+					{/each}
+				</ul>
+			</div>
 		</div>
-		<div class="self-center lg:basis-[30%]">
+		<div class="self-start lg:basis-[30%]">
 			<img src={myPic} alt="" class="w-full max-w-xs" />
 		</div>
 	</div>

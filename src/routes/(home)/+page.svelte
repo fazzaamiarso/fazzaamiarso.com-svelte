@@ -28,7 +28,7 @@
 
 	afterNavigate(({ from, type }) => {
 		if (from?.route.id === '/') return;
-		const delay = type === 'enter' ? PRELOADER_DURATION + 0.3 : INPAGE_TRANSITION_DURATION;
+		const delay = type === 'enter' ? PRELOADER_DURATION : INPAGE_TRANSITION_DURATION;
 		animateBottomSection().delay(delay);
 		animateHeroText().delay(delay);
 	});
@@ -83,9 +83,13 @@
 		id="hero-text"
 		class="font-fira-sans mx-auto text-gray-700 text-heading-4 sm:text-heading-3 min-[968px]:text-heading-2 xl:text-heading-1">
 		<!-- svelte-ignore a11y-mouse-events-have-key-events -->
-		<p class="text-brand-500 hover:text-brand-600 transition-colors">
-			<a href="/about" data-type="about" on:mouseenter={animateCursorEnter} on:mouseleave={animateCursorOut}
-				>Frontend Developer,</a>
+		<p>
+			<a
+				href="/about"
+				data-type="about"
+				on:mouseenter={animateCursorEnter}
+				on:mouseleave={animateCursorOut}
+				class="text-brand-500 hover:text-brand-600 transition-colors hover:cursor-none">Frontend Developer,</a>
 		</p>
 		<p>
 			<span class="text">Who</span>
@@ -94,7 +98,7 @@
 				data-type="crafts"
 				on:mouseenter={animateCursorEnter}
 				on:mouseleave={animateCursorOut}
-				class="text-brand-500 hover:text-brand-600 transition-colors">Crafts</a>
+				class="text-brand-500 hover:text-brand-600 transition-colors hover:cursor-none">Crafts</a>
 			<span class="text">Visual Experience</span>
 		</p>
 		<p>
@@ -105,7 +109,8 @@
 				data-type="writes"
 				on:mouseenter={animateCursorEnter}
 				on:mouseleave={animateCursorOut}
-				class="write relative inline-block text-brand-500 hover:text-brand-600 transition-colors">Writes</a>
+				class="write relative inline-block text-brand-500 hover:text-brand-600 transition-colors hover:cursor-none"
+				>Writes</a>
 		</p>
 		<p class="text">on the Web</p>
 	</h1>
