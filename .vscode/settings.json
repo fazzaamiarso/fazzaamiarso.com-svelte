@@ -1,5 +1,8 @@
 {
 	"prettier.documentSelectors": ["**/*.svelte"],
 	"editor.formatOnSave": true,
-	"editor.defaultFormatter": "svelte.svelte-vscode"
+	"editor.defaultFormatter": "svelte.svelte-vscode",
+	"[typescript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	}
 }

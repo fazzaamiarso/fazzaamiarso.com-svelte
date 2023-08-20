@@ -13,27 +13,28 @@ export function animateBottomSection() {
 }
 
 export function animateHeroText() {
-	const tweenValues: gsap.TweenVars[] = [
-		{
-			opacity: 0,
-			x: -50
-		},
-		{
-			opacity: 0,
-			x: 50
-		},
-		{
-			opacity: 0,
-			x: -50
-		}
-	];
-	const heroText = gsap.utils.toArray<HTMLElement>('#hero-text > *');
-	const tl = gsap.timeline({ defaults: { duration: IN_DURATION, ease: 'power3.out' } });
+	const tl = gsap.timeline({ defaults: { duration: IN_DURATION, ease: 'sine.out' } });
+	const texts = gsap.utils.toArray('.text');
 
-	heroText.forEach((text, idx) => {
-		const tween = gsap.from(text, { ...tweenValues[idx] });
-		tl.add(tween, idx === 0 ? undefined : '<');
-	});
+	tl.from('#hero a', {
+		opacity: 0.4,
+		stagger: 0.2
+	})
+		.from(texts, {
+			delay: 0.2,
+			opacity: 0.4,
+			stagger: 0.2
+		})
+		.from('.sometime', {
+			opacity: 0
+		})
+		.from(
+			'.write',
+			{
+				xPercent: -50
+			},
+			'<'
+		);
 
 	return tl;
 }

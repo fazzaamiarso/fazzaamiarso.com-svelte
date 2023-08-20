@@ -28,7 +28,7 @@
 
 	afterNavigate(({ from, type }) => {
 		if (from?.route.id === '/') return;
-		const delay = type === 'enter' ? PRELOADER_DURATION : INPAGE_TRANSITION_DURATION;
+		const delay = type === 'enter' ? PRELOADER_DURATION + 0.3 : INPAGE_TRANSITION_DURATION;
 		animateBottomSection().delay(delay);
 		animateHeroText().delay(delay);
 	});
@@ -83,28 +83,31 @@
 		id="hero-text"
 		class="font-fira-sans mx-auto text-gray-700 text-heading-4 sm:text-heading-3 min-[968px]:text-heading-2 xl:text-heading-1">
 		<!-- svelte-ignore a11y-mouse-events-have-key-events -->
-		<p class="text-brand-500">
+		<p class="text-brand-500 hover:text-brand-600 transition-colors">
 			<a href="/about" data-type="about" on:mouseenter={animateCursorEnter} on:mouseleave={animateCursorOut}
 				>Frontend Developer,</a>
 		</p>
 		<p>
-			Who <a
+			<span class="text">Who</span>
+			<a
 				href="/#"
 				data-type="crafts"
 				on:mouseenter={animateCursorEnter}
 				on:mouseleave={animateCursorOut}
-				class="text-brand-500">Crafts</a> Visual Experience
+				class="text-brand-500 hover:text-brand-600 transition-colors">Crafts</a>
+			<span class="text">Visual Experience</span>
 		</p>
 		<p>
-			and <span class="text-body-xl">(sometimes)</span>
+			<span class="text">and</span>
+			<span class="sometime inline-block relative text-body-base lg:text-body-xl">(sometimes)</span>
 			<a
 				href="/#"
 				data-type="writes"
 				on:mouseenter={animateCursorEnter}
 				on:mouseleave={animateCursorOut}
-				class="text-brand-500">Writes</a>
+				class="write relative inline-block text-brand-500 hover:text-brand-600 transition-colors">Writes</a>
 		</p>
-		<p>on the Web</p>
+		<p class="text">on the Web</p>
 	</h1>
 	<div id="hero-bottom-section" class="pb-8 absolute bottom-0 left-0 w-full flex items-end justify-between">
 		<div class="flex flex-col items-start text-body-lg max-sm:hidden">
