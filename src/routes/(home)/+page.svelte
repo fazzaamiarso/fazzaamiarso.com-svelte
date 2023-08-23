@@ -17,6 +17,7 @@
 	export let data;
 
 	let cursor: HTMLElement;
+	let cursorContent: Cursor;
 
 	function setFullHeight() {
 		const deviceWidth = window.matchMedia('(max-width: 1024px)');
@@ -34,45 +35,70 @@
 	});
 
 	onMount(() => {
+		const mm = gsap.matchMedia();
+		mm.add(
+			'(min-width: 1024px)',
+			(ctx) => {
+				const heroTexts = gsap.utils.toArray<HTMLAnchorElement>('a');
+
+				ctx.add('updateCursor', updateCursor);
+				ctx.add('animateCursorEnter', animateCursorEnter);
+				ctx.add('animateCursorOut', animateCursorOut);
+
+				window.addEventListener('mousemove', updateCursor);
+				heroTexts.forEach((text) => {
+					text.addEventListener('mouseenter', animateCursorEnter);
+					text.addEventListener('mouseleave', animateCursorOut);
+				});
+
+				function updateCursor(e: MouseEvent) {
+					const x = e.clientX;
+					const y = e.clientY;
+
+					gsap.to(cursor, {
+						x,
+						y,
+						duration: 0.2
+					});
+				}
+
+				function animateCursorEnter(e: MouseEvent) {
+					if (cursorContent) cursorContent.$destroy();
+					const contentType = (e.target as HTMLElement).dataset.type;
+
+					cursorContent = new Cursor({ target: cursor, props: { type: contentType } });
+
+					gsap.to(cursor, {
+						duration: 0.2,
+						scale: 1
+					});
+				}
+
+				function animateCursorOut() {
+					gsap.to(cursor, {
+						duration: 0.2,
+						scale: 0
+					});
+				}
+
+				return () => {
+					window.removeEventListener('mousemove', updateCursor);
+					heroTexts.forEach((text) => {
+						text.removeEventListener('mouseenter', animateCursorEnter);
+						text.removeEventListener('mouseleave', animateCursorOut);
+					});
+				};
+			},
+			'#hero'
+		);
+
 		setFullHeight();
 		animateProjectCard();
 		animateSkillSections();
 	});
-
-	function updateCursor(e: MouseEvent) {
-		const x = e.clientX;
-		const y = e.clientY;
-
-		gsap.to(cursor, {
-			x,
-			y,
-			duration: 0.2
-		});
-	}
-
-	let cursorContent: Cursor;
-
-	function animateCursorEnter(e: MouseEvent) {
-		if (cursorContent) cursorContent.$destroy();
-		const contentType = (e.target as HTMLElement).dataset.type;
-
-		cursorContent = new Cursor({ target: cursor, props: { type: contentType } });
-
-		gsap.to(cursor, {
-			duration: 0.2,
-			scale: 1
-		});
-	}
-
-	function animateCursorOut() {
-		gsap.to(cursor, {
-			duration: 0.2,
-			scale: 0
-		});
-	}
 </script>
 
-<svelte:window on:resize={setFullHeight} on:mousemove={updateCursor} />
+<svelte:window on:resize={setFullHeight} />
 
 <div
 	bind:this={cursor}
@@ -88,18 +114,12 @@
 			<a
 				href="/about"
 				data-type="about"
-				on:mouseenter={animateCursorEnter}
-				on:mouseleave={animateCursorOut}
-				class="text-brand-500 hover:text-brand-600 transition-colors hover:cursor-none">Frontend Developer,</a>
+				class="text-brand-500 hover:text-brand-600 transition-colors lg:hover:cursor-none">Frontend Developer,</a>
 		</p>
 		<p>
 			<span class="text">Who</span>
-			<a
-				href="/#"
-				data-type="crafts"
-				on:mouseenter={animateCursorEnter}
-				on:mouseleave={animateCursorOut}
-				class="text-brand-500 hover:text-brand-600 transition-colors hover:cursor-none">Crafts</a>
+			<a href="/#" data-type="crafts" class="text-brand-500 hover:text-brand-600 transition-colors lg:hover:cursor-none"
+				>Crafts</a>
 			<span class="text">Visual Experience</span>
 		</p>
 		<p>
@@ -108,9 +128,7 @@
 			<a
 				href="/#"
 				data-type="writes"
-				on:mouseenter={animateCursorEnter}
-				on:mouseleave={animateCursorOut}
-				class="write relative inline-block text-brand-500 hover:text-brand-600 transition-colors hover:cursor-none"
+				class="write relative inline-block text-brand-500 hover:text-brand-600 transition-colors lg:hover:cursor-none"
 				>Writes</a>
 		</p>
 		<p class="text">on the Web</p>
