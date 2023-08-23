@@ -10,58 +10,51 @@
 	];
 </script>
 
-<footer id="contact" class="bg-gray-800 pt-16 pb-8 sticky bottom-0">
-	<div class="w-11/12 mx-auto max-w-7xl">
-		<h2 class="text-heading-4 sm:text-heading-3 font-bold text-brand-100 mb-2">
-			Let’s talk or build awesome things together!
-		</h2>
-		<p class="sm:text-body-xl text-body-base text-gray-200 mb-12">
-			I’m currently looking for Frontend Developer Role. Don’t hesitate to reach me out to ask questions, discussions,
-			or just to say hello.
-		</p>
-		<a
-			href="mailto:fazzaamiarso@gmail.com"
-			class="inline-flex text-body-base group justify-center items-center gap-8 px-4 py-2 rounded-full bg-brand-700 text-brand-100 sm:text-body-lg font-bold mb-20"
-			>fazzaamiarso@gmail.com
-			<span
-				class="inline-flex items-center justify-center w-[35px] h-[35px] sm:w-[45px] sm:h-[45px] bg-brand-100 rounded-full"
-				><SendHorizonal aria-hidden="true" size="24" class="text-gray-800" />
-			</span>
-		</a>
-		<ul class="flex flex-wrap gap-16 items-center pb-40">
-			{#each socialLinks as link}
-				<li class="text-body-lg sm:text-body-xl text-gray-100 group">
-					<!-- svelte-ignore a11y-mouse-events-have-key-events -->
-					<a href={link.href} referrerpolicy="no-referrer" target="_blank" class="flex items-center gap-1 group"
-						>{link.label}
-						<span class="arrow-container relative overflow-hidden">
-							<MoveUpRight
-								size="28"
-								color="currentColor"
-								class={clsx(
-									'transition-transform duration-500 relative',
-									'group-hover:translate-x-full group-hover:-translate-y-full'
-								)} />
-							<MoveUpRight
-								size="28"
-								color="currentColor"
-								class={clsx(
-									'absolute duration-500 transition-transform top-0 left-0',
-									'-translate-x-full translate-y-full group-hover:translate-x-0 group-hover:translate-y-0'
-								)} />
-						</span>
-					</a>
-				</li>
-			{/each}
-		</ul>
-		<div class="flex flex-wrap items-center justify-between">
-			<div class="flex gap-12">
-				<a href="#/" class="underline text-body-lg sm:text-body-xl text-gray-200 hover:no-underline">Resume</a>
-				<a href="/credits" class="underline text-body-lg sm:text-body-xl text-gray-200 hover:no-underline">Credits</a>
-			</div>
-			<div class="text-body-sm sm:text-body-base font-bold text-gray-200">
-				© 2023 Fazza Razaq Amiarso --- Bogor, Indonesia
-			</div>
+<footer id="contact" class="">
+	<div class="py-24 border-y-[1px]">
+		<div class="w-11/12 mx-auto max-w-7xl">
+			<h2 class="text-heading-4 sm:text-heading-3 font-bold text-brand-900 mb-2">
+				Let’s talk or build awesome things together!
+			</h2>
+			<p class="sm:text-body-xl text-body-base text-gray-600 mb-12">
+				I’m currently looking for Frontend Developer Role. Don’t hesitate to reach me out to ask questions, discussions,
+				or just to say hello.
+			</p>
+			<ul class="flex flex-wrap gap-16 items-center">
+				{#each socialLinks as link}
+					<li class="text-body-lg sm:text-body-xl text-gray-800 group">
+						<!-- svelte-ignore a11y-mouse-events-have-key-events -->
+						<a href={link.href} referrerpolicy="no-referrer" target="_blank" class="flex items-center gap-1 group"
+							>{link.label}
+							<span class="arrow-container relative overflow-hidden">
+								<MoveUpRight
+									size="28"
+									color="currentColor"
+									class={clsx(
+										'transition-transform duration-500 relative',
+										'group-hover:translate-x-full group-hover:-translate-y-full'
+									)} />
+								<MoveUpRight
+									size="28"
+									color="currentColor"
+									class={clsx(
+										'absolute duration-500 transition-transform top-0 left-0',
+										'-translate-x-full translate-y-full group-hover:translate-x-0 group-hover:translate-y-0'
+									)} />
+							</span>
+						</a>
+					</li>
+				{/each}
+			</ul>
+		</div>
+	</div>
+	<div class="flex flex-wrap items-center justify-between py-12 w-11/12 mx-auto max-w-7xl">
+		<div class="flex gap-12">
+			<a href="#/" class="underline text-body-lg sm:text-body-xl text-gray-800 hover:no-underline">Resume</a>
+			<a href="/credits" class="underline text-body-lg sm:text-body-xl text-gray-800 hover:no-underline">Credits</a>
+		</div>
+		<div class="text-body-sm sm:text-body-base font-bold text-gray-800">
+			© 2023 Fazza Razaq Amiarso --- Bogor, Indonesia
 		</div>
 	</div>
 </footer>
