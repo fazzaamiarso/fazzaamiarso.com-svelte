@@ -73,7 +73,7 @@
 	}
 </script>
 
-<div bind:this={container}>
+<div class="gallery" bind:this={container}>
 	{#each images as img}
 		<a href={img.src} data-img={img.src} data-thumb={img.src} data-alt="" on:click={handleOpen}>
 			<img src={img.src} alt="" class="ring-1 ring-gray-200 rounded-lg cursor-zoom-in lg:cursor-none" />

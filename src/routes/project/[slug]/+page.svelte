@@ -1,5 +1,6 @@
 <script lang="ts">
 	import gsap from '$lib/gsap';
+	import clsx from 'clsx';
 	import { onMount } from 'svelte';
 	export let data;
 
@@ -42,7 +43,7 @@
 		</ul>
 	</div>
 	<!-- Post -->
-	<div class="prose prose-lg max-w-5xl mx-auto">
+	<div class={clsx('prose prose-lg max-w-5xl mx-auto')}>
 		<div><img id="cover-img" src={data.meta.cover} alt={data.meta.title} class="w-full rounded-md" /></div>
 		<div class="border-y-[1px] w-full">
 			<div class="not-prose gap-8 py-4 mx-auto max-w-3xl sm:flex-row sm:gap-28 flex">
@@ -69,6 +70,33 @@
 <style>
 	:global(.prose :is(h2, h3, h4)) {
 		color: var(--color-brand-700);
+	}
+
+	:global(.prose a) {
+		font-weight: bold;
+		text-decoration: none;
+		color: var(--color-brand-500);
+
+		position: relative;
+	}
+	:global(.prose a:not(.gallery *)::after) {
+		background-color: var(--color-brand-500);
+		opacity: 0.3;
+		width: 100%;
+		height: 2px;
+
+		content: '';
+		position: absolute;
+		bottom: 2px;
+		left: 0;
+
+		transition-property: opacity;
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+		transition-duration: 150ms;
+	}
+
+	:global(.prose a:hover::after) {
+		opacity: 1;
 	}
 
 	.relevant-link:hover {
