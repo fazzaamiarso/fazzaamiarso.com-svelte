@@ -36,20 +36,6 @@ On the internet, a lot of open-source Invoice management apps are built with Lar
 - Invite team members.
 - Magic Link Authentication.
 
-## Techs Used
-
-_Invoys_ is bootsrapped with create-t3-app which based on Next.js.
-
-- next.js
-- trpc
-- tailwind
-- prisma
-- planetscale
-- docker
-- cypress
-- vitest
-
-
 <Gallery images={[{ src : "https://i.imgur.com/fdeh97j.png" }, { src : "https://i.imgur.com/T42iGGj.png" }, { src : "https://i.imgur.com/V2DpeLV.png" }]} />
 
 <!-- |                                                    |                                                   |
@@ -58,8 +44,6 @@ _Invoys_ is bootsrapped with create-t3-app which based on Next.js.
 | ![clients table](https://i.imgur.com/T42iGGj.png)  | ![client detail](https://i.imgur.com/RjOkcBE.png) |
 | ![invoice detail](https://i.imgur.com/V2DpeLV.png) | ![invoice batch](https://i.imgur.com/rpDor0M.gif) |
 |     ![login](https://i.imgur.com/lHY7BmH.png)      | -->
-
-## Demo
 
 ## Challenges
 

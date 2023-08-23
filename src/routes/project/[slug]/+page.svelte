@@ -16,7 +16,7 @@
 <article class="py-32">
 	<div class="flex flex-col items-center">
 		<p class="text-body-lg text-brand-500">{new Date(data.meta.date).getUTCFullYear()}</p>
-		<h1 class="text-heading-1 text-brand-700 text-center mb-6">{data.meta.title}</h1>
+		<h1 class="text-heading-2 sm:text-heading-1 text-brand-700 text-center mb-6">{data.meta.title}</h1>
 		<ul class="flex items-center gap-12">
 			<li class="">
 				<a
@@ -46,12 +46,14 @@
 	<div class={clsx('prose prose-lg max-w-5xl mx-auto')}>
 		<div><img id="cover-img" src={data.meta.cover} alt={data.meta.title} class="w-full rounded-md" /></div>
 		<div class="border-y-[1px] w-full">
-			<div class="not-prose gap-8 py-4 mx-auto max-w-3xl sm:flex-row sm:gap-28 flex">
+			<div class="not-prose gap-8 py-4 mx-auto max-w-3xl sm:gap-28 space-y-8">
 				<div>
 					<h2 class="text-body-base sm:text-body-lg mb-2">Technologies</h2>
-					<ul class="text-body-base sm:text-body-lg space-y-1">
+					<ul class="text-body-base sm:text-body-lg flex gap-2 flex-wrap">
 						{#each data.meta.techs as tech}
-							<li>{tech.at(0)?.toUpperCase() + tech.slice(1)}</li>
+							<li class="py-1 px-2 w-max rounded-sm bg-brand-100 text-brand-800 bg-opacity-5">
+								{tech.at(0)?.toUpperCase() + tech.slice(1)}
+							</li>
 						{/each}
 					</ul>
 				</div>

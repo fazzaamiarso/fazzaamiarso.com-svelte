@@ -59,7 +59,7 @@
 				tristique enim. Nullam at mi a ligula faucibus dignissim eu eu sapien.
 			</p>
 			<div class="text-body-base font-dm-sans lg:text-body-lg">
-				<p class="mb-2 font-bold">I speak these languages (in order of fluency):</p>
+				<p class="mb-2">I speak these languages (in order of fluency):</p>
 				<ul class="space-y-2">
 					{#each languagesList as lang}
 						<li class="">{lang}</li>
