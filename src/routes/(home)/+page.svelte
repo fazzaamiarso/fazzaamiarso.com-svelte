@@ -13,6 +13,7 @@
 	import ProjectCard from './project-card.svelte';
 	import gsap from '$lib/gsap';
 	import Cursor from './cursor.svelte';
+	import * as config from '$lib/site/config';
 
 	export let data;
 
@@ -109,7 +110,6 @@
 	<h1
 		id="hero-text"
 		class="font-fira-sans mx-auto text-gray-700 text-heading-4 sm:text-heading-3 min-[968px]:text-heading-2 xl:text-heading-1">
-		<!-- svelte-ignore a11y-mouse-events-have-key-events -->
 		<p>
 			<a
 				href="/about"
@@ -126,7 +126,9 @@
 			<span class="text">and</span>
 			<span class="sometime inline-block relative text-body-base lg:text-body-xl">(sometimes)</span>
 			<a
-				href="/#"
+				href={config.blogUrl}
+				target="_blank"
+				referrerpolicy="no-referrer"
 				data-type="writes"
 				class="write relative inline-block text-brand-500 hover:text-brand-600 transition-colors lg:hover:cursor-none"
 				>Writes</a>

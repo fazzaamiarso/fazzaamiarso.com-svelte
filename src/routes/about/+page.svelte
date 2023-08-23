@@ -3,10 +3,11 @@
 	import myPic from '$lib/assets/fazza-about.png';
 	import { onMount } from 'svelte';
 	import gsap from 'gsap';
+	import * as config from '$lib/site/config';
 
 	const otherLinks = [
-		{ type: 'Blog', category: 'Web development', link: 'blog.fazzaamiarso.com' },
-		{ type: 'Blog', category: 'Journal', link: 'journal.fazzaamiarso.com' }
+		{ type: 'Blog', category: 'Web development', link: config.blogUrl, label: 'dev.to/fazzaamiarso' },
+		{ type: 'Blog', category: 'Journal', link: 'journal.fazzaamiarso.com', label: 'journal.fazzaamiarso.com' }
 	];
 
 	const languagesList = ['🇮🇩 Indonesian', '🇺🇸 English', '🇯🇵 Japanese', '🇰🇷 Korean'];
@@ -84,7 +85,7 @@
 						<div class="text-body-base text-gray-600">{item.category}</div>
 					</div>
 					<a href="#link-1" class="inline-flex items-center gap-1 text-body-base font-bold text-gray-700 col-span-2"
-						>{item.link} <ExternalLink aria-hidden="true" size="20" />
+						>{item.label} <ExternalLink aria-hidden="true" size="20" />
 					</a>
 				</li>
 			{/each}
