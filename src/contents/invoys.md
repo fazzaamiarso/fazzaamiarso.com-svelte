@@ -18,6 +18,9 @@ github: 'https://github.com/fazzaamiarso/invoys'
 website: 'https://invoys.fzworld.xyz/'
 cover: 'https://request-d.vercel.app/logo-on-black.png'
 ---
+<script>
+  import Gallery from '../lib/components/gallery.svelte'
+</script>
 
 ## Problem
 
@@ -46,14 +49,15 @@ _Invoys_ is bootsrapped with create-t3-app which based on Next.js.
 - cypress
 - vitest
 
-## Project Gallery
 
-|                                                    |                                                   |
+<Gallery images={[{ src : "https://i.imgur.com/fdeh97j.png" }, { src : "https://i.imgur.com/T42iGGj.png" }, { src : "https://i.imgur.com/V2DpeLV.png" }]} />
+
+<!-- |                                                    |                                                   |
 | :------------------------------------------------: | :-----------------------------------------------: |
 |   ![Dashboard](https://i.imgur.com/fdeh97j.png)    |  ![New invoice](https://i.imgur.com/1EulVHE.png)  |
 | ![clients table](https://i.imgur.com/T42iGGj.png)  | ![client detail](https://i.imgur.com/RjOkcBE.png) |
 | ![invoice detail](https://i.imgur.com/V2DpeLV.png) | ![invoice batch](https://i.imgur.com/rpDor0M.gif) |
-|     ![login](https://i.imgur.com/lHY7BmH.png)      |
+|     ![login](https://i.imgur.com/lHY7BmH.png)      | -->
 
 ## Demo
 

@@ -41,6 +41,8 @@
 		"@fontsource/fira-sans": "^5.0.8",
 		"@icons-pack/svelte-simple-icons": "^3.0.0",
 		"@studio-freight/lenis": "^1.0.19",
+		"bigger-picture": "^1.1.11",
+		"bigpicture": "^2.6.2",
 		"clsx": "^2.0.0",
 		"focus-trap": "^7.5.2",
 		"gsap": "^3.12.2",
