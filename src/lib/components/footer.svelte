@@ -1,6 +1,6 @@
 <script lang="ts">
 	import * as config from '$lib/site/config';
-	import { MoveUpRight, SendHorizonal } from 'lucide-svelte';
+	import { MoveUpRight } from 'lucide-svelte';
 	import clsx from 'clsx';
 
 	const socialLinks = [
@@ -23,7 +23,6 @@
 			<ul class="flex flex-wrap gap-16 items-center">
 				{#each socialLinks as link}
 					<li class="text-body-lg sm:text-body-xl text-gray-800 group">
-						<!-- svelte-ignore a11y-mouse-events-have-key-events -->
 						<a href={link.href} referrerpolicy="no-referrer" target="_blank" class="flex items-center gap-1 group"
 							>{link.label}
 							<span class="arrow-container relative overflow-hidden">

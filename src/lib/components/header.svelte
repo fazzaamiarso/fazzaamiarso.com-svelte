@@ -18,7 +18,7 @@
 	const navigationMobileLinks = [
 		{ label: 'About', href: '/about' },
 		{ label: 'Project', href: '#projects' },
-		{ label: 'Contact', href: '/#contac' },
+		{ label: 'Contact', href: '/#contact' },
 		{ label: 'Credits', href: '/credits' }
 	];
 

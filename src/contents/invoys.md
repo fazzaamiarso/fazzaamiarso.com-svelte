@@ -18,6 +18,7 @@ github: 'https://github.com/fazzaamiarso/invoys'
 website: 'https://invoys.fzworld.xyz/'
 cover: 'https://request-d.vercel.app/logo-on-black.png'
 ---
+
 <script>
   import Gallery from '../lib/components/gallery.svelte'
 </script>
