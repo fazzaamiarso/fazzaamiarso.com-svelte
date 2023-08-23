@@ -45,7 +45,8 @@
 
 		gsap.to(cursor, {
 			x,
-			y
+			y,
+			duration: 0.2
 		});
 	}
 

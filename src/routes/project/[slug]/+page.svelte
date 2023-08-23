@@ -42,10 +42,10 @@
 		</ul>
 	</div>
 	<!-- Post -->
-	<div class="prose prose-lg md:prose-xl max-w-5xl mx-auto">
+	<div class="prose prose-lg max-w-5xl mx-auto">
 		<div><img id="cover-img" src={data.meta.cover} alt={data.meta.title} class="w-full rounded-md" /></div>
 		<div class="border-y-[1px] w-full">
-			<div class="not-prose gap-8 py-4 mx-auto max-w-4xl sm:flex-row sm:gap-28 flex">
+			<div class="not-prose gap-8 py-4 mx-auto max-w-3xl sm:flex-row sm:gap-28 flex">
 				<div>
 					<h2 class="text-body-base sm:text-body-lg mb-2">Technologies</h2>
 					<ul class="text-body-base sm:text-body-lg space-y-1">
@@ -60,7 +60,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="max-w-4xl mx-auto">
+		<div class="max-w-3xl mx-auto">
 			<svelte:component this={data.content} />
 		</div>
 	</div>
