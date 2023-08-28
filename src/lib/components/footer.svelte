@@ -12,7 +12,7 @@
 
 <footer id="contact" class="">
 	<div class="py-24 border-y-[1px]">
-		<div class="w-11/12 mx-auto max-w-7xl">
+		<div class="layout">
 			<h2 class="text-heading-4 sm:text-heading-3 font-bold text-brand-900 mb-2">
 				Let’s talk or build awesome things together!
 			</h2>
@@ -47,7 +47,7 @@
 			</ul>
 		</div>
 	</div>
-	<div class="flex flex-wrap items-center justify-between py-12 w-11/12 mx-auto max-w-7xl">
+	<div class="flex flex-wrap items-center justify-between py-12 layout">
 		<div class="flex gap-12">
 			<a href="#/" class="underline text-body-lg sm:text-body-xl text-gray-800 hover:no-underline">Resume</a>
 			<a href="/credits" class="underline text-body-lg sm:text-body-xl text-gray-800 hover:no-underline">Credits</a>

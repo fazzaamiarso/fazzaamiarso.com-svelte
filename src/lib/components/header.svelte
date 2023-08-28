@@ -94,7 +94,7 @@
 			</ul>
 		</nav>
 	</div>
-	<div class="flex justify-between items-center w-11/12 mx-auto py-4 max-w-7xl z-[100] relative">
+	<div class="layout flex justify-between items-center py-4 z-[100] relative">
 		<a href="/"><img src={logo} alt="" width="50" height="50" /></a>
 		<!-- Drawer Trigger -->
 		<button
@@ -110,13 +110,13 @@
 				{#each navigationLinks as link}
 					{@const isActive = currentPath.includes(link.href)}
 					<li>
+						<!-- TODO: clicking on in page anchor still buggy -->
 						<a
 							href={link.href}
 							class={clsx(
 								'text-body-lg',
 								isActive ? 'text-brand-600 transition-colors' : 'text-gray-700 hover:text-gray-500'
-							)}
-							on:click={() => link.href.includes('#') && lenis.scrollTo(link.href)}>{link.label}</a>
+							)}>{link.label}</a>
 					</li>
 				{/each}
 			</ul>

@@ -16,7 +16,7 @@
 	}
 
 	.layout {
-		@apply w-11/12 mx-auto max-w-7xl 
+		@apply w-11/12 mx-auto max-w-7xl;
 	}
 
 	.lenis.lenis-smooth {

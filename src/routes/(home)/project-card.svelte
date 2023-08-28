@@ -2,63 +2,46 @@
 	import type { Content } from '$lib/types';
 	import gsap from '$lib/gsap';
 	import { ArrowRight } from 'lucide-svelte';
-	import { beforeUpdate, onMount } from 'svelte';
+	import { onMount } from 'svelte';
 
 	export let content: Content;
 
 	let projectLink: HTMLElement;
 
-	let tl: gsap.core.Timeline;
-
 	const href = `/project/${content.slug}`;
 
 	onMount(() => {
-		const scopedQuery = gsap.utils.selector(projectLink);
+		const mm = gsap.matchMedia();
+		mm.add('(min-width:1024px)', (ctx) => {
+			const scopedQuery = gsap.utils.selector(projectLink);
 
-		tl = gsap
-			.timeline({ paused: true, defaults: { duration: 0.5, ease: 'power2.out' } })
-			.to(scopedQuery('.ripple'), {
-				scale: 2.5
-			})
-			.to(
-				projectLink,
-				{
-					color: '#fff'
-				},
-				'<'
-			)
-			.to(
-				scopedQuery('.arrow'),
-				{
-					xPercent: 20
-				},
-				'<25%'
-			);
-	});
+			const tl = gsap
+				.timeline({ paused: true })
+				.to(scopedQuery('.arrow-right'), { x: 100, duration: 0.3 })
+				.to(scopedQuery('.arrow-left'), { x: 15 })
+				.to(scopedQuery('.text'), { x: 30 }, '<');
 
-	function setPosition(e: MouseEvent) {
-		const scopedQuery = gsap.utils.selector(projectLink);
+			ctx.add('onMouseenter', onMouseenter);
+			ctx.add('onMouseout', onMouseout);
 
-		const x = e.clientX - (e.target as HTMLAnchorElement).getBoundingClientRect().left;
-		const y = e.clientY - (e.target as HTMLAnchorElement).getBoundingClientRect().top;
+			projectLink.addEventListener('mouseenter', ctx.onMouseenter);
+			projectLink.addEventListener('mouseout', ctx.onMouseout);
 
-		gsap.set(scopedQuery('.ripple'), {
-			left: x,
-			top: y,
-			width: projectLink.clientWidth,
-			height: projectLink.clientWidth
+			function onMouseenter() {
+				tl.play();
+			}
+			function onMouseout() {
+				tl.reverse();
+			}
+
+			return () => {
+				projectLink.removeEventListener('mouseenter', ctx.onMouseenter);
+				projectLink.removeEventListener('mouseout', ctx.onMouseout);
+			};
 		});
-	}
 
-	function startRipple(e: MouseEvent) {
-		if (!tl.isActive()) setPosition(e);
-		tl.play();
-	}
-
-	function reverseRipple(e: MouseEvent) {
-		setPosition(e);
-		tl.reverse();
-	}
+		return () => mm.kill();
+	});
 </script>
 
 <li class="relative py-16 w-full border-b-[1px] first:border-t-[1px]">
@@ -68,23 +51,18 @@
 				{content.title}
 			</h3>
 			<p class="text-body-base md:text-body-lg max-w-prose mb-4">{content.description}</p>
-			<!-- svelte-ignore a11y-mouse-events-have-key-events -->
 			<a
 				{href}
-				class="project-link overflow-hidden p-3 text-gray-600 mt-auto text-body-base inline-flex items-center gap-2 ring-1 rounded-md ring-gray-400 relative"
-				on:mouseenter={startRipple}
-				on:mouseout={reverseRipple}
+				class="overflow-hidden p-3 text-white mt-auto text-body-base inline-flex items-center gap-2 rounded-sm relative bg-brand-600"
 				bind:this={projectLink}>
-				<span
-					class="ripple absolute -z-10 bg-brand-500 block rounded-full scale-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-				></span>
-				See project
-				<ArrowRight aria-hidden="true" class="arrow pointer-events-none" />
+				<ArrowRight aria-hidden="true" class="arrow-left absolute left-0 -translate-x-full pointer-events-none" />
+				<span class="text pointer-events-none">See project</span>
+				<ArrowRight aria-hidden="true" class="arrow-right pointer-events-none" />
 			</a>
 		</div>
 		<div class="w-full overflow-hidden relative">
 			<div class="card-img-reveal bg-white inset-0 absolute"></div>
-			<img src={content.cover} alt="" class="rounded-md aspect-video md:max-w-xl w-full block origin-bottom" />
+			<img src={content.cover} alt="" class="rounded-md aspect-video md:max-w-2xl w-full block origin-bottom" />
 		</div>
 	</div>
 </li>

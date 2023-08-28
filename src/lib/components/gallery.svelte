@@ -12,10 +12,9 @@
 
 	let container: HTMLElement;
 	let cursor: HTMLElement;
-	let mm: gsap.MatchMedia;
 
 	onMount(() => {
-		mm = gsap.matchMedia();
+		const mm = gsap.matchMedia();
 
 		mm.add('(min-width: 1024px)', (ctx) => {
 			const cursorTw = gsap.to(cursor, {
