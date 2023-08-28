@@ -33,7 +33,6 @@
 	beforeNavigate(async ({ to }) => {
 		if (drawerOpen && to?.route.id) {
 			drawerOpen = false;
-			lenis.start();
 			menuTl.reversed(!menuTl.reversed());
 		}
 	});
@@ -42,10 +41,12 @@
 		if (!drawerOpen && from?.route.id) {
 			panelTl.progress(0).reverse();
 		}
+
+		toggleFocusAndScroll();
 	});
 
 	onMount(() => {
-		focusTrap = trap.createFocusTrap('#navbar');
+		focusTrap = trap.createFocusTrap('#navbar', { preventScroll: true });
 
 		gsap.set('#line-2', { xPercent: 30 });
 		gsap.set('#nav-drawer', { yPercent: -100 });
@@ -55,12 +56,7 @@
 		panelTl = animatePanelOpen();
 	});
 
-	function toggleMenu() {
-		drawerOpen = !drawerOpen;
-
-		menuTl.reversed(!menuTl.reversed());
-		panelTl.reversed(!panelTl.reversed());
-
+	function toggleFocusAndScroll() {
 		if (drawerOpen) {
 			focusTrap.activate();
 			lenis.stop();
@@ -68,6 +64,15 @@
 			focusTrap.deactivate();
 			lenis.start();
 		}
+	}
+
+	function toggleMenu() {
+		drawerOpen = !drawerOpen;
+
+		menuTl.reversed(!menuTl.reversed());
+		panelTl.reversed(!panelTl.reversed());
+
+		toggleFocusAndScroll();
 	}
 </script>
 
