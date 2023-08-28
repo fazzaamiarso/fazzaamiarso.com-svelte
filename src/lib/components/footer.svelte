@@ -52,8 +52,6 @@
 			<a href="#/" class="underline text-body-lg sm:text-body-xl text-gray-800 hover:no-underline">Resume</a>
 			<a href="/credits" class="underline text-body-lg sm:text-body-xl text-gray-800 hover:no-underline">Credits</a>
 		</div>
-		<div class="text-body-sm sm:text-body-base font-bold text-gray-800">
-			© 2023 Fazza Razaq Amiarso --- Bogor, Indonesia
-		</div>
+		<div class="text-body-sm sm:text-body-base text-gray-800">© 2023 Fazza Razaq Amiarso -- Bogor, Indonesia</div>
 	</div>
 </footer>
