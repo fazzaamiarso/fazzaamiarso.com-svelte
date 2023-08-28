@@ -58,12 +58,14 @@
 	});
 </script>
 
-<div class="py-32 flex flex-col text-center items-center">
-	<h1 class="text-heading-3 sm:text-heading-2 md:text-heading-1 text-brand-800">Credits</h1>
-	<p class="text-body-base sm:text-body-lg pb-20 text-gray-700">
-		I’m so grateful and amazed by others’ work. I’m not a great designer, so I did a lot of research and finding
-		inspiration to finally built this site. Here’s the list of all the insipirations for this website
-	</p>
+<div class="pt-32 flex flex-col text-center items-center">
+	<div class="layout pb-20 text-center">
+		<h1 class="text-heading-3 sm:text-heading-2 md:text-heading-1 text-brand-800">Credits</h1>
+		<p class="text-body-base sm:text-body-lg text-gray-700 mx-auto">
+			I’m so grateful and amazed by others’ work. I’m not a great designer, so I did a lot of research and finding
+			inspiration to finally built this site. Here’s the list of all the insipirations for this website
+		</p>
+	</div>
 	<ul bind:this={creditList} class="w-full break-all">
 		{#each creditLinks as link}
 			<li class="relative text-gray-700 border-b-[1px]">

@@ -13,7 +13,7 @@
 	});
 </script>
 
-<article class="py-32">
+<article class="py-32 layout">
 	<div class="flex flex-col items-center">
 		<p class="text-body-lg text-brand-500">{new Date(data.meta.date).getUTCFullYear()}</p>
 		<h1 class="text-heading-2 sm:text-heading-1 text-brand-700 text-center mb-6">{data.meta.title}</h1>

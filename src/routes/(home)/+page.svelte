@@ -106,7 +106,7 @@
 	id="cursor"
 	class="fixed z-[1000] top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-32 h-32 p-6 bg-brand-700 rounded-full scale-0 pointer-events-none">
 </div>
-<div id="hero" class="mb-32 relative flex flex-col justify-center items-center">
+<div id="hero" class="layout mb-32 relative flex flex-col justify-center items-center">
 	<h1
 		id="hero-text"
 		class="font-fira-sans mx-auto text-gray-700 text-heading-4 sm:text-heading-3 min-[968px]:text-heading-2 xl:text-heading-1">
@@ -151,18 +151,18 @@
 	</div>
 </div>
 
-<div class="pb-32">
-	<h2 id="projects" class="text-heading-3 lg:text-heading-2 font-bold text-brand-800 mb-8 md:mb-16">
+<div class="">
+	<h2 id="projects" class="layout text-heading-3 lg:text-heading-2 font-bold text-brand-800 mb-8 md:mb-16">
 		Selected Projects.
 	</h2>
-	<ul class="w-full flex flex-col items-start divide-y-2">
+	<ul class="w-full flex flex-col items-start">
 		{#each data.contents as content}
 			<ProjectCard {content} />
 		{/each}
 	</ul>
 </div>
-<div class="pb-32">
-	<h2 class="text-heading-3 lg:text-heading-2 font-bold text-brand-800 mb-6">Technologies.</h2>
+<div class="layout py-16">
+	<h2 class="text-heading-3 lg:text-heading-2 font-bold text-brand-800 mb-8 md:mb-16">Technologies.</h2>
 	<SkillsList />
 </div>
 

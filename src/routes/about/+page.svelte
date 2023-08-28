@@ -41,7 +41,7 @@
 	});
 </script>
 
-<div class="py-32">
+<div class="layout py-32">
 	<div class="pb-12 flex flex-col md:flex-row-reverse lg:items-start lg:justify-start gap-12">
 		<div>
 			<h1 class="font-bold text-brand-900 flex flex-col">
