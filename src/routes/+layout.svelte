@@ -22,7 +22,6 @@
 
 	function initScrollSmooth() {
 		loadLenis();
-		lenis.stop();
 
 		lenis.on('scroll', ScrollTrigger.update);
 
@@ -36,10 +35,15 @@
 	onMount(() => {
 		initScrollSmooth();
 
-		animatePreloader().eventCallback('onComplete', () => {
-			preloading.set(false);
-			lenis.start();
-		});
+		// prevent scroll when preloading
+		lenis.stop();
+
+		animatePreloader()
+			// start lenis 2 seconds after preload start
+			.call(() => lenis.start(), undefined, 2)
+			.eventCallback('onComplete', () => {
+				preloading.set(false);
+			});
 
 		return () => lenis.destroy();
 	});
