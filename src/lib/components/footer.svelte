@@ -6,7 +6,7 @@
 	const socialLinks = [
 		{ label: 'Linkedin', href: config.linkedinUrl },
 		{ label: 'Github', href: config.githubUrl },
-		{ label: 'Twitter', href: config.twitterUrl }
+		{ label: 'Twitter (X)', href: config.twitterUrl }
 	];
 </script>
 
@@ -49,7 +49,11 @@
 	</div>
 	<div class="flex flex-wrap items-center justify-between py-12 layout">
 		<div class="flex gap-12">
-			<a href="#/" class="underline text-body-lg sm:text-body-xl text-gray-800 hover:no-underline">Resume</a>
+			<a
+				href={config.resumerUrl}
+				referrerpolicy="no-referrer"
+				target="_blank"
+				class="underline text-body-lg sm:text-body-xl text-gray-800 hover:no-underline">Resume</a>
 			<a href="/credits" class="underline text-body-lg sm:text-body-xl text-gray-800 hover:no-underline">Credits</a>
 		</div>
 		<div class="text-body-sm sm:text-body-base text-gray-800">© 2023 Fazza Razaq Amiarso -- Bogor, Indonesia</div>
