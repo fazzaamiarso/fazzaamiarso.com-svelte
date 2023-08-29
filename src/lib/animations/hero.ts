@@ -111,7 +111,7 @@ export function animateSkillSections() {
 			y: 50,
 			opacity: 0,
 			duration: 0.4,
-			ease: 'power3.out',
+			ease: 'quintic.out',
 			scrollTrigger: {
 				start: 'top 80%',
 				trigger: skill

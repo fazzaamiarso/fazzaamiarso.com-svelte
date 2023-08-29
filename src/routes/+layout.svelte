@@ -59,6 +59,13 @@
 	<!-- Open Graph START -->
 	<meta property="og:title" content={seo?.title} />
 	<meta property="og:url" content={config.siteUrl} />
+	<meta property="og:description" content={seo?.description} />
+	<meta property="og:image" content={config.ogImageUrl} />
+	<meta property="og:type" content="website" />
+	<meta property="og:image:type" content="image/png" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta property="og:image:alt" content={config.ogImageAlt} />
 	<!-- Open Graph END  -->
 	<!-- Twitter card START -->
 	<meta name="twitter:card" content="summary" />

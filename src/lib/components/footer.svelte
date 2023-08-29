@@ -50,7 +50,7 @@
 	<div class="flex flex-wrap flex-col justify-between py-12 layout max-md:gap-6 md:flex-row md:items-center">
 		<div class="flex gap-16 items-center">
 			<a
-				href={config.resumerUrl}
+				href={config.resumeUrl}
 				referrerpolicy="no-referrer"
 				target="_blank"
 				class="text-body-lg sm:text-body-xl text-gray-800">Resume</a>
