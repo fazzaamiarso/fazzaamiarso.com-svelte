@@ -14,7 +14,7 @@ if (browser) {
 }
 
 function createCustomEase() {
-	CustomEase.create('quintic.Out', '0.22, 1, 0.36, 1');
+	CustomEase.create('quintic.out', '0.22, 1, 0.36, 1');
 }
 
 export { ScrollTrigger, CustomEase };

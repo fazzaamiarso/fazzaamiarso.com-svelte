@@ -15,6 +15,7 @@ export async function load({ params }) {
 			}
 		};
 	} catch (e) {
+		console.log('Error');
 		throw error(404, `Could not find ${params.slug}`);
 	}
 }

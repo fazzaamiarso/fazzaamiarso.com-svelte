@@ -12,9 +12,7 @@
 	import * as config from '$lib/site/config';
 	import { page } from '$app/stores';
 
-	$: ({
-		seo: { title, description }
-	} = $page.data);
+	$: ({ seo } = $page.data);
 
 	export let data;
 
@@ -56,10 +54,10 @@
 </script>
 
 <svelte:head>
-	<title>{title}</title>
-	<meta name="description" content={description} />
+	<title>{seo?.title}</title>
+	<meta name="description" content={seo?.description} />
 	<!-- Open Graph START -->
-	<meta property="og:title" content={title} />
+	<meta property="og:title" content={seo?.title} />
 	<meta property="og:url" content={config.siteUrl} />
 	<!-- Open Graph END  -->
 	<!-- Twitter card START -->
