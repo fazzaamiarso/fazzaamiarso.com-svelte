@@ -36,14 +36,17 @@
 		// prevent scroll when preloading
 		lenis.stop();
 
-		animatePreloader()
+		const tween = animatePreloader()
 			// start lenis 2 seconds after preload start
 			.call(() => lenis.start(), undefined, 2)
 			.eventCallback('onComplete', () => {
 				preloading.set(false);
 			});
 
-		return () => lenis.destroy();
+		return () => {
+			tween.kill();
+			lenis.destroy();
+		};
 	});
 
 	afterNavigate(async ({ to }) => {
@@ -68,7 +71,12 @@
 	<meta property="og:image:alt" content={config.ogImageAlt} />
 	<!-- Open Graph END  -->
 	<!-- Twitter card START -->
-	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta property="twitter:domain" content={config.siteUrl} />
+	<meta property="twitter:url" content={`https://${config.siteUrl}`} />
+	<meta name="twitter:title" content={seo?.title} />
+	<meta name="twitter:description" content={seo?.description} />
+	<meta name="twitter:image" content={config.ogImageUrl} />
 	<meta name="twitter:creator" content={config.twitterHandle} />
 	<!-- Twitter card END -->
 </svelte:head>

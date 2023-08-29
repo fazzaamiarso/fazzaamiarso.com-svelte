@@ -4,7 +4,7 @@ export const siteDescription =
 	'A frontend developer with focus on making accessible software with beautiful interfaces for everyone';
 export const siteUrl = 'fazzaamiarso.com';
 
-export const ogImageUrl = 'https://res.cloudinary.com/dkiqn0gqg/image/upload/v1693347690/fazzaamiarso-og.png';
+export const ogImageUrl = 'https://res.cloudinary.com/dkiqn0gqg/image/upload/v1693350354/fazzaamiarso-og-final.png';
 export const ogImageAlt = 'Fazza Razaq Amiarso portfolio banner';
 
 export const twitterHandle = '@faz_razq';
