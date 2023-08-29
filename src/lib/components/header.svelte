@@ -48,9 +48,6 @@
 	onMount(() => {
 		focusTrap = trap.createFocusTrap('#navbar', { preventScroll: true });
 
-		gsap.set('#line-2', { xPercent: 30 });
-		gsap.set('#nav-drawer', { yPercent: -100 });
-
 		animateNavbar();
 		menuTl = animateMenuButton();
 		panelTl = animatePanelOpen();

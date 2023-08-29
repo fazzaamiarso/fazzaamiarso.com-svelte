@@ -53,11 +53,14 @@
 			<p class="text-body-base md:text-body-lg max-w-prose mb-4">{content.description}</p>
 			<a
 				{href}
-				class="overflow-hidden p-3 text-white mt-auto text-body-base inline-flex items-center gap-2 rounded-sm relative bg-brand-700"
+				class="overflow-hidden p-2 sm:p-3 text-white mt-auto text-body-sm sm:text-body-base inline-flex items-center gap-2 rounded-sm relative bg-brand-700"
 				bind:this={projectLink}>
-				<ArrowRight aria-hidden="true" class="arrow-left absolute left-0 -translate-x-full pointer-events-none" />
+				<ArrowRight
+					aria-hidden="true"
+					class="arrow-left absolute left-0 -translate-x-full pointer-events-none"
+					size={20} />
 				<span class="text pointer-events-none">See project</span>
-				<ArrowRight aria-hidden="true" class="arrow-right pointer-events-none" />
+				<ArrowRight aria-hidden="true" class="arrow-right pointer-events-none" size={20} />
 			</a>
 		</div>
 		<div class="w-full overflow-hidden relative">

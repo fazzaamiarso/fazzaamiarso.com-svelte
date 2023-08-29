@@ -73,6 +73,8 @@ export function animateNavbar() {
 }
 
 export function animatePanelOpen() {
+	gsap.set('#nav-drawer', { yPercent: -100 });
+
 	return gsap
 		.timeline({ paused: true, ease: 'power3.out' })
 		.to('#nav-drawer', { yPercent: 0 })
@@ -92,6 +94,8 @@ export function animatePanelOpen() {
 }
 
 export function animateMenuButton() {
+	gsap.set('#line-2', { xPercent: 30 });
+
 	const tl = gsap
 		.timeline({ paused: true })
 		.to('#line-2', { xPercent: 0 })
