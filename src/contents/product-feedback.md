@@ -1,9 +1,9 @@
 ---
-layout: "../../layouts/Blog.astro"
-title: "Product Feedback"
-description: "An app to request and give feedback to a product. Part of Frontendmentor.io Guru challenge"
-cover: "https://res.cloudinary.com/dkiqn0gqg/image/upload/v1660770336/product-feedback-frontendmentor.png"
-date: "2022-05-27"
+layout: '../../layouts/Blog.astro'
+title: 'Product Feedback'
+description: 'An app to request and give feedback to a product. Part of Frontendmentor.io Guru challenge'
+cover: 'https://res.cloudinary.com/dkiqn0gqg/image/upload/v1660770336/product-feedback-frontendmentor.png'
+date: '2022-05-27'
 techs:
   - next.js
   - planetscale
@@ -13,8 +13,8 @@ techs:
 categories:
   - sveltekit
   - svelte
-github: "https://github.com/fazzaamiarso/product-feedback-next-trpc-prisma"
-website: "https://product-feedback-next-trpc-prisma.vercel.app/"
+github: 'https://github.com/fazzaamiarso/product-feedback-next-trpc-prisma'
+website: 'https://product-feedback-next-trpc-prisma.vercel.app/'
 ---
 
 ## Overview
