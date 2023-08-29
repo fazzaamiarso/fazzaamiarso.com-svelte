@@ -16,9 +16,9 @@
 			const scopedQuery = gsap.utils.selector(projectLink);
 
 			const tl = gsap
-				.timeline({ paused: true })
-				.to(scopedQuery('.arrow-right'), { x: 100, duration: 0.3 })
-				.to(scopedQuery('.arrow-left'), { x: 15 })
+				.timeline({ paused: true, defaults: { ease: 'quintic.Out' } })
+				.to(scopedQuery('.arrow-right'), { x: 100 })
+				.to(scopedQuery('.arrow-left'), { x: 15 }, '<+=.1')
 				.to(scopedQuery('.text'), { x: 30 }, '<');
 
 			ctx.add('onMouseenter', onMouseenter);

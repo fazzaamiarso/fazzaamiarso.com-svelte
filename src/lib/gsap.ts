@@ -3,12 +3,19 @@
 import { browser } from '$app/environment';
 // @ts-ignore
 import gsap from 'gsap';
-// @ts-ignore
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+import CustomEase from 'gsap/dist/CustomEase';
 
 if (browser) {
 	gsap.registerPlugin(ScrollTrigger);
+	gsap.registerPlugin(CustomEase);
+
+	createCustomEase();
 }
 
-export { ScrollTrigger };
+function createCustomEase() {
+	CustomEase.create('quintic.Out', '0.22, 1, 0.36, 1');
+}
+
+export { ScrollTrigger, CustomEase };
 export default gsap;
