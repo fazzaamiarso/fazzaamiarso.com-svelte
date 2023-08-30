@@ -4,7 +4,7 @@
 	import Header from '$lib/components/header.svelte';
 	import { lenis, loadLenis } from '$lib/lenis';
 	import gsap, { ScrollTrigger } from '$lib/gsap';
-	import { afterUpdate, onMount } from 'svelte';
+	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { writable } from 'svelte/store';
 	import { afterNavigate } from '$app/navigation';
@@ -53,10 +53,6 @@
 		if (to?.route.id) {
 			lenis.scrollTo(0);
 		}
-	});
-
-	afterUpdate(() => {
-		ScrollTrigger.refresh();
 	});
 </script>
 

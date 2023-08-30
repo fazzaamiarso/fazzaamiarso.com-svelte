@@ -1,7 +1,15 @@
 <script>
+	import { LayoutList, RowsIcon } from 'lucide-svelte';
 	import ProjectCard from '../(home)/project-card.svelte';
+	import { onMount } from 'svelte';
+	import { animateProjectCard } from '$lib/animations/hero';
 
 	export let data;
+	$: view = data.view;
+
+	onMount(() => {
+		animateProjectCard();
+	});
 </script>
 
 <div class="pt-40 border-b-[1px]">
@@ -10,13 +18,13 @@
 	</div>
 </div>
 <div class="py-4">
-	<div class="layout flex items-center">
-		<button type="button">Grid</button>
-		<button type="button">List</button>
+	<div class="layout flex items-center gap-4">
+		<a href="?view=row"><RowsIcon class="text-gray-500" /> </a>
+		<a href="?view=list"><LayoutList class="text-gray-500" /> </a>
 	</div>
 </div>
 <ul class="w-full flex flex-col items-start">
 	{#each data.projects as content}
-		<ProjectCard {content} />
+		<ProjectCard {content} {view} />
 	{/each}
 </ul>
