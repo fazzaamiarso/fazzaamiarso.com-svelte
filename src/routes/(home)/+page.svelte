@@ -10,7 +10,7 @@
 	} from '$lib/animations/hero';
 	import { afterNavigate } from '$app/navigation';
 	import { INPAGE_TRANSITION_DURATION, PRELOADER_DURATION } from '$lib/constants/animation';
-	import ProjectCard from './project-card.svelte';
+	import ProjectCard from '$lib/components/project-card.svelte';
 	import gsap from '$lib/gsap';
 	import Cursor from './cursor.svelte';
 	import * as config from '$lib/site/config';

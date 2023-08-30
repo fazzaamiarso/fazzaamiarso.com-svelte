@@ -3,21 +3,17 @@
 	import { ArrowRight } from 'lucide-svelte';
 	import clsx from 'clsx';
 	import viewProject from '$lib/actions/viewProject';
-	import { slide } from 'svelte/transition';
+	import { fade, fly, slide } from 'svelte/transition';
 
 	export let content: Content;
 	export let view: string | undefined = 'row';
 
 	const href = `/project/${content.slug}`;
-	const slideDuration = 500;
 </script>
 
 <li class="relative w-full border-b-[1px] first:border-t-[1px]">
 	{#if view === 'row'}
-		<div
-			in:slide={{ delay: 300, duration: slideDuration }}
-			out:slide={{ duration: slideDuration }}
-			class="layout flex flex-col gap-6 md:flex-row md:gap-24 xl:gap-40 py-16">
+		<div transition:slide={{ duration: 500 }} class="layout flex flex-col gap-6 md:flex-row md:gap-24 xl:gap-40 py-16">
 			<div class="flex flex-col items-start">
 				<h3 class="row font-bold text-brand-700 mb-4">
 					{content.title}
@@ -42,10 +38,7 @@
 		</div>
 	{/if}
 	{#if view === 'list'}
-		<div
-			in:slide={{ delay: 300, duration: slideDuration }}
-			out:slide={{ duration: slideDuration }}
-			class="layout grid grid-cols-3 gap-6 py-8">
+		<div transition:slide={{ duration: 500 }} class="layout grid grid-cols-3 gap-6 py-8">
 			<h3 class="text-body-base font-dm-sans text-brand-700">
 				{content.title}
 			</h3>
