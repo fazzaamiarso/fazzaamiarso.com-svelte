@@ -121,10 +121,12 @@ export function animateSkillSections() {
 }
 
 export function animateProjectCard() {
-	gsap.utils.toArray<HTMLElement>('.card-img-reveal').forEach((item) => {
-		gsap.to(item, {
-			yPercent: -100,
-			duration: 0.5,
+	gsap.utils.toArray<HTMLElement>('.project-container').forEach((item) => {
+		const revealEl = item.querySelector('.card-img-reveal');
+		gsap.set(revealEl, { yPercent: -100 });
+		gsap.to(revealEl, {
+			yPercent: 100,
+			duration: 1,
 			ease: 'power3.out',
 			scrollTrigger: {
 				start: 'top 70%',

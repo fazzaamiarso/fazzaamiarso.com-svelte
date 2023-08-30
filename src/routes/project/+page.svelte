@@ -1,15 +1,9 @@
 <script>
 	import { LayoutList, RowsIcon } from 'lucide-svelte';
 	import ProjectCard from '../(home)/project-card.svelte';
-	import { onMount } from 'svelte';
-	import { animateProjectCard } from '$lib/animations/hero';
 
 	export let data;
 	$: view = data.view;
-
-	onMount(() => {
-		animateProjectCard();
-	});
 </script>
 
 <div class="pt-40 border-b-[1px]">
@@ -23,8 +17,9 @@
 		<a href="?view=list"><LayoutList class="text-gray-500" /> </a>
 	</div>
 </div>
-<ul class="w-full flex flex-col items-start">
+<ul class="relative w-full flex flex-col items-start">
 	{#each data.projects as content}
+		<ProjectCard {content} {view} />
 		<ProjectCard {content} {view} />
 	{/each}
 </ul>

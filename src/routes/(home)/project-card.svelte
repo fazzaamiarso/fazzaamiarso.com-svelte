@@ -3,19 +3,21 @@
 	import { ArrowRight } from 'lucide-svelte';
 	import clsx from 'clsx';
 	import viewProject from '$lib/actions/viewProject';
-	import { beforeUpdate } from 'svelte';
+	import { slide } from 'svelte/transition';
 
 	export let content: Content;
 	export let view: string | undefined = 'row';
 
 	const href = `/project/${content.slug}`;
-
-	beforeUpdate(() => {});
+	const slideDuration = 500;
 </script>
 
 <li class="relative w-full border-b-[1px] first:border-t-[1px]">
 	{#if view === 'row'}
-		<div class="layout flex flex-col gap-6 md:flex-row md:gap-24 xl:gap-40 py-16">
+		<div
+			in:slide={{ delay: 300, duration: slideDuration }}
+			out:slide={{ duration: slideDuration }}
+			class="layout flex flex-col gap-6 md:flex-row md:gap-24 xl:gap-40 py-16">
 			<div class="flex flex-col items-start">
 				<h3 class="row font-bold text-brand-700 mb-4">
 					{content.title}
@@ -33,14 +35,17 @@
 					<ArrowRight aria-hidden="true" class="arrow-right pointer-events-none" size={20} />
 				</a>
 			</div>
-			<div class="w-full overflow-hidden relative">
-				<div class="card-img-reveal bg-white inset-0 absolute"></div>
+			<div class="project-container w-full relative overflow-hidden">
+				<div class="card-img-reveal bg-white w-full h-full absolute top-0 left-0 translate-y-full"></div>
 				<img src={content.cover} alt="" class="rounded-md aspect-video md:max-w-2xl w-full block origin-bottom" />
 			</div>
 		</div>
 	{/if}
 	{#if view === 'list'}
-		<div class="layout grid grid-cols-3 gap-6 py-8">
+		<div
+			in:slide={{ delay: 300, duration: slideDuration }}
+			out:slide={{ duration: slideDuration }}
+			class="layout grid grid-cols-3 gap-6 py-8">
 			<h3 class="text-body-base font-dm-sans text-brand-700">
 				{content.title}
 			</h3>
