@@ -2,7 +2,6 @@
 	import logo from '$lib/assets/fz-logo.svg';
 	import { lenis } from '$lib/lenis';
 	import { onMount } from 'svelte';
-	import gsap from '$lib/gsap';
 	import { afterNavigate, beforeNavigate } from '$app/navigation';
 	import { animateMenuButton, animateNavbar, animatePanelOpen } from '$lib/animations/hero';
 	import { page } from '$app/stores';
@@ -11,13 +10,13 @@
 
 	const navigationLinks = [
 		{ label: 'About', href: '/about' },
-		{ label: 'Project', href: '#projects' },
+		{ label: 'Project', href: '/project' },
 		{ label: 'Contact', href: '#contact' }
 	];
 
 	const navigationMobileLinks = [
 		{ label: 'About', href: '/about' },
-		{ label: 'Project', href: '#projects' },
+		{ label: 'Project', href: '/project' },
 		{ label: 'Contact', href: '/#contact' },
 		{ label: 'Credits', href: '/credits' }
 	];

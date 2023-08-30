@@ -4,7 +4,7 @@
 	import Header from '$lib/components/header.svelte';
 	import { lenis, loadLenis } from '$lib/lenis';
 	import gsap, { ScrollTrigger } from '$lib/gsap';
-	import { onMount } from 'svelte';
+	import { afterUpdate, onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { writable } from 'svelte/store';
 	import { afterNavigate } from '$app/navigation';
@@ -54,6 +54,10 @@
 			lenis.scrollTo(0);
 		}
 	});
+
+	afterUpdate(() => {
+		ScrollTrigger.refresh();
+	});
 </script>
 
 <svelte:head>
@@ -82,7 +86,7 @@
 </svelte:head>
 
 {#if $preloading}
-	<div id="preloader" class="fixed inset-0 bg-white z-[1000] flex justify-center items-center min-h-screen w-full">
+	<div id="preloader" class="fixed inset-0 bg-white z-[1000] flex justify-center items-center h-screen w-full">
 		<div
 			id="preloader-container"
 			class="flex items-center justify-center flex-col gap-4 text-brand-600 mx-auto sm:flex-row">
@@ -101,7 +105,8 @@
 		<div
 			in:fade={{ duration: 300, delay: 500 }}
 			out:fade={{ duration: 200 }}
-			on:introend={() => ScrollTrigger.refresh()}>
+			on:introend={() => ScrollTrigger.refresh()}
+			on:outroend={() => ScrollTrigger.refresh()}>
 			<slot />
 		</div>
 	{/key}
