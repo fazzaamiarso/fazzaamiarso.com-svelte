@@ -1,6 +1,7 @@
 <script lang="ts">
 	import logo from '$lib/assets/fz-logo.svg';
 	import { lenis } from '$lib/lenis';
+	import gsap from '$lib/gsap';
 	import { onMount } from 'svelte';
 	import { afterNavigate, beforeNavigate } from '$app/navigation';
 	import { animateMenuButton, animateNavbar, animatePanelOpen } from '$lib/animations/hero';
@@ -14,12 +15,7 @@
 		{ label: 'Contact', href: '#contact' }
 	];
 
-	const navigationMobileLinks = [
-		{ label: 'About', href: '/about' },
-		{ label: 'Project', href: '/project' },
-		{ label: 'Contact', href: '/#contact' },
-		{ label: 'Credits', href: '/credits' }
-	];
+	const navigationMobileLinks = [...navigationLinks, { label: 'Credits', href: '/credits' }];
 
 	$: currentPath = $page.url.pathname;
 
@@ -81,6 +77,13 @@
 					<li class="text-heading-3 group">
 						<div data-animate="separator" class="w-screen absolute left-0 bg-gray-800 h-px"></div>
 						<a
+							on:click={async (e) => {
+								if (link.href.includes('#')) {
+									e.preventDefault();
+									toggleMenu();
+									lenis.scrollTo(link.href);
+								}
+							}}
 							data-animate="nav-link"
 							class={clsx('w-11/12 mx-auto block py-6', isActive ? 'text-brand-600' : 'text-gray-800')}
 							href={link.href}>{link.label}</a>
@@ -106,8 +109,13 @@
 				{#each navigationLinks as link}
 					{@const isActive = currentPath.includes(link.href)}
 					<li>
-						<!-- TODO: clicking on in page anchor still buggy -->
 						<a
+							on:click={async (e) => {
+								if (link.href.includes('#')) {
+									e.preventDefault();
+									lenis.scrollTo(link.href);
+								}
+							}}
 							href={link.href}
 							class={clsx(
 								'text-body-lg',
