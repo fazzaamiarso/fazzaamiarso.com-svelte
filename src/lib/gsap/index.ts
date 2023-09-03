@@ -5,6 +5,7 @@ import { browser } from '$app/environment';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import CustomEase from 'gsap/dist/CustomEase';
+import { horizontalLoop } from './horizontal-loop';
 
 if (browser) {
 	gsap.registerPlugin(ScrollTrigger);
@@ -17,5 +18,5 @@ function createCustomEase() {
 	CustomEase.create('quintic.out', '0.22, 1, 0.36, 1');
 }
 
-export { ScrollTrigger, CustomEase };
+export { ScrollTrigger, CustomEase, horizontalLoop };
 export default gsap;
