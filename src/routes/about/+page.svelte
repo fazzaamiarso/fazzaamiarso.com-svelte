@@ -1,9 +1,9 @@
 <script lang="ts">
 	import mePic from '$lib/assets/fazza-about.png';
-	import gsap, { horizontalLoop } from '$lib/gsap';
+	import gsap, { horizontalLoop, ScrollTrigger } from '$lib/gsap';
 	import { onMount } from 'svelte';
 
-	onMount(async () => {
+	onMount(() => {
 		const marquees = gsap.utils.toArray<HTMLElement>('.marquee');
 
 		marquees.forEach((marquee, idx) => {
@@ -52,6 +52,34 @@
 				},
 				invalidateOnRefresh: true
 			}
+		});
+
+		// Credits from https://codepen.io/snorkltv/pen/vYVBPJq?editors=1010
+		ScrollTrigger.create({
+			trigger: '.gallery',
+			pin: '.right',
+			start: 'top top',
+			end: 'bottom bottom',
+			markers: true
+		});
+
+		const details = gsap.utils.toArray<HTMLElement>('.content:not(:first-child)');
+		const photos = gsap.utils.toArray<HTMLElement>('.photo:not(:first-child)');
+		const allPhotos = gsap.utils.toArray<HTMLElement>('.photo');
+
+		gsap.set(photos, { yPercent: 101 });
+
+		details.forEach((detail, index) => {
+			let headline = detail.querySelector('h3');
+			let animation = gsap.timeline().to(photos[index], { yPercent: 0 }).set(allPhotos[index], { autoAlpha: 0 });
+			ScrollTrigger.create({
+				trigger: headline,
+				start: 'top 80%',
+				end: 'top 50%',
+				animation: animation,
+				scrub: true,
+				markers: true
+			});
 		});
 	});
 </script>
@@ -123,8 +151,54 @@
 	</div>
 </section>
 <section class="pt-32 layout">
-	<p class="text-body-xl">
+	<p class="text-body-xl mb-16">
 		I strive to help and guide others on their Web Development journey. Why? It’s because I know how challenging it’s to
 		learn web development, especially if they don’t have mentor or guidance.
 	</p>
+	<h2 class="text-heading-2">How?</h2>
+	<div class="gallery flex justify-between">
+		<div class="left ring-1">
+			<div class="content h-screen flex items-center">
+				<div>
+					<h3 class="text-heading-3 mb-2">Writing</h3>
+					<p class="text-body-base">
+						Cras mollis, ante quis sagittis vestibulum, ipsum sem auctor purus, sit amet tristique odio elit vel ipsum.
+						Donec bibendum bibendum semper. Etiam at nulla mi. Sed dapibus pretium turpis at iaculis. Vestibulum ante
+						ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec hendrerit mi eu ligula tempus,
+						malesuada condimentum enim ullamcorper. Donec in dictum neque.
+					</p>
+				</div>
+			</div>
+			<div class="content h-screen flex items-center">
+				<div>
+					<h3 class="text-heading-3 mb-2">Reviewing</h3>
+					<p class="text-body-base">
+						Cras mollis, ante quis sagittis vestibulum, ipsum sem auctor purus, sit amet tristique odio elit vel ipsum.
+						Donec bibendum bibendum semper. Etiam at nulla mi. Sed dapibus pretium turpis at iaculis. Vestibulum ante
+						ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec hendrerit mi eu ligula tempus,
+						malesuada condimentum enim ullamcorper. Donec in dictum neque.
+					</p>
+				</div>
+			</div>
+
+			<div class="content h-screen flex items-center">
+				<div>
+					<h3 class="text-heading-3 mb-2">Mentoring</h3>
+					<p class="text-body-base">
+						Cras mollis, ante quis sagittis vestibulum, ipsum sem auctor purus, sit amet tristique odio elit vel ipsum.
+						Donec bibendum bibendum semper. Etiam at nulla mi. Sed dapibus pretium turpis at iaculis. Vestibulum ante
+						ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec hendrerit mi eu ligula tempus,
+						malesuada condimentum enim ullamcorper. Donec in dictum neque.
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="right h-screen ring-1 flex flex-col justify-center">
+			<div class="relative overflow-hidden w-40 h-40">
+				<div class="photo absolute w-full h-full bg-brand-500"></div>
+				<div class="photo absolute w-full h-full bg-brand-700"></div>
+				<div class="photo absolute w-full h-full bg-brand-900"></div>
+			</div>
+		</div>
+	</div>
 </section>
