@@ -3,7 +3,7 @@
 	import gsap, { horizontalLoop } from '$lib/gsap';
 	import { onMount } from 'svelte';
 
-	onMount(() => {
+	onMount(async () => {
 		const marquees = gsap.utils.toArray<HTMLElement>('.marquee');
 
 		marquees.forEach((marquee, idx) => {
@@ -26,23 +26,31 @@
 			}
 		});
 
+		const horizontalContainer = document.querySelector<HTMLElement>('.h-timeline .h-container');
 		const horizontalPanels = gsap.utils.toArray<HTMLElement>('.h-panel');
-
-		const timelineLength = document.querySelector<HTMLElement>('.h-timeline .h-container')?.scrollWidth ?? 0;
 
 		gsap.to(horizontalPanels, {
 			ease: 'none',
 			x: () =>
 				-1 *
-				(timelineLength -
-					(document.querySelector<HTMLElement>('.h-timeline .h-container')?.getBoundingClientRect()?.left ?? 0)),
+				((horizontalContainer?.offsetWidth ?? 0) -
+					window.innerWidth +
+					(horizontalContainer?.getBoundingClientRect().left ?? 0) * 2),
 			scrollTrigger: {
 				pin: true,
-				trigger: '.h-timeline',
-				scrub: true,
+				trigger: horizontalContainer,
+				scrub: 1,
 				markers: true,
-				end: () => '+=' + (timelineLength - window.innerWidth),
-				onUpdate: (self) => console.log(self.progress)
+				start: 'top 20%',
+				end: () => {
+					return (
+						'+=' +
+						((horizontalContainer?.offsetWidth ?? 0) -
+							window.innerWidth +
+							(horizontalContainer?.getBoundingClientRect().left ?? 0) * 2)
+					);
+				},
+				invalidateOnRefresh: true
 			}
 		});
 	});
