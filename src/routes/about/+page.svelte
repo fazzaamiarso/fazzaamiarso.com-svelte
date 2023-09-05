@@ -156,8 +156,8 @@
 		learn web development, especially if they don’t have mentor or guidance.
 	</p>
 	<h2 class="text-heading-2">How?</h2>
-	<div class="gallery flex justify-between">
-		<div class="left ring-1">
+	<div class="gallery grid grid-cols-2 gap-32">
+		<div class="left">
 			<div class="content h-screen flex items-center">
 				<div>
 					<h3 class="text-heading-3 mb-2">Writing</h3>
@@ -193,12 +193,31 @@
 				</div>
 			</div>
 		</div>
-		<div class="right h-screen ring-1 flex flex-col justify-center">
-			<div class="relative overflow-hidden w-40 h-40">
-				<div class="photo absolute w-full h-full bg-brand-500"></div>
-				<div class="photo absolute w-full h-full bg-brand-700"></div>
-				<div class="photo absolute w-full h-full bg-brand-900"></div>
+		<div class="right h-screen flex flex-col justify-center">
+			<div class="relative overflow-hidden w-full h-1/2">
+				<img
+					src="https://images.unsplash.com/photo-1693523783087-e75073f36860?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
+					class="photo absolute w-full h-full rounded-md block"
+					alt="" />
+
+				<img
+					src="https://images.unsplash.com/photo-1692380872430-29868bdc8ddd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
+					class="photo absolute w-full h-full rounded-md block"
+					alt="" />
+
+				<img
+					src="https://images.unsplash.com/photo-1687360441027-27e70655b27e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1966&q=80"
+					class="photo absolute w-full h-full rounded-md block"
+					alt="" />
 			</div>
 		</div>
 	</div>
+</section>
+<section class="h-timeline pt-24 layout">
+	<h2 class="text-heading-2 mb-4">Languages I speak</h2>
+	<p class="text-body-lg">
+		Since I was a child, I’m fascinated by the power that languages hold to connect with people simply by speaking a
+		person’s native language. I also believe, understanding the culture can open the door to people’s heart. It
+		motivated me to learn and understand different language and culture.
+	</p>
 </section>
