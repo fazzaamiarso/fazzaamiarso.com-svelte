@@ -33,11 +33,11 @@
 	});
 </script>
 
-<p class="text-body-xl mb-16">
+<p class="text-body-lg md:text-body-xl mb-16">
 	I strive to help and guide others on their Web Development journey. Why? It’s because I know how challenging it’s to
 	learn web development, especially if they don’t have mentor or guidance.
 </p>
-<h2 class="text-heading-2">How?</h2>
+<h2 class="text-heading-4 sm:text-heading-3 md:text-heading-2">How?</h2>
 <div class="gallery grid grid-cols-2 gap-32">
 	<div class="left">
 		<div class="content h-screen flex items-center">

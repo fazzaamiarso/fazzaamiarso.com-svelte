@@ -33,7 +33,6 @@
 	});
 </script>
 
-<h2 class="text-heading-2">How it all started?</h2>
 <div class="h-container flex flex-nowrap ml-auto w-max py-32 gap-32">
 	<div class="h-panel ring-brand-700">
 		<p class="text-body-xl">

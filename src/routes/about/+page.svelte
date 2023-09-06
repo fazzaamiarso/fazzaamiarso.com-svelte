@@ -32,30 +32,31 @@
 <section class="flex flex-col pt-32 h-screen overflow-hidden">
 	<Hero />
 </section>
-<section class="flex items-center justify-between pt-32 layout">
+<section class="flex flex-col lg:flex-row justify-between pt-32 layout gap-8">
 	<div class="basis-1/2">
-		<h2 class="text-heading-1">I'm Fazza</h2>
-		<p class="text-heading-3 font-dm-sans">A Fullstack-able Frontend developer from Indonesia.</p>
+		<h2 class="text-heading-3 md:text-heading-1">I'm Fazza</h2>
+		<p class="text-heading-5 md:text-heading-3 font-dm-sans">A Fullstack-able Frontend developer from Indonesia.</p>
 	</div>
-	<img src={mePic} alt="" />
+	<img src={mePic} alt="" class="max-w-sm self-center" />
 </section>
-<section class="flex items-center justify-between pt-32 layout">
-	<h2 class="text-heading-2">Why?</h2>
-	<p class="text-body-xl basis-1/2">
+<section class="flex flex-col gap-2 sm:gap-20 sm:flex-row justify-between pt-32 layout">
+	<h2 class="text-heading-4 sm:text-heading-3 md:text-heading-2">Why?</h2>
+	<p class="text-body-lg md:text-body-xl">
 		I love building stuff on the web because I can freely express my Idea. It’s like having your own tiny space that
 		show you exist in this world. Sharing knowledge and opinion, build useful application, craft stunning visual
 		experience, make new friends and connections.
 	</p>
 </section>
 <section class="h-timeline pt-40 layout">
+	<h2 class="text-heading-4 sm:text-heading-3 md:text-heading-2">How it all started?</h2>
 	<Timeline />
 </section>
 <section class="pt-32 layout">
 	<Help />
 </section>
 <section class="h-timeline pt-24 pb-32 layout">
-	<h2 class="text-heading-2 mb-4">Languages I speak</h2>
-	<p class="text-body-lg mb-10">
+	<h2 class="text-heading-4 sm:text-heading-3 md:text-heading-2 mb-4">Languages I speak</h2>
+	<p class="text-body-lg md:text-body-xl mb-10">
 		Since I was a child, I’m fascinated by the power that languages hold to connect with people simply by speaking a
 		person’s native language. I also believe, understanding the culture can open the door to people’s heart. It
 		motivated me to learn and understand different language and culture.
