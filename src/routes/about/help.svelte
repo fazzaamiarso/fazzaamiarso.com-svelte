@@ -13,6 +13,15 @@
 				'https://images.unsplash.com/photo-1693523783087-e75073f36860?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80'
 		},
 		{
+			title: 'Answering',
+			description: `Cras mollis, ante quis sagittis vestibulum, ipsum sem auctor purus, sit amet tristique odio elit vel ipsum.
+					Donec bibendum bibendum semper. Etiam at nulla mi. Sed dapibus pretium turpis at iaculis. Vestibulum ante
+					ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec hendrerit mi eu ligula tempus,
+					malesuada condimentum enim ullamcorper. Donec in dictum neque.`,
+			imgSrc:
+				'https://images.unsplash.com/photo-1682687221038-404cb8830901?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80'
+		},
+		{
 			title: 'Reviewing',
 			description: `Cras mollis, ante quis sagittis vestibulum, ipsum sem auctor purus, sit amet tristique odio elit vel ipsum.
 					Donec bibendum bibendum semper. Etiam at nulla mi. Sed dapibus pretium turpis at iaculis. Vestibulum ante
@@ -103,9 +112,9 @@
 		{/each}
 	</div>
 	<div class="right h-screen flex flex-col justify-center">
-		<div class="relative overflow-hidden w-full h-1/2">
+		<div class="relative overflow-hidden w-full h-1/2 aspect-video">
 			{#each contents as content}
-				<img src={content.imgSrc} class="photo absolute w-full h-full rounded-md block" alt="" />
+				<img src={content.imgSrc} class="photo absolute w-full h-full rounded-md block object-cover" alt="" />
 			{/each}
 		</div>
 	</div>
