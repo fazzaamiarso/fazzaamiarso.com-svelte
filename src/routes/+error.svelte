@@ -80,7 +80,7 @@
 	<div>
 		<figure>
 			<img src={notFoundGif} alt="" class="rounded-lg mb-1" />
-			<figcaption class="italic text-center">Gojo Satorou from Jujutsu Kaisen</figcaption>
+			<figcaption class="italic text-center">Gojo Satoru from Jujutsu Kaisen</figcaption>
 		</figure>
 	</div>
 </div>
