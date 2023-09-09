@@ -48,7 +48,7 @@
 	</p>
 </section>
 <section class="h-timeline pt-40 layout">
-	<h2 class="text-heading-4 sm:text-heading-3 md:text-heading-2">How it all started?</h2>
+	<h2 class="text-heading-4 sm:text-heading-3 md:text-heading-2 mb-4">How it all started?</h2>
 	<Timeline />
 </section>
 <section class="pt-32 layout">

@@ -1,6 +1,10 @@
 <script lang="ts">
 	import gsap, { ScrollTrigger } from '$lib/gsap';
 	import { onMount } from 'svelte';
+	import feMentor from '$lib/assets/fe-mentor.png';
+	import dicoding from '$lib/assets/dicoding-profile.png';
+	import sib4 from '$lib/assets/sib4.png';
+	import devDashboard from '$lib/assets/dev-dashboard.png';
 
 	const contents = [
 		{
@@ -9,8 +13,7 @@
 					Donec bibendum bibendum semper. Etiam at nulla mi. Sed dapibus pretium turpis at iaculis. Vestibulum ante
 					ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec hendrerit mi eu ligula tempus,
 					malesuada condimentum enim ullamcorper. Donec in dictum neque.`,
-			imgSrc:
-				'https://images.unsplash.com/photo-1693523783087-e75073f36860?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80'
+			imgSrc: devDashboard
 		},
 		{
 			title: 'Answering',
@@ -18,8 +21,7 @@
 					Donec bibendum bibendum semper. Etiam at nulla mi. Sed dapibus pretium turpis at iaculis. Vestibulum ante
 					ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec hendrerit mi eu ligula tempus,
 					malesuada condimentum enim ullamcorper. Donec in dictum neque.`,
-			imgSrc:
-				'https://images.unsplash.com/photo-1682687221038-404cb8830901?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80'
+			imgSrc: feMentor
 		},
 		{
 			title: 'Reviewing',
@@ -27,8 +29,7 @@
 					Donec bibendum bibendum semper. Etiam at nulla mi. Sed dapibus pretium turpis at iaculis. Vestibulum ante
 					ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec hendrerit mi eu ligula tempus,
 					malesuada condimentum enim ullamcorper. Donec in dictum neque.`,
-			imgSrc:
-				'https://images.unsplash.com/photo-1692380872430-29868bdc8ddd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80'
+			imgSrc: dicoding
 		},
 		{
 			title: 'Mentoring',
@@ -36,8 +37,7 @@
 					Donec bibendum bibendum semper. Etiam at nulla mi. Sed dapibus pretium turpis at iaculis. Vestibulum ante
 					ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec hendrerit mi eu ligula tempus,
 					malesuada condimentum enim ullamcorper. Donec in dictum neque.`,
-			imgSrc:
-				'https://images.unsplash.com/photo-1687360441027-27e70655b27e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1966&q=80'
+			imgSrc: sib4
 		}
 	];
 
@@ -50,8 +50,7 @@
 				trigger: '.gallery',
 				pin: '.right',
 				start: 'top top',
-				end: 'bottom bottom',
-				markers: true
+				end: 'bottom bottom'
 			});
 
 			const details = gsap.utils.toArray<HTMLElement>('.content:not(:first-child)');
@@ -68,8 +67,7 @@
 					start: 'top 80%',
 					end: 'top 50%',
 					animation: animation,
-					scrub: true,
-					markers: true
+					scrub: true
 				});
 			});
 		});
@@ -85,10 +83,10 @@
 <h2 class="text-heading-4 sm:text-heading-3 md:text-heading-2 mb-12">How?</h2>
 
 <!-- MOBILE -->
-<ul class="lg:hidden space-y-12">
+<ul class="lg:hidden divide-y-[1px]">
 	{#each contents as content}
-		<li class="">
-			<img src={content.imgSrc} alt="" class="rounded-md mb-4 w-60 max-h-28 object-cover" />
+		<li class="py-12">
+			<img src={content.imgSrc} alt="" class="rounded-md mb-4 w-full max-w-xs aspect-square object-cover" />
 			<h3 class="text-heading-5 mb-2">{content.title}</h3>
 			<p class="text-body-base">
 				{content.description}
@@ -111,8 +109,8 @@
 			</div>
 		{/each}
 	</div>
-	<div class="right h-screen flex flex-col justify-center">
-		<div class="relative overflow-hidden w-full h-1/2 aspect-video">
+	<div class="right h-screen flex flex-col justify-center items-center w-full">
+		<div class="relative overflow-hidden aspect-square w-full">
 			{#each contents as content}
 				<img src={content.imgSrc} class="photo absolute w-full h-full rounded-md block object-cover" alt="" />
 			{/each}

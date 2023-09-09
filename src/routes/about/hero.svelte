@@ -21,8 +21,7 @@
 				trigger: '.scroll-more',
 				start: 'bottom bottom',
 				end: '+=1',
-				toggleActions: 'play none reverse none',
-				markers: true
+				toggleActions: 'play none reverse none'
 			}
 		});
 	});
