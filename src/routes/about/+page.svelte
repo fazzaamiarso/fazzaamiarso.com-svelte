@@ -4,6 +4,8 @@
 	import Help from './help.svelte';
 	import Hero from './hero.svelte';
 	import Timeline from './timeline.svelte';
+	import gsap, { ScrollTrigger } from '$lib/gsap';
+	import { onMount } from 'svelte';
 
 	const languages = [
 		{
@@ -23,30 +25,67 @@
 			flagSrc: southKorea
 		},
 		{
-			lang: 'Chinese',
+			lang: 'Mandarin',
 			flagSrc: china
 		}
 	];
+
+	onMount(() => {
+		const introTl = gsap
+			.timeline()
+			.from('.intro img', {
+				yPercent: 50
+			})
+			.from(
+				'.intro .text',
+				{
+					yPercent: 20
+				},
+				'<'
+			);
+
+		const bgTween = gsap.to('main', { backgroundColor: '#050415', color: 'white' });
+
+		ScrollTrigger.create({
+			trigger: '.intro',
+			markers: true,
+			animation: bgTween,
+			start: 'top 80%',
+			end: 'bottom 20%',
+			toggleActions: 'play reverse play reverse'
+		});
+
+		ScrollTrigger.create({
+			trigger: '.intro',
+			scrub: 1,
+			animation: introTl
+		});
+	});
 </script>
 
 <section class="flex flex-col pt-32 h-screen overflow-hidden">
 	<Hero />
 </section>
-<section class="flex flex-col lg:flex-row justify-between pt-32 layout gap-8">
-	<div class="basis-1/2">
-		<h2 class="text-heading-3 md:text-heading-1">I'm Fazza</h2>
-		<p class="text-heading-5 md:text-heading-3 font-dm-sans">A Fullstack-able Frontend developer from Indonesia.</p>
+<section class="intro min-h-screen pt-32">
+	<div class="flex items-center">
+		<div class="layout flex flex-col lg:flex-row items-center justify-between gap-8">
+			<div class="text basis-1/2">
+				<h2 class="text-heading-3 md:text-heading-1">I'm Fazza</h2>
+				<p class="text-heading-5 md:text-heading-3 font-dm-sans">A Fullstack-able Frontend developer from Indonesia.</p>
+			</div>
+			<img src={mePic} alt="" class="max-w-sm self-center" />
+		</div>
 	</div>
-	<img src={mePic} alt="" class="max-w-sm self-center" />
+	<div class="flex flex-col gap-2 sm:gap-20 sm:flex-row justify-between pt-32 layout">
+		<h3 class="text-heading-4 sm:text-heading-3 md:text-heading-2">Why?</h3>
+		<p class="text-body-lg md:text-body-xl">
+			I love building stuff on the web because I can freely express my Idea. It’s like having your own tiny space that
+			show you exist in this world. Sharing knowledge and opinion, build useful application, craft stunning visual
+			experience, make new friends and connections.
+		</p>
+	</div>
 </section>
-<section class="flex flex-col gap-2 sm:gap-20 sm:flex-row justify-between pt-32 layout">
-	<h2 class="text-heading-4 sm:text-heading-3 md:text-heading-2">Why?</h2>
-	<p class="text-body-lg md:text-body-xl">
-		I love building stuff on the web because I can freely express my Idea. It’s like having your own tiny space that
-		show you exist in this world. Sharing knowledge and opinion, build useful application, craft stunning visual
-		experience, make new friends and connections.
-	</p>
-</section>
+
 <section class="h-timeline pt-40 layout">
 	<h2 class="text-heading-4 sm:text-heading-3 md:text-heading-2 mb-4">How it all started?</h2>
 	<Timeline />

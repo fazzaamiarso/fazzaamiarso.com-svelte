@@ -47,6 +47,7 @@
 		"clsx": "^2.0.0",
 		"focus-trap": "^7.5.2",
 		"gsap": "^3.12.2",
-		"lucide-svelte": "^0.265.0"
+		"lucide-svelte": "^0.265.0",
+		"split-type": "^0.3.3"
 	}
 }
