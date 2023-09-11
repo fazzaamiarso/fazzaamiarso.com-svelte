@@ -17,7 +17,10 @@ async function getContents() {
 		}
 	}
 
-	contents = contents.sort((first, second) => new Date(second.date).getTime() - new Date(first.date).getTime());
+	contents = contents.sort(
+		(first, second) =>
+			new Date(second.date).getTime() - new Date(first.date).getTime()
+	);
 
 	return contents;
 }

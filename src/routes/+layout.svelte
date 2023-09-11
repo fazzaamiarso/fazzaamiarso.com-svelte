@@ -82,12 +82,18 @@
 </svelte:head>
 
 {#if $preloading}
-	<div id="preloader" class="fixed inset-0 bg-white z-[1000] flex justify-center items-center h-screen w-full">
+	<div
+		id="preloader"
+		class="fixed inset-0 bg-white z-[1000] flex justify-center items-center h-screen w-full">
 		<div
 			id="preloader-container"
 			class="flex items-center justify-center flex-col gap-4 text-brand-600 mx-auto sm:flex-row">
-			<p class="text-body-xl invisible whitespace-nowrap font-bold">Fazza Razaq Amiarso</p>
-			<p class="text-body-xl invisible whitespace-nowrap text-gray-800">Portfolio</p>
+			<p class="text-body-xl invisible whitespace-nowrap font-bold">
+				Fazza Razaq Amiarso
+			</p>
+			<p class="text-body-xl invisible whitespace-nowrap text-gray-800">
+				Portfolio
+			</p>
 		</div>
 	</div>
 {/if}

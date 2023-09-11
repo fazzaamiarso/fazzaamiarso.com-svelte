@@ -13,17 +13,22 @@
 <footer id="contact" class="">
 	<div class="py-24 border-y-[1px]">
 		<div class="layout">
-			<h2 class="text-heading-4 sm:text-heading-3 font-bold text-brand-900 mb-2">
+			<h2
+				class="text-heading-4 sm:text-heading-3 font-bold text-brand-900 mb-2">
 				Let’s talk or build awesome things together!
 			</h2>
 			<p class="sm:text-body-xl text-body-base text-gray-600 mb-12">
-				I’m currently looking for Frontend Developer Role. Don’t hesitate to reach me out to ask questions, discussions,
-				or just to say hello.
+				I’m currently looking for Frontend Developer Role. Don’t hesitate to
+				reach me out to ask questions, discussions, or just to say hello.
 			</p>
 			<ul class="flex flex-wrap gap-16 items-center">
 				{#each socialLinks as link}
 					<li class="text-body-lg sm:text-body-xl text-gray-800 group">
-						<a href={link.href} referrerpolicy="no-referrer" target="_blank" class="flex items-center gap-1 group"
+						<a
+							href={link.href}
+							referrerpolicy="no-referrer"
+							target="_blank"
+							class="flex items-center gap-1 group"
 							>{link.label}
 							<span class="arrow-container relative overflow-hidden">
 								<MoveUpRight
@@ -47,15 +52,19 @@
 			</ul>
 		</div>
 	</div>
-	<div class="flex flex-wrap flex-col justify-between py-12 layout max-md:gap-6 md:flex-row md:items-center">
+	<div
+		class="flex flex-wrap flex-col justify-between py-12 layout max-md:gap-6 md:flex-row md:items-center">
 		<div class="flex gap-16 items-center">
 			<a
 				href={config.resumeUrl}
 				referrerpolicy="no-referrer"
 				target="_blank"
 				class="text-body-lg sm:text-body-xl text-gray-800">Resume</a>
-			<a href="/credits" class="text-body-lg sm:text-body-xl text-gray-800">Credits</a>
+			<a href="/credits" class="text-body-lg sm:text-body-xl text-gray-800"
+				>Credits</a>
 		</div>
-		<div class="text-body-sm sm:text-body-base text-gray-800">© 2023 Fazza Razaq Amiarso -- Bogor, Indonesia</div>
+		<div class="text-body-sm sm:text-body-base text-gray-800">
+			© 2023 Fazza Razaq Amiarso -- Bogor, Indonesia
+		</div>
 	</div>
 </footer>

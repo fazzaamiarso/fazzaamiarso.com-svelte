@@ -43,8 +43,12 @@
 			function setPosition(e: MouseEvent) {
 				const scopedQuery = gsap.utils.selector(backLink);
 
-				const x = e.clientX - (e.target as HTMLAnchorElement).getBoundingClientRect().left;
-				const y = e.clientY - (e.target as HTMLAnchorElement).getBoundingClientRect().top;
+				const x =
+					e.clientX -
+					(e.target as HTMLAnchorElement).getBoundingClientRect().left;
+				const y =
+					e.clientY -
+					(e.target as HTMLAnchorElement).getBoundingClientRect().top;
 
 				gsap.set(scopedQuery('.ripple'), {
 					left: x,
@@ -62,7 +66,8 @@
 <svelte:head>
 	<title>404 - Page Not Found</title>
 </svelte:head>
-<div class="layout flex flex-col justify-center items-center gap-8 h-screen lg:flex-row lg:gap-32">
+<div
+	class="layout flex flex-col justify-center items-center gap-8 h-screen lg:flex-row lg:gap-32">
 	<div class="flex flex-col items-center lg:items-start">
 		<h1 class="text-heading-1 text-brand-500">404</h1>
 		<h2 class="font-dm-sans text-heading-3 text-gray-800">Page not found</h2>
@@ -80,7 +85,9 @@
 	<div>
 		<figure>
 			<img src={notFoundGif} alt="" class="rounded-lg mb-1" />
-			<figcaption class="italic text-center">Gojo Satoru from Jujutsu Kaisen</figcaption>
+			<figcaption class="italic text-center">
+				Gojo Satoru from Jujutsu Kaisen
+			</figcaption>
 		</figure>
 	</div>
 </div>

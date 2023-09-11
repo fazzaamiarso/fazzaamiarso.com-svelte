@@ -1,6 +1,8 @@
 <script lang="ts">
 	import gsap from '$lib/gsap';
-	import BiggerPicture, { type BiggerPictureInstance } from 'bigger-picture/svelte';
+	import BiggerPicture, {
+		type BiggerPictureInstance
+	} from 'bigger-picture/svelte';
 	import 'bigger-picture/css';
 
 	import { onMount } from 'svelte';
@@ -68,14 +70,25 @@
 
 	function handleOpen(e: MouseEvent) {
 		e.preventDefault();
-		bp.open({ items: container.querySelectorAll('a'), el: e.currentTarget as HTMLElement });
+		bp.open({
+			items: container.querySelectorAll('a'),
+			el: e.currentTarget as HTMLElement
+		});
 	}
 </script>
 
 <div class="gallery" bind:this={container}>
 	{#each images as img}
-		<a href={img.src} data-img={img.src} data-thumb={img.src} data-alt="" on:click={handleOpen}>
-			<img src={img.src} alt="" class="ring-1 ring-gray-200 rounded-lg cursor-zoom-in lg:cursor-none" />
+		<a
+			href={img.src}
+			data-img={img.src}
+			data-thumb={img.src}
+			data-alt=""
+			on:click={handleOpen}>
+			<img
+				src={img.src}
+				alt=""
+				class="ring-1 ring-gray-200 rounded-lg cursor-zoom-in lg:cursor-none" />
 		</a>
 	{/each}
 	<div

@@ -9,7 +9,10 @@
 		animateSkillSections
 	} from '$lib/animations/hero';
 	import { afterNavigate } from '$app/navigation';
-	import { INPAGE_TRANSITION_DURATION, PRELOADER_DURATION } from '$lib/constants/animation';
+	import {
+		INPAGE_TRANSITION_DURATION,
+		PRELOADER_DURATION
+	} from '$lib/constants/animation';
 	import ProjectCard from '$lib/components/project-card.svelte';
 	import gsap from '$lib/gsap';
 	import Cursor from './cursor.svelte';
@@ -30,7 +33,8 @@
 
 	afterNavigate(({ from, type }) => {
 		if (from?.route.id === '/') return;
-		const delay = type === 'enter' ? PRELOADER_DURATION : INPAGE_TRANSITION_DURATION;
+		const delay =
+			type === 'enter' ? PRELOADER_DURATION : INPAGE_TRANSITION_DURATION;
 		animateBottomSection().delay(delay);
 		animateHeroText().delay(delay);
 	});
@@ -67,7 +71,10 @@
 					if (cursorContent) cursorContent.$destroy();
 					const contentType = (e.target as HTMLElement).dataset.type;
 
-					cursorContent = new Cursor({ target: cursor, props: { type: contentType } });
+					cursorContent = new Cursor({
+						target: cursor,
+						props: { type: contentType }
+					});
 
 					gsap.to(cursor, {
 						duration: 0.2,
@@ -106,7 +113,9 @@
 	id="cursor"
 	class="fixed z-[1000] top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-32 h-32 p-6 bg-brand-700 rounded-full scale-0 pointer-events-none">
 </div>
-<div id="hero" class="layout mb-32 relative flex flex-col justify-center items-center">
+<div
+	id="hero"
+	class="layout mb-32 relative flex flex-col justify-center items-center">
 	<h1
 		id="hero-text"
 		class="font-fira-sans mx-auto text-gray-700 text-heading-4 sm:text-heading-3 min-[968px]:text-heading-2 xl:text-heading-1">
@@ -114,17 +123,23 @@
 			<a
 				href="/about"
 				data-type="about"
-				class="text-brand-500 hover:text-brand-600 transition-colors lg:hover:cursor-none">Frontend Developer,</a>
+				class="text-brand-500 hover:text-brand-600 transition-colors lg:hover:cursor-none"
+				>Frontend Developer,</a>
 		</p>
 		<p>
 			<span class="text">Who</span>
-			<a href="/#" data-type="crafts" class="text-brand-500 hover:text-brand-600 transition-colors lg:hover:cursor-none"
+			<a
+				href="/#"
+				data-type="crafts"
+				class="text-brand-500 hover:text-brand-600 transition-colors lg:hover:cursor-none"
 				>Crafts</a>
 			<span class="text">Visual Experience</span>
 		</p>
 		<p>
 			<span class="text">and</span>
-			<span class="sometime inline-block relative text-body-base lg:text-body-xl">(sometimes)</span>
+			<span
+				class="sometime inline-block relative text-body-base lg:text-body-xl"
+				>(sometimes)</span>
 			<a
 				href={config.blogUrl}
 				target="_blank"
@@ -135,24 +150,31 @@
 		</p>
 		<p class="text">on the Web</p>
 	</h1>
-	<div id="hero-bottom-section" class="pb-8 absolute bottom-0 left-0 w-full flex items-end justify-between">
+	<div
+		id="hero-bottom-section"
+		class="pb-8 absolute bottom-0 left-0 w-full flex items-end justify-between">
 		<div class="flex flex-col items-start text-body-lg max-sm:hidden">
-			<span class="font-bold text-gray-800">Fullstack</span><span class="text-gray-600">capable</span>
+			<span class="font-bold text-gray-800">Fullstack</span><span
+				class="text-gray-600">capable</span>
 		</div>
 		<div class="">
-			<div class="inline-flex flex-col items-center text-body-base text-gray-800">
+			<div
+				class="inline-flex flex-col items-center text-body-base text-gray-800">
 				<MoveDown size="40" aria-hidden="true" class="animate-bounce" />
 				Scroll down
 			</div>
 		</div>
 		<div class=" flex flex-col items-start text-body-lg">
-			<span class="font-bold text-gray-800">Sharing</span><span class="text-gray-600">knowledge</span>
+			<span class="font-bold text-gray-800">Sharing</span><span
+				class="text-gray-600">knowledge</span>
 		</div>
 	</div>
 </div>
 
 <div class="">
-	<h2 id="projects" class="layout text-heading-3 lg:text-heading-2 font-bold text-brand-800 mb-8 md:mb-16">
+	<h2
+		id="projects"
+		class="layout text-heading-3 lg:text-heading-2 font-bold text-brand-800 mb-8 md:mb-16">
 		Selected Projects.
 	</h2>
 	<ul class="w-full flex flex-col items-start">
@@ -162,7 +184,10 @@
 	</ul>
 </div>
 <div class="layout py-16">
-	<h2 class="text-heading-3 lg:text-heading-2 font-bold text-brand-800 mb-8 md:mb-16">Technologies.</h2>
+	<h2
+		class="text-heading-3 lg:text-heading-2 font-bold text-brand-800 mb-8 md:mb-16">
+		Technologies.
+	</h2>
 	<SkillsList />
 </div>
 
