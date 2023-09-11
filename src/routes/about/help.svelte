@@ -5,6 +5,7 @@
 	import dicoding from '$lib/assets/dicoding-profile.png';
 	import sib4 from '$lib/assets/sib4.png';
 	import devDashboard from '$lib/assets/dev-dashboard.png';
+	import { ArrowBigDown } from 'lucide-svelte';
 
 	const contents = [
 		{
@@ -44,7 +45,7 @@
 	onMount(() => {
 		const mm = gsap.matchMedia();
 
-		mm.add('(min-width:1024px)', (ctx) => {
+		mm.add('(min-width:1024px)', () => {
 			// Credits from https://codepen.io/snorkltv/pen/vYVBPJq?editors=1010
 			ScrollTrigger.create({
 				trigger: '.gallery',
@@ -53,15 +54,22 @@
 				end: 'bottom bottom'
 			});
 
-			const details = gsap.utils.toArray<HTMLElement>('.content:not(:first-child)');
-			const photos = gsap.utils.toArray<HTMLElement>('.photo:not(:first-child)');
+			const details = gsap.utils.toArray<HTMLElement>(
+				'.content:not(:first-child)'
+			);
+			const photos = gsap.utils.toArray<HTMLElement>(
+				'.photo:not(:first-child)'
+			);
 			const allPhotos = gsap.utils.toArray<HTMLElement>('.photo');
 
 			gsap.set(photos, { yPercent: 101 });
 
 			details.forEach((detail, index) => {
 				let headline = detail.querySelector('h3');
-				let animation = gsap.timeline().to(photos[index], { yPercent: 0 }).set(allPhotos[index], { autoAlpha: 0 });
+				let animation = gsap
+					.timeline()
+					.to(photos[index], { yPercent: 0 })
+					.set(allPhotos[index], { autoAlpha: 0 });
 				ScrollTrigger.create({
 					trigger: headline,
 					start: 'top 80%',
@@ -72,21 +80,32 @@
 			});
 		});
 
-		return () => mm.kill();
+		return () => mm.revert();
 	});
 </script>
 
 <p class="text-body-lg md:text-body-xl mb-16">
-	I strive to help and guide others on their Web Development journey. Why? It’s because I know how challenging it’s to
-	learn web development, especially if they don’t have mentor or guidance.
+	I strive to help and guide others on their Web Development journey. Why? It’s
+	because I know how challenging it’s to learn web development, especially if
+	they don’t have mentor or guidance.
 </p>
-<h2 class="text-heading-4 sm:text-heading-3 md:text-heading-2 mb-12">How?</h2>
 
+<h3
+	class="text-heading-5 sm:text-heading-4 md:text-heading-3 flex items-center gap-1">
+	Here's how <ArrowBigDown
+		aria-hidden="true"
+		size="48"
+		strokeWidth={1}
+		class="max-sm:w-8" />
+</h3>
 <!-- MOBILE -->
 <ul class="lg:hidden divide-y-[1px]">
 	{#each contents as content}
-		<li class="py-12">
-			<img src={content.imgSrc} alt="" class="rounded-md mb-4 w-full max-w-xs aspect-square object-cover" />
+		<li class="py-4">
+			<img
+				src={content.imgSrc}
+				alt=""
+				class="rounded-md mb-4 w-full max-w-xs aspect-square object-contain" />
 			<h3 class="text-heading-5 mb-2">{content.title}</h3>
 			<p class="text-body-base">
 				{content.description}
@@ -112,7 +131,10 @@
 	<div class="right h-screen flex flex-col justify-center items-center w-full">
 		<div class="relative overflow-hidden aspect-square w-full">
 			{#each contents as content}
-				<img src={content.imgSrc} class="photo absolute w-full h-full rounded-md block object-cover" alt="" />
+				<img
+					src={content.imgSrc}
+					class="photo absolute w-full h-full rounded-md block object-contain bg-white"
+					alt="" />
 			{/each}
 		</div>
 	</div>

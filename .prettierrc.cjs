@@ -2,7 +2,7 @@ module.exports = {
 	useTabs: true,
 	singleQuote: true,
 	trailingComma: 'none',
-	printWidth: 120,
+	printWidth: 80,
 	bracketSameLine: true,
 	plugins: ['prettier-plugin-svelte', 'prettier-plugin-tailwindcss'],
 	overrides: [{ files: '*.svelte', options: { parser: 'svelte' } }],
