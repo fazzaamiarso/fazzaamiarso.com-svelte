@@ -1,5 +1,4 @@
 <script lang="ts">
-	import notFoundGif from '$lib/assets/gojo-satoru-min.gif';
 	import gsap from '$lib/gsap';
 	import { onMount } from 'svelte';
 
@@ -59,7 +58,7 @@
 			}
 		});
 
-		return () => mm.kill();
+		return () => mm.revert();
 	});
 </script>
 
@@ -82,12 +81,15 @@
 			></span>
 		</a>
 	</div>
-	<div>
-		<figure>
-			<img src={notFoundGif} alt="" class="rounded-lg mb-1" />
-			<figcaption class="italic text-center">
-				Gojo Satoru from Jujutsu Kaisen
-			</figcaption>
-		</figure>
+	<div class="flex flex-col items-center">
+		<video autoplay loop muted class="rounded-lg mb-1">
+			<source
+				src="https://res.cloudinary.com/dkiqn0gqg/image/upload/v1694473649/fazzaamiarso.com/about/gojo-satoru-min_y6nzyy.webm"
+				type="video/webm" />
+			<source
+				src="https://res.cloudinary.com/dkiqn0gqg/image/upload/v1694473649/fazzaamiarso.com/about/gojo-satoru-min_y6nzyy.mp4"
+				type="video/mp4" />
+		</video>
+		<span class="italic text-center">Gojo Satoru from Jujutsu Kaisen</span>
 	</div>
 </div>
