@@ -1,10 +1,6 @@
 <script lang="ts">
 	import gsap, { ScrollTrigger } from '$lib/gsap';
 	import { onMount } from 'svelte';
-	import feMentor from '$lib/assets/fe-mentor.png';
-	import dicoding from '$lib/assets/dicoding-profile.png';
-	import sib4 from '$lib/assets/sib4.png';
-	import devDashboard from '$lib/assets/dev-dashboard.png';
 	import { ArrowBigDown } from 'lucide-svelte';
 
 	const contents = [
@@ -14,7 +10,8 @@
 					Donec bibendum bibendum semper. Etiam at nulla mi. Sed dapibus pretium turpis at iaculis. Vestibulum ante
 					ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec hendrerit mi eu ligula tempus,
 					malesuada condimentum enim ullamcorper. Donec in dictum neque.`,
-			imgSrc: devDashboard
+			imgSrc:
+				'https://res.cloudinary.com/dkiqn0gqg/image/upload/f_auto,q_auto/v1694473645/fazzaamiarso.com/about/dev-dashboard_mnpdxg.png'
 		},
 		{
 			title: 'Answering',
@@ -22,7 +19,8 @@
 					Donec bibendum bibendum semper. Etiam at nulla mi. Sed dapibus pretium turpis at iaculis. Vestibulum ante
 					ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec hendrerit mi eu ligula tempus,
 					malesuada condimentum enim ullamcorper. Donec in dictum neque.`,
-			imgSrc: feMentor
+			imgSrc:
+				'https://res.cloudinary.com/dkiqn0gqg/image/upload/f_auto,q_auto/v1694473645/fazzaamiarso.com/about/fe-mentor_yvehpj.png'
 		},
 		{
 			title: 'Reviewing',
@@ -30,7 +28,8 @@
 					Donec bibendum bibendum semper. Etiam at nulla mi. Sed dapibus pretium turpis at iaculis. Vestibulum ante
 					ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec hendrerit mi eu ligula tempus,
 					malesuada condimentum enim ullamcorper. Donec in dictum neque.`,
-			imgSrc: dicoding
+			imgSrc:
+				'https://res.cloudinary.com/dkiqn0gqg/image/upload/f_auto,q_auto/v1694473645/fazzaamiarso.com/about/dicoding-profile_fhrfyy.png'
 		},
 		{
 			title: 'Mentoring',
@@ -38,7 +37,8 @@
 					Donec bibendum bibendum semper. Etiam at nulla mi. Sed dapibus pretium turpis at iaculis. Vestibulum ante
 					ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec hendrerit mi eu ligula tempus,
 					malesuada condimentum enim ullamcorper. Donec in dictum neque.`,
-			imgSrc: sib4
+			imgSrc:
+				'https://res.cloudinary.com/dkiqn0gqg/image/upload/f_auto,q_auto/v1694473714/fazzaamiarso.com/about/sib4_jda574.png'
 		}
 	];
 
@@ -132,6 +132,7 @@
 		<div class="relative overflow-hidden aspect-square w-full">
 			{#each contents as content}
 				<img
+					loading="lazy"
 					src={content.imgSrc}
 					class="photo absolute w-full h-full rounded-md block object-contain bg-white"
 					alt="" />

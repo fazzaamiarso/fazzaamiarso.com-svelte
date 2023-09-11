@@ -1,8 +1,6 @@
 <script lang="ts">
 	import gsap, { ScrollTrigger } from '$lib/gsap';
 	import { onMount } from 'svelte';
-	import scratch from '$lib/assets/scratch.png';
-	import team from '$lib/assets/robotic-sma.jpg';
 
 	onMount(() => {
 		const ctx = gsap.context(() => {
@@ -33,7 +31,10 @@
 	<div
 		class="h-panel ring-brand-700 flex flex-col gap-8 lg:gap-16 py-20 lg:grid lg:grid-cols-3 lg:items-center">
 		<figure class="">
-			<img src={scratch} alt="scratch logo" class="w-60 mx-auto" />
+			<img
+				src="https://res.cloudinary.com/dkiqn0gqg/image/upload/f_auto,q_auto/v1694473714/fazzaamiarso.com/about/scratch_rbh6uu.png"
+				alt="scratch logo"
+				class="w-60 mx-auto" />
 			<figcaption class="text-center italic text-gray-700">
 				scratch that I learned
 			</figcaption>
@@ -49,7 +50,7 @@
 		class="h-panel ring-brand-700 flex flex-col gap-8 lg:gap-16 py-20 lg:grid lg:grid-cols-3 lg:items-center">
 		<figure class="">
 			<img
-				src={team}
+				src="https://res.cloudinary.com/dkiqn0gqg/image/upload/f_auto,q_auto/v1694473713/fazzaamiarso.com/about/robotic-sma_aj3mub.jpg"
 				alt="my robotic team in high school"
 				class="w-96 mx-auto rounded-md" />
 			<figcaption class="text-center italic text-gray-700">

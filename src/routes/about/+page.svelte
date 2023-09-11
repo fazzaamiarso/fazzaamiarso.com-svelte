@@ -1,5 +1,4 @@
 <script lang="ts">
-	import mePic from '$lib/assets/fra.png';
 	import { china, indonesia, japan, southKorea, usa } from '$lib/assets/flags';
 	import Help from './help.svelte';
 	import Hero from './hero.svelte';
@@ -68,7 +67,7 @@
 					class="back w-full h-full bg-gray-700 absolute -z-10 translate-x-8 translate-y-8 rounded-md">
 				</div>
 				<img
-					src={mePic}
+					src="https://res.cloudinary.com/dkiqn0gqg/image/upload/f_auto,q_auto/v1694473645/fazzaamiarso.com/about/fra_vtmulw.png"
 					alt=""
 					class="max-w-sm w-full self-center rounded-md" />
 			</div>
