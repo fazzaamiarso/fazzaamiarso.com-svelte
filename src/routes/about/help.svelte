@@ -84,14 +84,14 @@
 	});
 </script>
 
-<p class="text-body-lg md:text-body-xl mb-16">
+<p class="text-body-lg md:text-body-xl mb-16 text-gray-800">
 	I strive to help and guide others on their Web Development journey. Why? It’s
 	because I know how challenging it’s to learn web development, especially if
 	they don’t have mentor or guidance.
 </p>
 
 <h3
-	class="text-heading-5 sm:text-heading-4 md:text-heading-3 flex items-center gap-1">
+	class="text-heading-5 sm:text-heading-4 md:text-heading-3 flex items-center gap-1 text-brand-900">
 	Here's how <ArrowBigDown
 		aria-hidden="true"
 		size="48"
@@ -106,8 +106,8 @@
 				src={content.imgSrc}
 				alt=""
 				class="rounded-md mb-4 w-full max-w-xs aspect-square object-contain" />
-			<h3 class="text-heading-5 mb-2">{content.title}</h3>
-			<p class="text-body-base">
+			<h3 class="text-heading-5 mb-2 text-brand-800">{content.title}</h3>
+			<p class="text-body-base text-gray-800">
 				{content.description}
 			</p>
 		</li>
@@ -120,8 +120,8 @@
 		{#each contents as content}
 			<div class="content h-screen flex items-center">
 				<div>
-					<h3 class="text-heading-3 mb-2">{content.title}</h3>
-					<p class="text-body-lg">
+					<h3 class="text-heading-3 mb-2 text-brand-800">{content.title}</h3>
+					<p class="text-body-lg text-gray-800">
 						{content.description}
 					</p>
 				</div>

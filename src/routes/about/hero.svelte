@@ -30,12 +30,17 @@
 </script>
 
 <div class="leading-normal text-gray-800">
-	<div class="marquee gap-2 whitespace-nowrap text-[10vw]">Hello! 안녕! Halo! こんにちは! 你好!</div>
-	<div class="marquee gap-2 whitespace-nowrap text-[10vw]">Hello! 안녕! Halo! こんにちは! 你好!</div>
+	<div class="marquee gap-2 whitespace-nowrap text-[10vw]">
+		Hello! 안녕! Halo! こんにちは! 你好!
+	</div>
+	<div class="marquee gap-2 whitespace-nowrap text-[10vw]">
+		Hello! 안녕! Halo! こんにちは! 你好!
+	</div>
 </div>
-<div class="scroll-more layout mt-auto pb-8 border-l-4 pl-4 border-brand-700 text-gray-800">
-	<p class="text-body-lg">Scroll to</p>
-	<p class="text-body-lg">discover more</p>
+<div
+	class="scroll-more layout mt-auto pb-8 border-l-4 pl-4 border-brand-700 text-gray-800">
+	<p class="text-body-lg text-gray-800">Scroll to</p>
+	<p class="text-body-lg text-gray-800">discover more</p>
 </div>
 
 <style>

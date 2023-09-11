@@ -38,7 +38,7 @@
 				scratch that I learned
 			</figcaption>
 		</figure>
-		<p class="col-span-2 text-body-lg md:text-body-xl w-full">
+		<p class="col-span-2 text-body-lg md:text-body-xl w-full text-gray-800">
 			I was introduced to programming with Scratch in my Elementary School
 			Robotic’s lesson. As a curious kid, it piqued my interest and made me join
 			the school’s robotic club. Eventually, I was selected to compete on a few
@@ -56,7 +56,7 @@
 				My robotic team and teachers in high school
 			</figcaption>
 		</figure>
-		<p class="col-span-2 text-body-lg md:text-body-xl w-full">
+		<p class="col-span-2 text-body-lg md:text-body-xl w-full text-gray-800">
 			Continuing the journey, I delved a bit into C++ with Arduino because I was
 			responsible for programming a Sumo Robot in High School Robotic Club. I
 			compete on a decent amount of Robotic competition across my time in
@@ -64,12 +64,12 @@
 		</p>
 	</div>
 	<div class="h-panel ring-brand-700 py-20 lg:flex-row">
-		<p class="text-body-lg md:text-body-xl w-full">
+		<p class="text-body-lg md:text-body-xl w-full text-gray-800">
 			I quickly lost interest in C++ at that time because it was so difficult
 			and I don’t have the passion yet. Somehow, I got interested in Python
 			after a quick workshop from a guest on my school.
 		</p>
-		<p class="text-body-lg md:text-body-xl w-full">
+		<p class="text-body-lg md:text-body-xl w-full text-gray-800">
 			Aaaaand... I dropped it too. Later on, I was amazed by Web development in
 			the end of High School from seeing a Youtube Video and unsurprisingly keep
 			going until present.

@@ -87,22 +87,25 @@
 </section>
 
 <section class="h-timeline pt-40 layout">
-	<h2 class="text-heading-4 sm:text-heading-3 md:text-heading-2 mb-4">
+	<h2
+		class="text-heading-4 sm:text-heading-3 md:text-heading-2 mb-4 text-brand-900">
 		How it all started?
 	</h2>
 	<Timeline />
 </section>
 <section class="pt-32 layout">
-	<h2 class="text-heading-4 sm:text-heading-3 md:text-heading-2 mb-12">
+	<h2
+		class="text-heading-4 sm:text-heading-3 md:text-heading-2 mb-12 text-brand-900">
 		I helped others grow too...
 	</h2>
 	<Help />
 </section>
 <section class="h-timeline pt-24 pb-32 layout">
-	<h2 class="text-heading-4 sm:text-heading-3 md:text-heading-2 mb-4">
+	<h2
+		class="text-heading-4 sm:text-heading-3 md:text-heading-2 mb-4 text-brand-900">
 		Languages I speak
 	</h2>
-	<p class="text-body-lg md:text-body-xl mb-10">
+	<p class="text-body-lg md:text-body-xl mb-10 text-gray-800">
 		Since I was a child, I’m fascinated by the power that languages hold to
 		connect with people simply by speaking a person’s native language. I also
 		believe, understanding the culture can open the door to people’s heart. It
@@ -113,7 +116,7 @@
 			<li
 				class="flex items-center gap-4 ring-1 ring-gray-200 rounded-full pr-4">
 				<img src={lang.flagSrc} alt={`${lang.lang} flag`} class="w-10" /><span
-					class="text-body-base">{lang.lang}</span>
+					class="text-body-base text-gray-800">{lang.lang}</span>
 			</li>
 		{/each}
 	</ul>
