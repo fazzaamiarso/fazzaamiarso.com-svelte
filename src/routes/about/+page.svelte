@@ -51,7 +51,7 @@
 			markers: true,
 			animation: bgTween,
 			start: 'top 80%',
-			end: 'bottom 20%',
+			end: 'bottom 40%',
 			toggleActions: 'play reverse play reverse'
 		});
 

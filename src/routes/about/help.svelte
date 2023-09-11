@@ -66,7 +66,7 @@
 					trigger: headline,
 					start: 'top 80%',
 					end: 'top 50%',
-					animation: animation,
+					animation,
 					scrub: true
 				});
 			});
