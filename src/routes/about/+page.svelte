@@ -1,94 +1,122 @@
 <script lang="ts">
-	import { ExternalLink } from 'lucide-svelte';
-	import myPic from '$lib/assets/fazza-about.png';
+	import { china, indonesia, japan, southKorea, usa } from '$lib/assets/flags';
+	import Help from './help.svelte';
+	import Hero from './hero.svelte';
+	import Timeline from './timeline.svelte';
+	import gsap, { ScrollTrigger } from '$lib/gsap';
 	import { onMount } from 'svelte';
-	import gsap from 'gsap';
-	import * as config from '$lib/site/config';
 
-	const otherLinks = [
-		{ type: 'Blog', category: 'Web development', link: config.blogUrl, label: 'dev.to/fazzaamiarso' },
-		{ type: 'Blog', category: 'Journal', link: 'journal.fazzaamiarso.com', label: 'journal.fazzaamiarso.com' }
+	const languages = [
+		{ lang: 'Indonesian', flagSrc: indonesia },
+		{ lang: 'English', flagSrc: usa },
+		{ lang: 'Japanese', flagSrc: japan },
+		{ lang: 'Korean', flagSrc: southKorea },
+		{ lang: 'Mandarin', flagSrc: china }
 	];
 
-	const languagesList = ['🇮🇩 Indonesian', '🇺🇸 English', '🇯🇵 Japanese', '🇰🇷 Korean'];
-
-	let greetingContainer: HTMLElement;
-
 	onMount(() => {
-		const greetingTexts = gsap.utils.toArray('div', greetingContainer);
-		const offset = -100;
-		const max = -(greetingTexts.length - 1) * offset;
+		const mm = gsap.matchMedia();
+		mm.add('(min-width:1024px)', () => {
+			const introTl = gsap
+				.timeline()
+				.from('.intro img', { yPercent: 50 })
+				.from('.intro .back', { yPercent: 60 }, '<')
+				.from('.intro .text', { yPercent: 20 }, '<');
 
-		gsap.set(greetingTexts, {
-			yPercent: (idx) => idx * offset
+			ScrollTrigger.create({
+				trigger: '.intro',
+				scrub: 1,
+				animation: introTl
+			});
 		});
 
-		const waitForMe = gsap.delayedCall(2, goAgain);
-
-		function goAgain() {
-			gsap.to(greetingTexts, {
-				duration: 1,
-				ease: 'back.inOut',
-				yPercent: '-=' + offset,
-				modifiers: {
-					yPercent: (value) => gsap.utils.wrap(offset, max, value)
-				},
-				onComplete: () => {
-					waitForMe.restart(true);
-				}
+		const ctx = gsap.context(() => {
+			const bgTween = gsap.to('main', {
+				backgroundColor: '#050415',
+				color: 'white'
 			});
-		}
+
+			ScrollTrigger.create({
+				trigger: '.intro',
+				animation: bgTween,
+				start: 'top 80%',
+				end: 'bottom 40%',
+				toggleActions: 'play reverse play reverse'
+			});
+		});
+
+		return () => ctx.revert();
 	});
 </script>
 
-<div class="layout py-32">
-	<div class="pb-12 flex flex-col md:flex-row-reverse lg:items-start lg:justify-start gap-12">
-		<div>
-			<h1 class="font-bold text-brand-900 flex flex-col">
-				<div bind:this={greetingContainer} class="overflow-hidden relative h-[52px] w-80 text-heading-3 text-brand-600">
-					<div class="greet absolute">Hi,</div>
-					<div class="greet absolute">안녕,</div>
-					<div class="greet absolute">こんにちは,</div>
+<section class="flex flex-col pt-32 h-screen overflow-hidden">
+	<Hero />
+</section>
+<section class="intro min-h-screen pt-32">
+	<div class="flex items-center">
+		<div
+			class="layout flex flex-col lg:flex-row items-center justify-between gap-8">
+			<div class="text basis-1/2">
+				<h2 class="text-heading-3 md:text-heading-1">I'm Fazza</h2>
+				<p class="text-heading-5 md:text-heading-3 font-dm-sans">
+					A Fullstack-able Frontend developer from Indonesia.
+				</p>
+			</div>
+			<div class="me relative">
+				<div
+					class="back w-full h-full bg-gray-700 absolute -z-10 translate-x-8 translate-y-8 rounded-md">
 				</div>
-				<div class="text-heading-3 lg:text-heading-1">I'm Fazza</div>
-			</h1>
-			<p class="text-heading-5 lg:text-heading-4 font-bold text-gray-600 mb-4">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-			</p>
-			<p class="text-body-base lg:text-body-lg text-gray-900 mb-4">
-				Donec vulputate lorem urna, porttitor tincidunt dolor tincidunt et. Ut vel urna volutpat, tincidunt felis ac,
-				tristique enim. Nullam at mi a ligula faucibus dignissim eu eu sapien.
-			</p>
-			<div class="text-body-base font-dm-sans lg:text-body-lg">
-				<p class="mb-2">I speak these languages (in order of fluency):</p>
-				<ul class="space-y-2">
-					{#each languagesList as lang}
-						<li class="">{lang}</li>
-					{/each}
-				</ul>
+				<img
+					src="https://res.cloudinary.com/dkiqn0gqg/image/upload/f_auto,q_auto/v1694473645/fazzaamiarso.com/about/fra_vtmulw.png"
+					alt=""
+					class="max-w-sm w-full self-center rounded-md" />
 			</div>
 		</div>
-		<div class="self-start lg:basis-[30%]">
-			<img src={myPic} alt="" class="w-full max-w-xs" />
-		</div>
 	</div>
-	<div>
-		<h2 class="text-heading-5 sm:text-heading-4 font-bold text-brand-800 mb-1">Checkout My Other Endeavors</h2>
-		<p class="text-gray-700 text-body-base mb-7 sm:text-body-lg">
-			I love sharing my knowledge with others and writing in general. So here are some of my endeavors
+	<div
+		class="flex flex-col gap-2 sm:gap-20 sm:flex-row justify-between pt-32 layout">
+		<h3 class="text-heading-4 sm:text-heading-3 md:text-heading-2">Why?</h3>
+		<p class="text-body-lg md:text-body-xl">
+			I love building stuff on the web because I can freely express my Idea.
+			It’s like having your own tiny space that show you exist in this world.
+			Sharing knowledge and opinion, build useful application, craft stunning
+			visual experience, make new friends and connections.
 		</p>
-		<ul class="space-y-12">
-			{#each otherLinks as item}
-				<li class="grid grid-cols-3 w-full">
-					<div class="col-span-1">
-						<div class="text-heading-5 font-bold text-brand-500">{item.type}</div>
-						<div class="text-body-base text-gray-600">{item.category}</div>
-					</div>
-					<a href="#link-1" class="inline-flex items-center gap-1 text-body-base font-bold text-gray-700 col-span-2"
-						>{item.label} <ExternalLink aria-hidden="true" size="20" />
-					</a>
-				</li>
-			{/each}
-		</ul>
 	</div>
-</div>
+</section>
+
+<section class="h-timeline pt-40 layout">
+	<h2
+		class="text-heading-4 sm:text-heading-3 md:text-heading-2 mb-4 text-brand-900">
+		How it all started?
+	</h2>
+	<Timeline />
+</section>
+<section class="pt-32 layout">
+	<h2
+		class="text-heading-4 sm:text-heading-3 md:text-heading-2 mb-12 text-brand-900">
+		I helped others grow too...
+	</h2>
+	<Help />
+</section>
+<section class="h-timeline pt-24 pb-32 layout">
+	<h2
+		class="text-heading-4 sm:text-heading-3 md:text-heading-2 mb-4 text-brand-900">
+		Languages I speak
+	</h2>
+	<p class="text-body-lg md:text-body-xl mb-10 text-gray-800">
+		Since I was a child, I’m fascinated by the power that languages hold to
+		connect with people simply by speaking a person’s native language. I also
+		believe, understanding the culture can open the door to people’s heart. It
+		motivated me to learn and understand different language and culture.
+	</p>
+	<ul class="w-full flex flex-wrap gap-4 md:gap-12">
+		{#each languages as lang}
+			<li
+				class="flex items-center gap-4 ring-1 ring-gray-200 rounded-full pr-4">
+				<img src={lang.flagSrc} alt={`${lang.lang} flag`} class="w-10" /><span
+					class="text-body-base text-gray-800">{lang.lang}</span>
+			</li>
+		{/each}
+	</ul>
+</section>

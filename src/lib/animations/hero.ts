@@ -13,7 +13,9 @@ export function animateBottomSection() {
 }
 
 export function animateHeroText() {
-	const tl = gsap.timeline({ defaults: { duration: IN_DURATION, ease: 'sine.out' } });
+	const tl = gsap.timeline({
+		defaults: { duration: IN_DURATION, ease: 'sine.out' }
+	});
 	const texts = gsap.utils.toArray('.text');
 
 	tl.from('#hero a', {
@@ -99,8 +101,24 @@ export function animateMenuButton() {
 	const tl = gsap
 		.timeline({ paused: true })
 		.to('#line-2', { xPercent: 0 })
-		.to('#line-1', { rotate: 45, transformOrigin: 'center', y: 4, ease: 'power1.out', duration: 0.3 })
-		.to('#line-2', { rotate: -45, transformOrigin: 'center', y: -5, ease: 'power1.out', duration: 0.3 }, '<')
+		.to('#line-1', {
+			rotate: 45,
+			transformOrigin: 'center',
+			y: 4,
+			ease: 'power1.out',
+			duration: 0.3
+		})
+		.to(
+			'#line-2',
+			{
+				rotate: -45,
+				transformOrigin: 'center',
+				y: -5,
+				ease: 'power1.out',
+				duration: 0.3
+			},
+			'<'
+		)
 		.reverse();
 	return tl;
 }

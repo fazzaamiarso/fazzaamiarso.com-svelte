@@ -4,7 +4,11 @@
 	import gsap from '$lib/gsap';
 	import { onMount } from 'svelte';
 	import { afterNavigate, beforeNavigate } from '$app/navigation';
-	import { animateMenuButton, animateNavbar, animatePanelOpen } from '$lib/animations/hero';
+	import {
+		animateMenuButton,
+		animateNavbar,
+		animatePanelOpen
+	} from '$lib/animations/hero';
 	import { page } from '$app/stores';
 	import clsx from 'clsx';
 	import * as trap from 'focus-trap';
@@ -15,7 +19,10 @@
 		{ label: 'Contact', href: '#contact' }
 	];
 
-	const navigationMobileLinks = [...navigationLinks, { label: 'Credits', href: '/credits' }];
+	const navigationMobileLinks = [
+		...navigationLinks,
+		{ label: 'Credits', href: '/credits' }
+	];
 
 	$: currentPath = $page.url.pathname;
 
@@ -68,14 +75,21 @@
 	}
 </script>
 
-<header id="navbar" class="fixed top-0 left-0 z-50 w-full backdrop-blur-md bg-white bg-opacity-50">
-	<div id="nav-drawer" class="sm:hidden bg-white h-screen fixed w-full pt-32 flex flex-col">
+<header
+	id="navbar"
+	class="fixed top-0 left-0 z-50 w-full backdrop-blur-md bg-white bg-opacity-50">
+	<div
+		id="nav-drawer"
+		class="sm:hidden bg-white h-screen fixed w-full pt-32 flex flex-col">
 		<nav class="">
 			<ul class="flex flex-col justify-between">
 				{#each navigationMobileLinks as link}
 					{@const isActive = currentPath.includes(link.href)}
 					<li class="text-heading-3 group">
-						<div data-animate="separator" class="w-screen absolute left-0 bg-gray-800 h-px"></div>
+						<div
+							data-animate="separator"
+							class="w-screen absolute left-0 bg-gray-800 h-px">
+						</div>
 						<a
 							on:click={async (e) => {
 								if (link.href.includes('#')) {
@@ -85,9 +99,15 @@
 								}
 							}}
 							data-animate="nav-link"
-							class={clsx('w-11/12 mx-auto block py-6', isActive ? 'text-brand-600' : 'text-gray-800')}
+							class={clsx(
+								'w-11/12 mx-auto block py-6',
+								isActive ? 'text-brand-600' : 'text-gray-800'
+							)}
 							href={link.href}>{link.label}</a>
-						<div data-animate="separator" class="w-screen absolute left-0 bg-gray-800 group-last:h-px"></div>
+						<div
+							data-animate="separator"
+							class="w-screen absolute left-0 bg-gray-800 group-last:h-px">
+						</div>
 					</li>
 				{/each}
 			</ul>
@@ -119,7 +139,9 @@
 							href={link.href}
 							class={clsx(
 								'text-body-lg',
-								isActive ? 'text-brand-600 transition-colors' : 'text-gray-700 hover:text-gray-500'
+								isActive
+									? 'text-brand-600 transition-colors'
+									: 'text-gray-700 hover:text-gray-500'
 							)}>{link.label}</a>
 					</li>
 				{/each}

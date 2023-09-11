@@ -15,7 +15,12 @@
 			<h3 class="row font-bold text-brand-700 mb-4">
 				{content.title}
 			</h3>
-			<p class={clsx('text-body-base md:text-body-lg max-w-prose mb-4 line-clamp-3')}>{content.description}</p>
+			<p
+				class={clsx(
+					'text-body-base md:text-body-lg max-w-prose mb-4 line-clamp-3'
+				)}>
+				{content.description}
+			</p>
 			<a
 				{href}
 				class="overflow-hidden p-2 sm:p-3 text-white mt-auto text-body-sm sm:text-body-base inline-flex items-center gap-2 rounded-sm relative bg-brand-700"
@@ -25,12 +30,20 @@
 					class="arrow-left absolute left-0 -translate-x-full pointer-events-none"
 					size={20} />
 				<span class="text pointer-events-none">See project</span>
-				<ArrowRight aria-hidden="true" class="arrow-right pointer-events-none" size={20} />
+				<ArrowRight
+					aria-hidden="true"
+					class="arrow-right pointer-events-none"
+					size={20} />
 			</a>
 		</div>
 		<div class="project-container w-full relative overflow-hidden">
-			<div class="card-img-reveal bg-white w-full h-full absolute top-0 left-0 translate-y-full"></div>
-			<img src={content.cover} alt="" class="rounded-md aspect-video md:max-w-2xl w-full block origin-bottom" />
+			<div
+				class="card-img-reveal bg-white w-full h-full absolute top-0 left-0 translate-y-full">
+			</div>
+			<img
+				src={content.cover}
+				alt=""
+				class="rounded-md aspect-video md:max-w-2xl w-full block origin-bottom" />
 		</div>
 	</div>
 </li>
